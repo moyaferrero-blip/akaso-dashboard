@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EK7000-V53 终端表现跟进看板</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+  header { background: linear-gradient(135deg, #1e293b 0%, #162032 100%);
+           padding: 24px 32px; border-bottom: 1px solid #334155; }
+  header h1 { font-size: 1.4rem; font-weight: 700; }
+  header p  { color: #94a3b8; font-size: 0.82rem; margin-top: 4px; }
+  .kpi-row  { display: flex; gap: 16px; padding: 24px 32px; flex-wrap: wrap; }
+  .kpi      { flex: 1; min-width: 130px; background: #1e293b; border-radius: 12px;
+              padding: 18px 20px; border: 1px solid #334155; }
+  .kpi .label { font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .06em; }
+  .kpi .value { font-size: 1.9rem; font-weight: 800; margin-top: 6px; line-height: 1; }
+  .kpi .sub   { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
+  .kpi.blue   .value { color: #60a5fa; }
+  .kpi.green  .value { color: #4ade80; }
+  .kpi.yellow .value { color: #facc15; }
+  .kpi.red    .value { color: #f87171; }
+  .kpi.purple .value { color: #a78bfa; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 32px 24px; }
+  .card { background: #1e293b; border-radius: 12px; padding: 20px;
+          border: 1px solid #334155; }
+  .card h2 { font-size: 0.82rem; font-weight: 600; color: #94a3b8;
+             margin-bottom: 14px; text-transform: uppercase; letter-spacing: .06em; }
+  .full { grid-column: 1 / -1; }
+  canvas { max-height: 260px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  th { text-align: left; padding: 8px 12px; color: #64748b;
+       border-bottom: 1px solid #334155; font-weight: 500; font-size: 0.78rem; }
+  td { padding: 8px 12px; border-bottom: 1px solid #243147; }
+  tr:hover td { background: #263245; }
+  .diff       { font-size: 0.75rem; color: #64748b; }
+  .diff.green { color: #4ade80; }
+  .progress-bar { background: #1e3a5f; border-radius: 6px; height: 8px; margin-top: 8px; }
+  .progress-fill { background: #60a5fa; border-radius: 6px; height: 8px; }
+  .updated { color: #475569; font-size: 0.75rem; text-align: right; padding: 8px 32px 24px; }
+  @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>EK7000-V53 终端表现跟进看板</h1>
+  <p>AKASO EK7000-V53 · 客诉&终端问题追踪 · 数据源：飞书多维表格</p>
+</header>
+
+<div class="kpi-row">
+  <div class="kpi blue">
+    <div class="label">总记录数</div>
+    <div class="value">115</div>
+  </div>
+  <div class="kpi green">
+    <div class="label">已解决/关闭</div>
+    <div class="value">0</div>
+    <div class="sub">0% 完成率</div>
+  </div>
+  <div class="kpi yellow">
+    <div class="label">待处理</div>
+    <div class="value">115</div>
+  </div>
+  <div class="kpi purple">
+    <div class="label">有处理方案</div>
+    <div class="value">28%</div>
+    <div class="sub">32 / 115 条</div>
+  </div>
+  <div class="kpi red">
+    <div class="label">退回分析</div>
+    <div class="value">0</div>
+  </div>
+</div>
+
+<div class="grid">
+  <!-- 趋势折线图 -->
+  <div class="card full">
+    <h2>📈 每日趋势</h2>
+    <canvas id="trendChart"></canvas>
+  </div>
+
+  <!-- 问题类型饼图 -->
+  <div class="card">
+    <h2>🔵 问题类型分布（最新）</h2>
+    <canvas id="typeChart"></canvas>
+  </div>
+
+  <!-- 进度分布饼图 -->
+  <div class="card">
+    <h2>🟡 进度分布（最新）</h2>
+    <canvas id="progChart"></canvas>
+  </div>
+
+  <!-- 问题归属柱状图 -->
+  <div class="card full">
+    <h2>📊 问题归属 TOP12（最新）</h2>
+    <canvas id="catChart"></canvas>
+  </div>
+
+  <!-- 站点分布 -->
+  <div class="card">
+    <h2>🌍 站点分布（最新）</h2>
+    <canvas id="stationChart"></canvas>
+  </div>
+
+  <!-- 无处理方案样本 -->
+  <div class="card">
+    <h2>⚠️ 待处理方案（前10条）</h2>
+    <table>
+      <thead><tr><th>客诉ID</th><th>站点</th><th>问题归属</th><th>类型</th></tr></thead>
+      <tbody>
+    <tr>
+      <td>3970</td>
+      <td>US</td>
+      <td>11-APP问题</td>
+      <td>APP问题</td>
+    </tr>
+    <tr>
+      <td>4077</td>
+      <td>US</td>
+      <td>漏件</td>
+      <td>配件问题</td>
+    </tr>
+    <tr>
+      <td>4104</td>
+      <td>US</td>
+      <td>13-WiFi问题</td>
+      <td>产品问题</td>
+    </tr>
+    <tr>
+      <td>4241</td>
+      <td>US</td>
+      <td>08-防水壳</td>
+      <td>配件问题</td>
+    </tr>
+    <tr>
+      <td>4302</td>
+      <td>US</td>
+      <td>录像及回放问题</td>
+      <td>用户体验问题</td>
+    </tr>
+    <tr>
+      <td>4304</td>
+      <td>US</td>
+      <td>08-防水壳</td>
+      <td>配件问题</td>
+    </tr>
+    <tr>
+      <td>4444</td>
+      <td>US</td>
+      <td>版本迭代反馈</td>
+      <td>用户体验问题</td>
+    </tr>
+    <tr>
+      <td>4480</td>
+      <td>US</td>
+      <td>其他问题/20-客户体验或者其他</td>
+      <td>用户体验问题</td>
+    </tr>
+    <tr>
+      <td>4556</td>
+      <td>US</td>
+      <td>11-APP问题</td>
+      <td>APP问题</td>
+    </tr>
+    <tr>
+      <td>4585</td>
+      <td>US</td>
+      <td>05-按键</td>
+      <td>产品问题</td>
+    </tr></tbody>
+    </table>
+  </div>
+
+  <!-- 历史快照表格 -->
+  <div class="card full">
+    <h2>📅 每日快照记录</h2>
+    <table>
+      <thead>
+        <tr><th>日期</th><th>总量</th><th>已解决/关闭</th><th>待处理</th><th>有处理方案</th><th>退回分析</th></tr>
+      </thead>
+      <tbody>
+    <tr>
+      <td>2026-04-02</td>
+      <td>115 <span class="diff">+0</span></td>
+      <td>0 <span class="diff green">+0</span></td>
+      <td>115</td>
+      <td>32 / 115</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2026-04-01</td>
+      <td>115 <span class="diff">+2</span></td>
+      <td>0 <span class="diff green">+0</span></td>
+      <td>115</td>
+      <td>32 / 115</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2026-03-31</td>
+      <td>113 <span class="diff">-</span></td>
+      <td>0 <span class="diff green">-</span></td>
+      <td>113</td>
+      <td>32 / 113</td>
+      <td>0</td>
+    </tr></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="updated">最后更新：2026-04-02 · 数据来自飞书多维表格「EK7000-V53终端表现跟进」</div>
+
+<script>
+const C = {
+  blue:   '#60a5fa', green:  '#4ade80', yellow: '#facc15', red:    '#f87171',
+  purple: '#a78bfa', orange: '#fb923c', teal:   '#2dd4bf', pink:   '#f472b6',
+  slate:  '#94a3b8', indigo: '#818cf8', cyan:   '#22d3ee', lime:   '#a3e635',
+};
+const PIE_COLORS = Object.values(C);
+
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+
+// 趋势折线图
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels: ["2026-03-31","2026-04-01","2026-04-02"],
+    datasets: [
+      { label: '总量',       data: [113,115,115],   borderColor: C.blue,   backgroundColor: C.blue+'18',   tension: 0.4, fill: false, pointRadius: 4 },
+      { label: '已解决/关闭', data: [0,0,0], borderColor: C.green,  backgroundColor: C.green+'28',  tension: 0.4, fill: true,  pointRadius: 4 },
+      { label: '待处理',     data: [113,115,115],   borderColor: C.yellow, backgroundColor: C.yellow+'18', tension: 0.4, fill: false, pointRadius: 4 },
+      { label: '有处理方案', data: [32,32,32],  borderColor: C.purple, backgroundColor: C.purple+'18', tension: 0.4, fill: false, pointRadius: 4, borderDash: [4,3] },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { color: '#e2e8f0', padding: 16 } } },
+    scales: {
+      x: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+      y: { ticks: { color: '#64748b' }, grid: { color: '#334155' }, beginAtZero: true }
+    }
+  }
+});
+
+// 问题类型饼图
+new Chart(document.getElementById('typeChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ["APP问题","配件问题","产品问题","用户体验问题","未填写"],
+    datasets: [{ data: [8,48,49,9,1], backgroundColor: PIE_COLORS, borderWidth: 0 }]
+  },
+  options: {
+    responsive: true, cutout: '55%',
+    plugins: { legend: { position: 'right', labels: { color: '#e2e8f0', padding: 12 } } }
+  }
+});
+
+// 进度分布饼图
+new Chart(document.getElementById('progChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ["未填写"],
+    datasets: [{ data: [115],
+      backgroundColor: [C.green, C.yellow, C.orange, C.blue, C.slate, C.red],
+      borderWidth: 0 }]
+  },
+  options: {
+    responsive: true, cutout: '55%',
+    plugins: { legend: { position: 'right', labels: { color: '#e2e8f0', padding: 12 } } }
+  }
+});
+
+// 问题归属横向柱状图
+new Chart(document.getElementById('catChart'), {
+  type: 'bar',
+  data: {
+    labels: ["漏件","08-防水壳","11-APP问题","12-开关机问题","14-SD卡问题","20-客户体验或者其他","05-按键","09-配件","录像及回放问题","版本迭代反馈","其他问题","17-图像品质"],
+    datasets: [{ label: '问题数', data: [24,24,8,8,7,6,6,6,5,4,4,3],
+      backgroundColor: C.blue + 'cc', borderRadius: 5 }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#64748b' }, grid: { color: '#334155' } },
+      y: { ticks: { color: '#e2e8f0', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+
+// 站点分布柱状图
+new Chart(document.getElementById('stationChart'), {
+  type: 'bar',
+  data: {
+    labels: ["US","UK","FR","IT","AU","CA","JP","未知"],
+    datasets: [{ label: '记录数', data: [73,15,7,6,5,5,3,1],
+      backgroundColor: PIE_COLORS.slice(0, 8), borderRadius: 5 }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#64748b' }, grid: { display: false } },
+      y: { ticks: { color: '#64748b' }, grid: { color: '#334155' }, beginAtZero: true }
+    }
+  }
+});
+</script>
+</body>
+</html>
