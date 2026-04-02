@@ -250,8 +250,8 @@ new Chart(document.getElementById('trendChart'), {
 new Chart(document.getElementById('typeChart'), {
   type: 'doughnut',
   data: {
-    labels: ["APP问题","配件问题","产品问题","用户体验问题"],
-    datasets: [{ data: [8,49,49,9], backgroundColor: PIE_COLORS, borderWidth: 0 }]
+    labels: ["APP问题","配件问题","产品问题","用户体验问题","未填写"],
+    datasets: [{ data: [8,48,49,9,1], backgroundColor: PIE_COLORS, borderWidth: 0 }]
   },
   options: {
     responsive: true, cutout: '55%',
@@ -278,8 +278,8 @@ new Chart(document.getElementById('progChart'), {
 new Chart(document.getElementById('catChart'), {
   type: 'bar',
   data: {
-    labels: ["漏件","08-防水壳","11-APP问题","12-开关机问题","14-SD卡问题","20-客户体验或者其他","05-按键","09-配件","录像及回放问题","版本迭代反馈","其他问题","17-图像品质"],
-    datasets: [{ label: '问题数', data: [24,24,8,8,7,6,6,6,5,4,4,3],
+    labels: ["漏件","08-防水壳","11-APP问题","12-开关机问题","20-客户体验或者其他","05-按键","09-配件","14-SD卡问题","录像及回放问题","版本迭代反馈","其他问题","17-图像品质"],
+    datasets: [{ label: '问题数', data: [24,24,8,8,6,6,6,6,5,4,4,3],
       backgroundColor: C.blue + 'cc', borderRadius: 5 }]
   },
   options: {
