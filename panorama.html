@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全景相机客诉进度看板</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+  header { background: #1e293b; padding: 24px 32px; border-bottom: 1px solid #334155; }
+  header h1 { font-size: 1.5rem; font-weight: 700; }
+  header p  { color: #94a3b8; font-size: 0.85rem; margin-top: 4px; }
+  .kpi-row  { display: flex; gap: 16px; padding: 24px 32px; flex-wrap: wrap; }
+  .kpi      { flex: 1; min-width: 140px; background: #1e293b; border-radius: 12px;
+              padding: 20px; border: 1px solid #334155; }
+  .kpi .label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .05em; }
+  .kpi .value { font-size: 2rem; font-weight: 800; margin-top: 6px; }
+  .kpi.red .value   { color: #f87171; }
+  .kpi.green .value { color: #4ade80; }
+  .kpi.blue .value  { color: #60a5fa; }
+  .kpi.yellow .value{ color: #facc15; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 32px 24px; }
+  .card { background: #1e293b; border-radius: 12px; padding: 20px;
+          border: 1px solid #334155; }
+  .card h2 { font-size: 0.9rem; font-weight: 600; color: #94a3b8;
+             margin-bottom: 16px; text-transform: uppercase; letter-spacing: .05em; }
+  .full { grid-column: 1 / -1; }
+  canvas { max-height: 280px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { text-align: left; padding: 8px 12px; color: #64748b;
+       border-bottom: 1px solid #334155; font-weight: 500; }
+  td { padding: 8px 12px; border-bottom: 1px solid #1e293b; }
+  tr:hover td { background: #263245; }
+  .urgent { color: #f87171; font-weight: 600; }
+  .updated { color: #475569; font-size: 0.75rem; text-align: right;
+             padding: 8px 32px 24px; }
+  @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>全景相机客诉进度看板</h1>
+  <p>AKASO 360 · 赛纳 &amp; KANDAO 协作跟进 · 数据源：飞书多维表格</p>
+</header>
+
+<div class="kpi-row">
+  <div class="kpi blue"><div class="label">总记录数</div><div class="value">43</div></div>
+  <div class="kpi green"><div class="label">已解决</div><div class="value">0</div></div>
+  <div class="kpi yellow"><div class="label">处理中</div><div class="value">43</div></div>
+  <div class="kpi red"><div class="label">S级待处理</div><div class="value">0</div></div>
+</div>
+
+<div class="grid">
+  <!-- 趋势折线图 -->
+  <div class="card full">
+    <h2>📈 客诉趋势（每日快照）</h2>
+    <canvas id="trendChart"></canvas>
+  </div>
+
+  <!-- 状态分布饼图 -->
+  <div class="card">
+    <h2>🔵 状态分布（最新）</h2>
+    <canvas id="statusChart"></canvas>
+  </div>
+
+  <!-- 问题归类柱状图 -->
+  <div class="card">
+    <h2>📊 问题归类 TOP12（最新）</h2>
+    <canvas id="catChart"></canvas>
+  </div>
+
+  <!-- S级紧急问题 -->
+  <div class="card full">
+    <h2>🔴 S级待处理问题</h2>
+    <table>
+      <thead><tr><th>编号</th><th>问题</th><th>状态</th><th>归类</th></tr></thead>
+      <tbody><tr><td colspan="4" style="text-align:center;color:#22c55e">暂无 S 级待处理问题 ✓</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- 历史数据表格 -->
+  <div class="card full">
+    <h2>📅 每日快照记录</h2>
+    <table>
+      <thead><tr><th>日期</th><th>总量</th><th>已解决</th><th>待处理</th><th>S级待处理</th></tr></thead>
+      <tbody>
+    <tr>
+      <td>2026-04-02</td>
+      <td>43</td>
+      <td>0</td>
+      <td>43</td>
+      <td class="">0</td>
+    </tr>
+    <tr>
+      <td>2026-04-01</td>
+      <td>43</td>
+      <td>0</td>
+      <td>43</td>
+      <td class="">0</td>
+    </tr>
+    <tr>
+      <td>2026-03-31</td>
+      <td>43</td>
+      <td>0</td>
+      <td>43</td>
+      <td class="">0</td>
+    </tr></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="updated">最后更新：2026-04-02 · 数据来自飞书多维表格</div>
+
+<script>
+const COLORS = {
+  blue:   '#60a5fa', green:  '#4ade80', yellow: '#facc15',
+  red:    '#f87171', purple: '#a78bfa', orange: '#fb923c',
+  teal:   '#2dd4bf', pink:   '#f472b6', slate:  '#94a3b8',
+};
+
+// 趋势折线图
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels: ["2026-03-31","2026-04-01","2026-04-02"],
+    datasets: [
+      { label: '总量',     data: [43,43,43],   borderColor: COLORS.blue,   backgroundColor: COLORS.blue + '22',   tension: 0.4, fill: false },
+      { label: '已解决',   data: [0,0,0], borderColor: COLORS.green,  backgroundColor: COLORS.green + '22',  tension: 0.4, fill: true  },
+      { label: '待处理',   data: [43,43,43],  borderColor: COLORS.yellow, backgroundColor: COLORS.yellow + '22', tension: 0.4, fill: false },
+      { label: 'S级待处理',data: [0,0,0],   borderColor: COLORS.red,    backgroundColor: COLORS.red + '22',    tension: 0.4, fill: false },
+    ]
+  },
+  options: {
+    responsive: true, plugins: { legend: { labels: { color: '#e2e8f0' } } },
+    scales: {
+      x: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+      y: { ticks: { color: '#64748b' }, grid: { color: '#334155' }, beginAtZero: true }
+    }
+  }
+});
+
+// 状态分布饼图
+new Chart(document.getElementById('statusChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ["待确认","开发中","评估中","待验收","未填写"],
+    datasets: [{ data: [12,12,17,1,1],
+      backgroundColor: [COLORS.blue, COLORS.yellow, COLORS.orange, COLORS.purple,
+                        COLORS.teal, COLORS.green, COLORS.slate],
+      borderWidth: 0 }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'right', labels: { color: '#e2e8f0', font: { size: 12 } } } }
+  }
+});
+
+// 问题归类柱状图
+new Chart(document.getElementById('catChart'), {
+  type: 'bar',
+  data: {
+    labels: ["电池续航","画质","发热","app","studio","SD卡","文件","连接","声音问题","硬件","固件","生态"],
+    datasets: [{ label: '问题数', data: [2,3,1,11,10,1,2,1,3,3,3,1],
+      backgroundColor: COLORS.blue + 'cc', borderRadius: 6 }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#64748b' }, grid: { color: '#334155' } },
+      y: { ticks: { color: '#e2e8f0', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
