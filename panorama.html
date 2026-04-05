@@ -46,9 +46,9 @@
 </header>
 
 <div class="kpi-row">
-  <div class="kpi blue"><div class="label">总记录数</div><div class="value">43</div></div>
+  <div class="kpi blue"><div class="label">总记录数</div><div class="value">46</div></div>
   <div class="kpi green"><div class="label">已解决</div><div class="value">0</div></div>
-  <div class="kpi yellow"><div class="label">处理中</div><div class="value">43</div></div>
+  <div class="kpi yellow"><div class="label">处理中</div><div class="value">46</div></div>
   <div class="kpi red"><div class="label">S级待处理</div><div class="value">0</div></div>
 </div>
 
@@ -87,6 +87,13 @@
       <thead><tr><th>日期</th><th>总量</th><th>已解决</th><th>待处理</th><th>S级待处理</th></tr></thead>
       <tbody>
     <tr>
+      <td>2026-04-05</td>
+      <td>46</td>
+      <td>0</td>
+      <td>46</td>
+      <td class="">0</td>
+    </tr>
+    <tr>
       <td>2026-04-02</td>
       <td>43</td>
       <td>0</td>
@@ -111,7 +118,7 @@
   </div>
 </div>
 
-<div class="updated">最后更新：2026-04-02 · 数据来自飞书多维表格</div>
+<div class="updated">最后更新：2026-04-05 · 数据来自飞书多维表格</div>
 
 <script>
 const COLORS = {
@@ -124,12 +131,12 @@ const COLORS = {
 new Chart(document.getElementById('trendChart'), {
   type: 'line',
   data: {
-    labels: ["2026-03-31","2026-04-01","2026-04-02"],
+    labels: ["2026-03-31","2026-04-01","2026-04-02","2026-04-05"],
     datasets: [
-      { label: '总量',     data: [43,43,43],   borderColor: COLORS.blue,   backgroundColor: COLORS.blue + '22',   tension: 0.4, fill: false },
-      { label: '已解决',   data: [0,0,0], borderColor: COLORS.green,  backgroundColor: COLORS.green + '22',  tension: 0.4, fill: true  },
-      { label: '待处理',   data: [43,43,43],  borderColor: COLORS.yellow, backgroundColor: COLORS.yellow + '22', tension: 0.4, fill: false },
-      { label: 'S级待处理',data: [0,0,0],   borderColor: COLORS.red,    backgroundColor: COLORS.red + '22',    tension: 0.4, fill: false },
+      { label: '总量',     data: [43,43,43,46],   borderColor: COLORS.blue,   backgroundColor: COLORS.blue + '22',   tension: 0.4, fill: false },
+      { label: '已解决',   data: [0,0,0,0], borderColor: COLORS.green,  backgroundColor: COLORS.green + '22',  tension: 0.4, fill: true  },
+      { label: '待处理',   data: [43,43,43,46],  borderColor: COLORS.yellow, backgroundColor: COLORS.yellow + '22', tension: 0.4, fill: false },
+      { label: 'S级待处理',data: [0,0,0,0],   borderColor: COLORS.red,    backgroundColor: COLORS.red + '22',    tension: 0.4, fill: false },
     ]
   },
   options: {
@@ -146,7 +153,7 @@ new Chart(document.getElementById('statusChart'), {
   type: 'doughnut',
   data: {
     labels: ["待确认","开发中","评估中","待验收","未填写"],
-    datasets: [{ data: [12,12,17,1,1],
+    datasets: [{ data: [12,12,17,1,4],
       backgroundColor: [COLORS.blue, COLORS.yellow, COLORS.orange, COLORS.purple,
                         COLORS.teal, COLORS.green, COLORS.slate],
       borderWidth: 0 }]
@@ -162,7 +169,7 @@ new Chart(document.getElementById('catChart'), {
   type: 'bar',
   data: {
     labels: ["电池续航","画质","发热","app","studio","SD卡","文件","连接","声音问题","硬件","固件","生态"],
-    datasets: [{ label: '问题数', data: [2,3,1,11,10,1,2,1,3,3,3,1],
+    datasets: [{ label: '问题数', data: [2,3,1,14,10,1,2,1,3,3,3,1],
       backgroundColor: COLORS.blue + 'cc', borderRadius: 6 }]
   },
   options: {
