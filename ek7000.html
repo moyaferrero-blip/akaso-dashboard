@@ -66,8 +66,8 @@
   </div>
   <div class="kpi purple">
     <div class="label">有处理方案</div>
-    <div class="value">28%</div>
-    <div class="sub">32 / 115 条</div>
+    <div class="value">29%</div>
+    <div class="sub">33 / 115 条</div>
   </div>
   <div class="kpi red">
     <div class="label">退回分析</div>
@@ -184,6 +184,14 @@
       </thead>
       <tbody>
     <tr>
+      <td>2026-04-05</td>
+      <td>115 <span class="diff">+0</span></td>
+      <td>0 <span class="diff green">+0</span></td>
+      <td>115</td>
+      <td>33 / 115</td>
+      <td>0</td>
+    </tr>
+    <tr>
       <td>2026-04-02</td>
       <td>115 <span class="diff">+0</span></td>
       <td>0 <span class="diff green">+0</span></td>
@@ -211,7 +219,7 @@
   </div>
 </div>
 
-<div class="updated">最后更新：2026-04-02 · 数据来自飞书多维表格「EK7000-V53终端表现跟进」</div>
+<div class="updated">最后更新：2026-04-05 · 数据来自飞书多维表格「EK7000-V53终端表现跟进」</div>
 
 <script>
 const C = {
@@ -228,12 +236,12 @@ Chart.defaults.borderColor = '#334155';
 new Chart(document.getElementById('trendChart'), {
   type: 'line',
   data: {
-    labels: ["2026-03-31","2026-04-01","2026-04-02"],
+    labels: ["2026-03-31","2026-04-01","2026-04-02","2026-04-05"],
     datasets: [
-      { label: '总量',       data: [113,115,115],   borderColor: C.blue,   backgroundColor: C.blue+'18',   tension: 0.4, fill: false, pointRadius: 4 },
-      { label: '已解决/关闭', data: [0,0,0], borderColor: C.green,  backgroundColor: C.green+'28',  tension: 0.4, fill: true,  pointRadius: 4 },
-      { label: '待处理',     data: [113,115,115],   borderColor: C.yellow, backgroundColor: C.yellow+'18', tension: 0.4, fill: false, pointRadius: 4 },
-      { label: '有处理方案', data: [32,32,32],  borderColor: C.purple, backgroundColor: C.purple+'18', tension: 0.4, fill: false, pointRadius: 4, borderDash: [4,3] },
+      { label: '总量',       data: [113,115,115,115],   borderColor: C.blue,   backgroundColor: C.blue+'18',   tension: 0.4, fill: false, pointRadius: 4 },
+      { label: '已解决/关闭', data: [0,0,0,0], borderColor: C.green,  backgroundColor: C.green+'28',  tension: 0.4, fill: true,  pointRadius: 4 },
+      { label: '待处理',     data: [113,115,115,115],   borderColor: C.yellow, backgroundColor: C.yellow+'18', tension: 0.4, fill: false, pointRadius: 4 },
+      { label: '有处理方案', data: [32,32,32,33],  borderColor: C.purple, backgroundColor: C.purple+'18', tension: 0.4, fill: false, pointRadius: 4, borderDash: [4,3] },
     ]
   },
   options: {
