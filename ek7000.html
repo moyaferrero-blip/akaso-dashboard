@@ -66,8 +66,8 @@
   </div>
   <div class="kpi purple">
     <div class="label">有处理方案</div>
-    <div class="value">28%</div>
-    <div class="sub">32 / 115 条</div>
+    <div class="value">29%</div>
+    <div class="sub">33 / 115 条</div>
   </div>
   <div class="kpi red">
     <div class="label">退回分析</div>
@@ -188,7 +188,7 @@
       <td>115 <span class="diff">+0</span></td>
       <td>0 <span class="diff green">+0</span></td>
       <td>115</td>
-      <td>32 / 115</td>
+      <td>33 / 115</td>
       <td>0</td>
     </tr>
     <tr>
@@ -249,7 +249,7 @@ new Chart(document.getElementById('trendChart'), {
       { label: '总量',       data: [113,115,115,115,115],   borderColor: C.blue,   backgroundColor: C.blue+'18',   tension: 0.4, fill: false, pointRadius: 4 },
       { label: '已解决/关闭', data: [0,0,0,0,0], borderColor: C.green,  backgroundColor: C.green+'28',  tension: 0.4, fill: true,  pointRadius: 4 },
       { label: '待处理',     data: [113,115,115,115,115],   borderColor: C.yellow, backgroundColor: C.yellow+'18', tension: 0.4, fill: false, pointRadius: 4 },
-      { label: '有处理方案', data: [32,32,32,33,32],  borderColor: C.purple, backgroundColor: C.purple+'18', tension: 0.4, fill: false, pointRadius: 4, borderDash: [4,3] },
+      { label: '有处理方案', data: [32,32,32,33,33],  borderColor: C.purple, backgroundColor: C.purple+'18', tension: 0.4, fill: false, pointRadius: 4, borderDash: [4,3] },
     ]
   },
   options: {
@@ -313,7 +313,7 @@ new Chart(document.getElementById('stationChart'), {
   type: 'bar',
   data: {
     labels: ["US","UK","FR","IT","AU","CA","JP","未知"],
-    datasets: [{ label: '记录数', data: [72,15,7,6,5,5,3,2],
+    datasets: [{ label: '记录数', data: [73,15,7,6,5,5,3,1],
       backgroundColor: PIE_COLORS.slice(0, 8), borderRadius: 5 }]
   },
   options: {
