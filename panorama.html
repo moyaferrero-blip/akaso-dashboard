@@ -159,8 +159,8 @@ new Chart(document.getElementById('trendChart'), {
 new Chart(document.getElementById('statusChart'), {
   type: 'doughnut',
   data: {
-    labels: ["待确认","开发中","未填写","评估中","待验收"],
-    datasets: [{ data: [12,11,5,17,1],
+    labels: ["待确认","开发中","评估中","待验收","未填写"],
+    datasets: [{ data: [12,12,17,1,4],
       backgroundColor: [COLORS.blue, COLORS.yellow, COLORS.orange, COLORS.purple,
                         COLORS.teal, COLORS.green, COLORS.slate],
       borderWidth: 0 }]
