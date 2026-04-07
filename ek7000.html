@@ -274,8 +274,8 @@ new Chart(document.getElementById('trendChart'), {
 new Chart(document.getElementById('typeChart'), {
   type: 'doughnut',
   data: {
-    labels: ["APP问题","配件问题","产品问题","用户体验问题","未填写"],
-    datasets: [{ data: [8,49,50,9,1], backgroundColor: PIE_COLORS, borderWidth: 0 }]
+    labels: ["APP问题","配件问题","产品问题","用户体验问题"],
+    datasets: [{ data: [8,50,50,9], backgroundColor: PIE_COLORS, borderWidth: 0 }]
   },
   options: {
     responsive: true, cutout: '55%',
@@ -320,8 +320,8 @@ new Chart(document.getElementById('catChart'), {
 new Chart(document.getElementById('stationChart'), {
   type: 'bar',
   data: {
-    labels: ["US","UK","FR","IT","AU","CA","未知","JP"],
-    datasets: [{ label: '记录数', data: [73,15,7,6,5,5,3,3],
+    labels: ["US","UK","FR","IT","AU","CA","JP","未知"],
+    datasets: [{ label: '记录数', data: [75,15,7,6,5,5,3,1],
       backgroundColor: PIE_COLORS.slice(0, 8), borderRadius: 5 }]
   },
   options: {
