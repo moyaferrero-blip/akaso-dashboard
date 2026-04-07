@@ -66,8 +66,8 @@
   </div>
   <div class="kpi purple">
     <div class="label">有处理方案</div>
-    <div class="value">27%</div>
-    <div class="sub">32 / 117 条</div>
+    <div class="value">28%</div>
+    <div class="sub">33 / 117 条</div>
   </div>
   <div class="kpi red">
     <div class="label">退回分析</div>
@@ -188,7 +188,7 @@
       <td>117 <span class="diff">+2</span></td>
       <td>0 <span class="diff green">+0</span></td>
       <td>117</td>
-      <td>32 / 117</td>
+      <td>33 / 117</td>
       <td>0</td>
     </tr>
     <tr>
@@ -257,7 +257,7 @@ new Chart(document.getElementById('trendChart'), {
       { label: '总量',       data: [113,115,115,115,115,117],   borderColor: C.blue,   backgroundColor: C.blue+'18',   tension: 0.4, fill: false, pointRadius: 4 },
       { label: '已解决/关闭', data: [0,0,0,0,0,0], borderColor: C.green,  backgroundColor: C.green+'28',  tension: 0.4, fill: true,  pointRadius: 4 },
       { label: '待处理',     data: [113,115,115,115,115,117],   borderColor: C.yellow, backgroundColor: C.yellow+'18', tension: 0.4, fill: false, pointRadius: 4 },
-      { label: '有处理方案', data: [32,32,32,33,33,32],  borderColor: C.purple, backgroundColor: C.purple+'18', tension: 0.4, fill: false, pointRadius: 4, borderDash: [4,3] },
+      { label: '有处理方案', data: [32,32,32,33,33,33],  borderColor: C.purple, backgroundColor: C.purple+'18', tension: 0.4, fill: false, pointRadius: 4, borderDash: [4,3] },
     ]
   },
   options: {
@@ -302,8 +302,8 @@ new Chart(document.getElementById('progChart'), {
 new Chart(document.getElementById('catChart'), {
   type: 'bar',
   data: {
-    labels: ["08-防水壳","漏件","12-开关机问题","11-APP问题","20-客户体验或者其他","05-按键","09-配件","14-SD卡问题","录像及回放问题","版本迭代反馈","其他问题","17-图像品质"],
-    datasets: [{ label: '问题数', data: [25,24,9,8,6,6,6,6,5,4,4,3],
+    labels: ["08-防水壳","漏件","12-开关机问题","11-APP问题","14-SD卡问题","20-客户体验或者其他","05-按键","09-配件","录像及回放问题","版本迭代反馈","其他问题","17-图像品质"],
+    datasets: [{ label: '问题数', data: [25,24,9,8,7,6,6,6,5,4,4,3],
       backgroundColor: C.blue + 'cc', borderRadius: 5 }]
   },
   options: {
