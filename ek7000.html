@@ -53,7 +53,7 @@
 <div class="kpi-row">
   <div class="kpi blue">
     <div class="label">总记录数</div>
-    <div class="value">116</div>
+    <div class="value">117</div>
   </div>
   <div class="kpi green">
     <div class="label">已解决/关闭</div>
@@ -62,12 +62,12 @@
   </div>
   <div class="kpi yellow">
     <div class="label">待处理</div>
-    <div class="value">116</div>
+    <div class="value">117</div>
   </div>
   <div class="kpi purple">
     <div class="label">有处理方案</div>
     <div class="value">28%</div>
-    <div class="sub">33 / 116 条</div>
+    <div class="sub">33 / 117 条</div>
   </div>
   <div class="kpi red">
     <div class="label">退回分析</div>
@@ -185,10 +185,10 @@
       <tbody>
     <tr>
       <td>2026-04-07</td>
-      <td>116 <span class="diff">+1</span></td>
+      <td>117 <span class="diff">+2</span></td>
       <td>0 <span class="diff green">+0</span></td>
-      <td>116</td>
-      <td>33 / 116</td>
+      <td>117</td>
+      <td>33 / 117</td>
       <td>0</td>
     </tr>
     <tr>
@@ -254,9 +254,9 @@ new Chart(document.getElementById('trendChart'), {
   data: {
     labels: ["2026-03-31","2026-04-01","2026-04-02","2026-04-05","2026-04-06","2026-04-07"],
     datasets: [
-      { label: '总量',       data: [113,115,115,115,115,116],   borderColor: C.blue,   backgroundColor: C.blue+'18',   tension: 0.4, fill: false, pointRadius: 4 },
+      { label: '总量',       data: [113,115,115,115,115,117],   borderColor: C.blue,   backgroundColor: C.blue+'18',   tension: 0.4, fill: false, pointRadius: 4 },
       { label: '已解决/关闭', data: [0,0,0,0,0,0], borderColor: C.green,  backgroundColor: C.green+'28',  tension: 0.4, fill: true,  pointRadius: 4 },
-      { label: '待处理',     data: [113,115,115,115,115,116],   borderColor: C.yellow, backgroundColor: C.yellow+'18', tension: 0.4, fill: false, pointRadius: 4 },
+      { label: '待处理',     data: [113,115,115,115,115,117],   borderColor: C.yellow, backgroundColor: C.yellow+'18', tension: 0.4, fill: false, pointRadius: 4 },
       { label: '有处理方案', data: [32,32,32,33,33,33],  borderColor: C.purple, backgroundColor: C.purple+'18', tension: 0.4, fill: false, pointRadius: 4, borderDash: [4,3] },
     ]
   },
@@ -275,7 +275,7 @@ new Chart(document.getElementById('typeChart'), {
   type: 'doughnut',
   data: {
     labels: ["APP问题","配件问题","产品问题","用户体验问题"],
-    datasets: [{ data: [8,50,49,9], backgroundColor: PIE_COLORS, borderWidth: 0 }]
+    datasets: [{ data: [8,50,50,9], backgroundColor: PIE_COLORS, borderWidth: 0 }]
   },
   options: {
     responsive: true, cutout: '55%',
@@ -288,7 +288,7 @@ new Chart(document.getElementById('progChart'), {
   type: 'doughnut',
   data: {
     labels: ["未填写"],
-    datasets: [{ data: [116],
+    datasets: [{ data: [117],
       backgroundColor: [C.green, C.yellow, C.orange, C.blue, C.slate, C.red],
       borderWidth: 0 }]
   },
@@ -302,8 +302,8 @@ new Chart(document.getElementById('progChart'), {
 new Chart(document.getElementById('catChart'), {
   type: 'bar',
   data: {
-    labels: ["08-防水壳","漏件","11-APP问题","12-开关机问题","14-SD卡问题","20-客户体验或者其他","05-按键","09-配件","录像及回放问题","版本迭代反馈","其他问题","17-图像品质"],
-    datasets: [{ label: '问题数', data: [25,24,8,8,7,6,6,6,5,4,4,3],
+    labels: ["08-防水壳","漏件","12-开关机问题","11-APP问题","14-SD卡问题","20-客户体验或者其他","05-按键","09-配件","录像及回放问题","版本迭代反馈","其他问题","17-图像品质"],
+    datasets: [{ label: '问题数', data: [25,24,9,8,7,6,6,6,5,4,4,3],
       backgroundColor: C.blue + 'cc', borderRadius: 5 }]
   },
   options: {
@@ -321,7 +321,7 @@ new Chart(document.getElementById('stationChart'), {
   type: 'bar',
   data: {
     labels: ["US","UK","FR","IT","AU","CA","JP","未知"],
-    datasets: [{ label: '记录数', data: [74,15,7,6,5,5,3,1],
+    datasets: [{ label: '记录数', data: [75,15,7,6,5,5,3,1],
       backgroundColor: PIE_COLORS.slice(0, 8), borderRadius: 5 }]
   },
   options: {
