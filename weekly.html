@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赛纳周报汇总看板</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+  header { background: linear-gradient(135deg, #1e293b 0%, #162032 100%); padding: 24px 32px; border-bottom: 1px solid #334155; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  header h1 { font-size: 1.4rem; font-weight: 700; }
+  header p  { color: #94a3b8; font-size: 0.82rem; margin-top: 4px; }
+  .week-selector { background:#0f172a; border:1px solid #334155; color:#e2e8f0; padding:6px 12px; border-radius:8px; font-size:0.85rem; cursor:pointer; }
+  .kpi-row  { display: flex; gap: 16px; padding: 24px 32px; flex-wrap: wrap; }
+  .kpi      { flex: 1; min-width: 130px; background: #1e293b; border-radius: 12px; padding: 18px 20px; border: 1px solid #334155; }
+  .kpi .label { font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .06em; }
+  .kpi .value { font-size: 1.9rem; font-weight: 800; margin-top: 6px; line-height: 1; }
+  .kpi.blue .value   { color: #60a5fa; }
+  .kpi.green .value  { color: #4ade80; }
+  .kpi.yellow .value { color: #facc15; }
+  .kpi.red .value    { color: #f87171; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 32px 24px; }
+  .card { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid #334155; }
+  .card h2 { font-size: 0.82rem; font-weight: 600; color: #94a3b8; margin-bottom: 14px; text-transform: uppercase; letter-spacing: .06em; }
+  .full { grid-column: 1 / -1; }
+  canvas { max-height: 200px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  th { text-align: left; padding: 8px 12px; color: #64748b; border-bottom: 1px solid #334155; font-weight: 500; font-size: 0.78rem; }
+  td { padding: 8px 12px; border-bottom: 1px solid #243147; vertical-align: middle; }
+  tr:hover td { background: #263245; }
+  .updated { color: #475569; font-size: 0.75rem; text-align: right; padding: 8px 32px 24px; }
+  @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>赛纳周报汇总看板</h1>
+    <p>数据来源：飞书多维表格「赛纳周工作汇报表」· 最后更新：2026-04-07</p>
+  </div>
+  <select class="week-selector" onchange="location.href='?week='+this.value">
+    <option value="WK14" selected>WK14</option>
+  </select>
+</header>
+<div class="kpi-row">
+  <div class="kpi blue"><div class="label">本周提交人数</div><div class="value">0</div></div>
+  <div class="kpi red">
+    <div class="label">平均完成进度</div><div class="value">—</div>
+  </div>
+  <div class="kpi green"><div class="label">有阻碍事项</div><div class="value">0</div></div>
+  <div class="kpi blue"><div class="label">当前周次</div><div class="value" style="font-size:1.2rem;margin-top:8px">WK14</div></div>
+</div>
+<div class="grid">
+  <div class="card full">
+    <h2>📋 WK14 周报详情</h2>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>姓名</th><th>部门</th><th>工作概述</th><th>本周完成</th><th>完成进度</th><th>下周计划</th><th>阻碍</th><th>需要支持</th></tr></thead>
+      <tbody><tr>
+      <td>—</td>
+      <td style="color:#94a3b8;font-size:0.78rem">optupWv655</td>
+      <td style="max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="—">—</td>
+      <td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="—">—</td>
+      <td style="min-width:120px">—</td>
+      <td style="max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="—">—</td>
+      <td><span style="color:#4ade80">无</span></td>
+      <td style="color:#94a3b8;font-size:0.78rem">—</td>
+    </tr></tbody>
+    </table>
+    </div>
+  </div>
+  <div class="card">
+    <h2>⚠️ 本周阻碍 &amp; 需要支持</h2>
+    <table>
+      <thead><tr><th>姓名</th><th>部门</th><th>阻碍</th><th>需要支持</th></tr></thead>
+      <tbody><tr><td colspan="4" style="text-align:center;color:#4ade80">本周无阻碍事项 ✓</td></tr></tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>📊 部门提交分布</h2>
+    <canvas id="deptChart"></canvas>
+  </div>
+  <div class="card full">
+    <h2>📈 完成进度分布</h2>
+    <canvas id="progressChart"></canvas>
+  </div>
+</div>
+<div class="updated">数据来自飞书多维表格 · 每周自动更新</div>
+<script>
+new Chart(document.getElementById('deptChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ["optHdFAHu3"],
+    datasets: [{ data: [1], backgroundColor: ['#60a5fa','#4ade80','#facc15','#f87171','#a78bfa','#fb923c'], borderWidth: 0 }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { size: 11 } } } } }
+});
+new Chart(document.getElementById('progressChart'), {
+  type: 'bar',
+  data: {
+    labels: ["0-25%","26-50%","51-75%","76-100%"],
+    datasets: [{ label: '人数', data: [0,0,0,0], backgroundColor: ['#f87171','#facc15','#60a5fa','#4ade80'], borderWidth: 0, borderRadius: 4 }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#64748b' }, grid: { display: false } },
+      y: { ticks: { color: '#64748b', stepSize: 1 }, grid: { color: '#334155' }, beginAtZero: true }
+    }
+  }
+});
+</script>
+</body>
+</html>
