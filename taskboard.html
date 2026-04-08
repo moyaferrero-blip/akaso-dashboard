@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>业务跟进看板</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+  header { background: linear-gradient(135deg, #1e293b 0%, #162032 100%); padding: 24px 32px; border-bottom: 1px solid #334155; }
+  header h1 { font-size: 1.4rem; font-weight: 700; }
+  header p  { color: #94a3b8; font-size: 0.82rem; margin-top: 4px; }
+  .kpi-row  { display: flex; gap: 16px; padding: 24px 32px; flex-wrap: wrap; }
+  .kpi      { flex: 1; min-width: 110px; background: #1e293b; border-radius: 12px; padding: 16px 18px; border: 1px solid #334155; }
+  .kpi .label { font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .06em; }
+  .kpi .value { font-size: 1.7rem; font-weight: 800; margin-top: 6px; }
+  .main { padding: 0 32px 32px; max-width: 900px; }
+  .filter-bar { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+  .filter-btn { background:#1e293b; border:1px solid #334155; color:#94a3b8; padding:5px 14px; border-radius:99px; font-size:0.78rem; cursor:pointer; }
+  .filter-btn.active, .filter-btn:hover { border-color:#60a5fa; color:#60a5fa; }
+  .collapsible { transition: max-height 0.25s ease; overflow:hidden; }
+  .collapsible.collapsed { max-height: 0 !important; }
+  .updated { color: #475569; font-size: 0.75rem; padding: 0 32px 24px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>业务跟进看板</h1>
+  <p>数据来源：出差日报 + 会议记录 · 每日自动更新 · 2026-04-08</p>
+</header>
+<div class="kpi-row">
+  <div class="kpi"><div class="label">全部任务</div><div class="value" style="color:#e2e8f0">3</div></div>
+  <div class="kpi"><div class="label">待办</div><div class="value" style="color:#60a5fa">3</div></div>
+  <div class="kpi"><div class="label">处理中</div><div class="value" style="color:#facc15">0</div></div>
+  <div class="kpi"><div class="label">已完成</div><div class="value" style="color:#4ade80">0</div></div>
+  
+</div>
+<div class="main">
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterStatus('all',this)">全部</button>
+    <button class="filter-btn" onclick="filterStatus('pending',this)">待办</button>
+    <button class="filter-btn" onclick="filterStatus('in_progress',this)">处理中</button>
+    <button class="filter-btn" onclick="filterStatus('done',this)">已完成</button>
+    <button class="filter-btn" onclick="filterStatus('blocked',this)">受阻</button>
+  </div>
+  <div id="board"><div class="person-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;margin-bottom:20px;overflow:hidden">
+      <div style="padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:12px;flex-wrap:wrap" onclick="toggleSection(this)">
+        <span style="font-size:1rem;font-weight:700">郑炳阳</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="font-size:0.72rem;background:#1e3a5f;color:#60a5fa;border-radius:99px;padding:2px 9px">待办 3</span>
+          
+          
+          
+        </div>
+        <span style="color:#475569;font-size:0.75rem;margin-left:auto">▾</span>
+      </div>
+      <div class="collapsible" style="padding:0 20px 16px"><div class="country-block" style="margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer" onclick="toggleSection(this)">
+          <span style="font-size:0.78rem;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em">泰国</span>
+          <span style="font-size:0.68rem;background:#1e3a5f;color:#60a5fa;border-radius:99px;padding:1px 8px">1 件未完成</span>
+          <span style="color:#475569;font-size:0.75rem;margin-left:auto">▾</span>
+        </div>
+        <div class="collapsible"><div class="task-row" style="border-left:3px solid #60a5fa;background:#1e3a5f;border-radius:6px;padding:10px 14px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-size:0.72rem;background:#1e3a5f;color:#60a5fa;border:1px solid #60a5fa;border-radius:99px;padding:2px 8px;white-space:nowrap">待办</span>
+            <span style="font-size:0.85rem;flex:1">泰国线下adept会议，Q1复盘及沟通官方电商收回事宜 2</span>
+            
+          </div>
+          
+          <div style="font-size:0.70rem;color:#475569;margin-top:4px">2026-04-07</div>
+        </div></div>
+      </div><div class="country-block" style="margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer" onclick="toggleSection(this)">
+          <span style="font-size:0.78rem;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em">俄罗斯</span>
+          <span style="font-size:0.68rem;background:#1e3a5f;color:#60a5fa;border-radius:99px;padding:1px 8px">1 件未完成</span>
+          <span style="color:#475569;font-size:0.75rem;margin-left:auto">▾</span>
+        </div>
+        <div class="collapsible"><div class="task-row" style="border-left:3px solid #60a5fa;background:#1e3a5f;border-radius:6px;padding:10px 14px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-size:0.72rem;background:#1e3a5f;color:#60a5fa;border:1px solid #60a5fa;border-radius:99px;padding:2px 8px;white-space:nowrap">待办</span>
+            <span style="font-size:0.85rem;flex:1">俄罗斯代理周例会，推进合同签署，产品认证，营销筹备等工作进展及首单PO数量 3</span>
+            
+          </div>
+          
+          <div style="font-size:0.70rem;color:#475569;margin-top:4px">2026-04-07</div>
+        </div></div>
+      </div><div class="country-block" style="margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer" onclick="toggleSection(this)">
+          <span style="font-size:0.78rem;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em">巴西</span>
+          <span style="font-size:0.68rem;background:#1e3a5f;color:#60a5fa;border-radius:99px;padding:1px 8px">1 件未完成</span>
+          <span style="color:#475569;font-size:0.75rem;margin-left:auto">▾</span>
+        </div>
+        <div class="collapsible"><div class="task-row" style="border-left:3px solid #60a5fa;background:#1e3a5f;border-radius:6px;padding:10px 14px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-size:0.72rem;background:#1e3a5f;color:#60a5fa;border:1px solid #60a5fa;border-radius:99px;padding:2px 8px;white-space:nowrap">待办</span>
+            <span style="font-size:0.85rem;flex:1">巴西代理双周会，3月复盘，沟通本月返单情况及5月宝马摩托车活动</span>
+            
+          </div>
+          
+          <div style="font-size:0.70rem;color:#475569;margin-top:4px">2026-04-07</div>
+        </div></div>
+      </div></div>
+    </div></div>
+</div>
+<div class="updated">最后更新：2026-04-08</div>
+<script>
+function toggleSection(el) {
+  const c = el.nextElementSibling;
+  if (!c) return;
+  c.classList.toggle('collapsed');
+  const arrow = el.querySelector('span:last-child');
+  if (arrow) arrow.textContent = c.classList.contains('collapsed') ? '▸' : '▾';
+}
+function filterStatus(status, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.task-row').forEach(row => {
+    if (status === 'all') { row.style.display = ''; return; }
+    const label = row.querySelector('span')?.textContent || '';
+    const statusMap = { pending:'待办', in_progress:'处理中', done:'已完成', blocked:'受阻' };
+    row.style.display = label === statusMap[status] ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
