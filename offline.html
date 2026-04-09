@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>线下业务进度看板</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+  header { background: linear-gradient(135deg, #1e293b 0%, #162032 100%); padding: 24px 32px; border-bottom: 1px solid #334155; }
+  header h1 { font-size: 1.4rem; font-weight: 700; }
+  header p  { color: #94a3b8; font-size: 0.82rem; margin-top: 4px; }
+  .kpi-row { display: flex; gap: 16px; padding: 24px 32px; flex-wrap: wrap; }
+  .kpi { flex: 1; min-width: 120px; background: #1e293b; border-radius: 12px; padding: 16px 20px; border: 1px solid #334155; }
+  .kpi .label { font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .06em; }
+  .kpi .value { font-size: 1.8rem; font-weight: 800; margin-top: 6px; line-height: 1; }
+  .main { padding: 0 32px 40px; }
+  /* 业务员区块 */
+  .person-section { margin-bottom: 36px; }
+  .person-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #334155; }
+  .person-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg,#3b82f6,#8b5cf6); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+  .person-name { font-size: 1.1rem; font-weight: 700; }
+  .person-role { font-size: 0.78rem; color: #64748b; margin-top: 2px; }
+  .person-stats { display: flex; gap: 12px; margin-left: auto; flex-wrap: wrap; }
+  .stat-badge { font-size: 0.72rem; padding: 3px 10px; border-radius: 99px; }
+  /* 国家卡片网格 */
+  .country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .country-card { background: #1e293b; border-radius: 12px; padding: 18px 20px; border: 1px solid #334155; position: relative; }
+  .country-card.green  { border-top: 3px solid #4ade80; }
+  .country-card.yellow { border-top: 3px solid #facc15; }
+  .country-card.red    { border-top: 3px solid #f87171; }
+  .country-card.blue   { border-top: 3px solid #60a5fa; }
+  .country-card.gray   { border-top: 3px solid #475569; }
+  .country-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .status-label { font-size: 0.7rem; padding: 2px 8px; border-radius: 99px; font-weight: 500; }
+  .green-tag  { background: #0f3020; color: #4ade80; }
+  .yellow-tag { background: #3d3010; color: #facc15; }
+  .red-tag    { background: #3d1010; color: #f87171; }
+  .blue-tag   { background: #1e3a5f; color: #60a5fa; }
+  .gray-tag   { background: #1e293b; color: #64748b; border: 1px solid #334155; }
+  /* 进度条 */
+  .progress-wrap { margin: 12px 0 8px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 0.72rem; color: #94a3b8; margin-bottom: 4px; }
+  .progress-bar { height: 6px; background: #0f172a; border-radius: 3px; }
+  .progress-fill { height: 6px; border-radius: 3px; }
+  /* 内容区 */
+  .section-title { font-size: 0.68rem; color: #475569; text-transform: uppercase; letter-spacing: .08em; margin: 12px 0 6px; }
+  .item-list { list-style: none; }
+  .item-list li { font-size: 0.8rem; color: #cbd5e1; padding: 3px 0; padding-left: 12px; position: relative; line-height: 1.5; }
+  .item-list li::before { content: '·'; position: absolute; left: 0; color: #475569; }
+  .blocker-list li::before { content: '⚠'; position: absolute; left: 0; font-size: 0.65rem; }
+  .blocker-list li { color: #fca5a5; }
+  .action-list li::before { content: '→'; position: absolute; left: 0; color: #60a5fa; font-size: 0.7rem; }
+  .action-list li { color: #93c5fd; }
+  /* 数字亮点 */
+  .highlight { font-weight: 700; color: #e2e8f0; }
+  .money { color: #4ade80; font-weight: 700; }
+  .warn  { color: #facc15; font-weight: 600; }
+  .danger { color: #f87171; font-weight: 600; }
+  /* 更新时间 */
+  .updated { color: #334155; font-size: 0.75rem; text-align: right; padding: 8px 32px 24px; }
+  @media (max-width: 768px) { .kpi-row, .person-stats { flex-wrap: wrap; } .country-grid { grid-template-columns: 1fr; } .main { padding: 0 16px 40px; } header { padding: 20px 16px; } .kpi-row { padding: 16px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>线下业务进度看板</h1>
+  <p>数据来源：内部周会 + 客户会议纪要 · 最后更新：2026-04-09</p>
+</header>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="label">跟进国家/地区</div><div class="value" style="color:#60a5fa">13</div></div>
+  <div class="kpi"><div class="label">进展良好</div><div class="value" style="color:#4ade80">5</div></div>
+  <div class="kpi"><div class="label">需要跟进</div><div class="value" style="color:#facc15">5</div></div>
+  <div class="kpi"><div class="label">存在卡点</div><div class="value" style="color:#f87171">3</div></div>
+  <div class="kpi"><div class="label">4月待回款</div><div class="value" style="color:#4ade80;font-size:1.2rem;margin-top:8px">~1000万+</div></div>
+</div>
+
+<div class="main">
+
+<!-- ── 郑炳阳 ── -->
+<div class="person-section">
+  <div class="person-header">
+    <div class="person-avatar">炳</div>
+    <div>
+      <div class="person-name">郑炳阳</div>
+      <div class="person-role">主力销售 · 出差第42天 · 泰国曼谷</div>
+    </div>
+    <div class="person-stats">
+      <span class="stat-badge green-tag">4月延期申请</span>
+      <span class="stat-badge blue-tag">年累计目标586万 · 完成53.7%</span>
+    </div>
+  </div>
+  <div class="country-grid">
+
+    <!-- 泰国 -->
+    <div class="country-card green">
+      <div class="country-name">🇹🇭 泰国 <span class="status-label green-tag">进展良好</span></div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>4月销量进度</span><span class="highlight">前5天日均9.6台 → 目标500台</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:10%;background:#4ade80"></div></div>
+      </div>
+      <div class="section-title">本月重点</div>
+      <ul class="item-list">
+        <li>TK官旗已从adept收回，聚焦TK突破</li>
+        <li>TK shop月投流17000元（公司出50%）</li>
+        <li>5月开始养虾皮，目标月销200台</li>
+        <li>Big camera渠道：阻碍人员已调离，重新接触中</li>
+        <li>泰铢营销：泼水节KOL预算15万泰铢，4月10日上线</li>
+      </ul>
+      <div class="section-title">中长期规划</div>
+      <ul class="item-list">
+        <li>5-7月：月销1000台目标（TK 300 + 虾皮 200 + big camera 300 + 其他200）</li>
+        <li>8月：寻找圈圈岛店面选址</li>
+        <li>500-600台/月 = 盈亏平衡点</li>
+      </ul>
+      <div class="section-title">卡点</div>
+      <ul class="item-list blocker-list">
+        <li>Big camera渠道重新建联中，进度待定</li>
+      </ul>
+      <div class="section-title">待办</div>
+      <ul class="item-list action-list">
+        <li>按季度提交泰国费用申请（避免频繁特批）</li>
+        <li>6月展位、10月发布会费用分三个月分摊</li>
+      </ul>
+    </div>
+
+    <!-- 俄罗斯 -->
+    <div class="country-card yellow">
+      <div class="country-name">🇷🇺 俄罗斯 <span class="status-label yellow-tag">关键节点</span></div>
+      <div class="section-title">首单时间线（确认中）</div>
+      <ul class="item-list">
+        <li><span class="warn">4月15日</span> 确定付款主体 → 合同签署</li>
+        <li><span class="warn">4月17日</span> 开始产品认证流程</li>
+        <li><span class="warn">4月18日前后</span> 付定金</li>
+        <li>首单规划金额：<span class="money">约120万</span></li>
+        <li>新增型号：Brave 8</li>
+      </ul>
+      <div class="section-title">卡点</div>
+      <ul class="item-list blocker-list">
+        <li>付款主体尚未确认，合同签署卡在此处</li>
+        <li>俄方会议记录无权限读取，进展需人工确认</li>
+      </ul>
+    </div>
+
+    <!-- 巴西 -->
+    <div class="country-card green">
+      <div class="country-name">🇧🇷 巴西 <span class="status-label green-tag">进展良好</span></div>
+      <div class="section-title">当前销售</div>
+      <ul class="item-list">
+        <li>4月1-5日销售<span class="highlight">190台</span>，日均约40台，较上月增长约50%</li>
+        <li>套装断货，仅卖主机，销量仍在提升</li>
+        <li>全年零售目标：<span class="money">3000万雷亚尔（约4200万人民币）</span></li>
+        <li>前三个月目标均已达成</li>
+      </ul>
+      <div class="section-title">近期计划</div>
+      <ul class="item-list">
+        <li>4月中下旬返单全景，预计<span class="money">约280万</span></li>
+        <li>5月宝马摩托车赛事，户外发布会</li>
+        <li>五一后郑炳阳赴巴西与代理现场推进</li>
+        <li>加大B7产品营销投入</li>
+      </ul>
+      <div class="section-title">卡点</div>
+      <ul class="item-list blocker-list">
+        <li>套装断货，影响销售结构</li>
+      </ul>
+    </div>
+
+    <!-- 韩国 -->
+    <div class="country-card blue">
+      <div class="country-name">🇰🇷 韩国 <span class="status-label blue-tag">等待回款</span></div>
+      <ul class="item-list" style="margin-top:10px">
+        <li>首单全景尾款待收</li>
+        <li>营销方案内部梳理中，预计下周过会</li>
+      </ul>
+    </div>
+
+    <!-- 哥伦比亚 -->
+    <div class="country-card gray">
+      <div class="country-name">🇨🇴 哥伦比亚 <span class="status-label gray-tag">早期探索</span></div>
+      <ul class="item-list" style="margin-top:10px">
+        <li>代理调研进度跟进中</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 王笑非 ── -->
+<div class="person-section">
+  <div class="person-header">
+    <div class="person-avatar" style="background:linear-gradient(135deg,#10b981,#3b82f6)">笑</div>
+    <div>
+      <div class="person-name">王笑非</div>
+      <div class="person-role">主力销售 · 出差第1天 · 马来西亚吉隆坡</div>
+    </div>
+    <div class="person-stats">
+      <span class="stat-badge green-tag">本次不延期</span>
+    </div>
+  </div>
+  <div class="country-grid">
+
+    <!-- 印尼 -->
+    <div class="country-card yellow">
+      <div class="country-name">🇮🇩 印尼 <span class="status-label yellow-tag">需跟进</span></div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>4月销售进度</span><span class="warn">约12%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:12%;background:#facc15"></div></div>
+      </div>
+      <div class="section-title">发货安排</div>
+      <ul class="item-list">
+        <li><span class="warn">4月16日</span> 第一批556台（160台V50X + 配件 + 售后）</li>
+        <li><span class="warn">4月30日</span> 第二批490台（60X×400 + Brief8×40 + Brief10×50）</li>
+        <li>V50X共10160台已到仓，分两批发货</li>
+      </ul>
+      <div class="section-title">销售数据（4月）</div>
+      <ul class="item-list">
+        <li>360相机：经销商33台 + 官旗69台</li>
+        <li>Rango运动相机：11台</li>
+        <li>4月19日 BKP社区活动（30人）</li>
+        <li>KOL目标50个，已确认32个</li>
+      </ul>
+      <div class="section-title">卡点</div>
+      <ul class="item-list blocker-list">
+        <li>V50X售后率异常，已向产品经理反馈，品质检查中</li>
+        <li>说明书未完成，部分产品发货受阻</li>
+        <li>Action cam库存仅165台，面临断货风险</li>
+        <li>一家KOL agency未确认方案，需持续跟进</li>
+      </ul>
+      <div class="section-title">待办</div>
+      <ul class="item-list action-list">
+        <li>将售后统计做成在线表格（Benny负责）</li>
+        <li>发货错误是否计入售后额度 → 询问管售后人员</li>
+        <li>跟进action cam补单情况（询问张哲）</li>
+      </ul>
+    </div>
+
+    <!-- 马来西亚 -->
+    <div class="country-card yellow">
+      <div class="country-name">🇲🇾 马来西亚 <span class="status-label yellow-tag">需推进</span></div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>4月销售进度</span><span class="warn">约14%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:14%;background:#facc15"></div></div>
+      </div>
+      <ul class="item-list" style="margin-top:10px">
+        <li>王笑非今日抵达，现场推进</li>
+        <li>第二批展台铺设进行中</li>
+        <li>BKP摩托车社群活动4月5日已开始</li>
+        <li>官方电商自12月共售209台，3月57台</li>
+      </ul>
+      <div class="section-title">卡点</div>
+      <ul class="item-list blocker-list">
+        <li>进度偏慢，当地沟通无反馈</li>
+      </ul>
+      <div class="section-title">待办</div>
+      <ul class="item-list action-list">
+        <li>王笑非现场确认后续方案</li>
+        <li>跟进JC制定营销方案</li>
+        <li>PO预计新增夜视仪，待确认最终订单</li>
+      </ul>
+    </div>
+
+    <!-- 新加坡 -->
+    <div class="country-card blue">
+      <div class="country-name">🇸🇬 新加坡 <span class="status-label blue-tag">建立阶段</span></div>
+      <ul class="item-list" style="margin-top:10px">
+        <li>客户提货约150-200台，已消耗约80台</li>
+        <li>Shopee/Lazada两个线上店已开</li>
+        <li>TikTok账号计划让客户自己开</li>
+        <li>已发3台KOL测试机</li>
+        <li>考虑参加9月IT展</li>
+      </ul>
+      <div class="section-title">待办</div>
+      <ul class="item-list action-list">
+        <li>王笑非15/16日与Kai吃饭确认合作</li>
+        <li>询问9月IT秀小位置费用</li>
+        <li>联系5个以内达人做Shopee直播</li>
+        <li>魏婕将物料和AI地址分享给Kai</li>
+      </ul>
+    </div>
+
+    <!-- 葡萄牙 -->
+    <div class="country-card green">
+      <div class="country-name">🇵🇹 葡萄牙 <span class="status-label green-tag">即将成交</span></div>
+      <ul class="item-list" style="margin-top:10px">
+        <li>客户PO已出</li>
+        <li>待内部确认库存和交付时间</li>
+        <li>预计本月付款 <span class="money">约$14000</span></li>
+      </ul>
+    </div>
+
+    <!-- 保加利亚 -->
+    <div class="country-card red">
+      <div class="country-name">🇧🇬 保加利亚 <span class="status-label red-tag">受阻</span></div>
+      <ul class="item-list" style="margin-top:10px">
+        <li>客户PO已出</li>
+      </ul>
+      <div class="section-title">卡点</div>
+      <ul class="item-list blocker-list">
+        <li>V50 Pro防水壳品质问题 → 本月能否出货待确认</li>
+        <li>确认后才能答复客户并敲定最终订单</li>
+      </ul>
+    </div>
+
+    <!-- 土耳其 -->
+    <div class="country-card green">
+      <div class="country-name">🇹🇷 土耳其 <span class="status-label green-tag">回款中</span></div>
+      <ul class="item-list" style="margin-top:10px">
+        <li>尾款已于4月7日汇款</li>
+        <li>已催银行凭据，财务核查中</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 陈力 ── -->
+<div class="person-section">
+  <div class="person-header">
+    <div class="person-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">力</div>
+    <div>
+      <div class="person-name">陈力</div>
+      <div class="person-role">主力销售 · 主要负责菲律宾</div>
+    </div>
+    <div class="person-stats">
+      <span class="stat-badge red-tag">年完成率 0.44%（整改阶段）</span>
+    </div>
+  </div>
+  <div class="country-grid">
+
+    <!-- 菲律宾 -->
+    <div class="country-card red">
+      <div class="country-name">🇵🇭 菲律宾 <span class="status-label red-tag">整改中</span></div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>全年任务1980万</span><span class="danger">完成0.44%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:1%;background:#f87171"></div></div>
+      </div>
+      <div class="section-title">Q2计划</div>
+      <ul class="item-list">
+        <li>SEAL in目标2500台，SEAL out 2130台</li>
+        <li>核心：建设5家Kiosk中岛店（全国3C销量最大商场）</li>
+        <li>本周确定具体点位</li>
+        <li>4月10-13日：与当地团队输出体系化营销方案</li>
+        <li>营销人员已入职，下周出Q2整体营销方案</li>
+      </ul>
+      <div class="section-title">卡点</div>
+      <ul class="item-list blocker-list">
+        <li>3月电商除V50X外销量全线下降</li>
+        <li>线下渠道销量自去年12月持续下降</li>
+        <li>Facebook账号需重建，本地营销体系缺失</li>
+        <li>三大平台无有效宣传视频</li>
+        <li>润拓客户为主，渠道集中度高</li>
+      </ul>
+      <div class="section-title">待办</div>
+      <ul class="item-list action-list">
+        <li>4月10-13日现场输出营销方案</li>
+        <li>本周确定5家Kiosk商场点位</li>
+        <li>重建Facebook账号</li>
+        <li>整合巴西爆款视频要素作为本地KOL脚本</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+</div>
+<div class="updated">数据来源：内部周会（04-07、03-31）+ 客户会议（印尼04-09、04-01、新加坡04-02、泰国方案汇报04-07）· 2026-04-09 生成</div>
+</body>
+</html>
