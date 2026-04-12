@@ -59,18 +59,18 @@
 <header>
   <div>
     <h1>赛纳周报汇总看板</h1>
-    <p>数据来源：飞书多维表格「赛纳周工作汇报表」· 最后更新：2026-04-11</p>
+    <p>数据来源：飞书多维表格「赛纳周工作汇报表」· 最后更新：2026-04-12</p>
   </div>
   <select class="week-selector" onchange="location.href='?week='+this.value">
     <option value="WK14" selected>WK14</option>
   </select>
 </header>
 <div class="kpi-row">
-  <div class="kpi blue"><div class="label">本周提交人数</div><div class="value">140</div></div>
+  <div class="kpi blue"><div class="label">本周提交人数</div><div class="value">158</div></div>
   <div class="kpi green">
     <div class="label">平均完成进度</div><div class="value">84%</div>
   </div>
-  <div class="kpi red"><div class="label">有阻碍事项</div><div class="value">24</div></div>
+  <div class="kpi red"><div class="label">有阻碍事项</div><div class="value">27</div></div>
   <div class="kpi blue"><div class="label">当前周次</div><div class="value" style="font-size:1.2rem;margin-top:8px">WK14</div></div>
 </div>
 <div class="grid">
@@ -135,12 +135,87 @@
       
         <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-2')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 optaZIEnow</h3>
+            <div style="display:flex;gap:12px;align-items:center">
+              <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">3人</span>
+              <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 100%</span>
+              <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
+              <span id="toggle-dept-2" style="color:#94a3b8;font-size:1.2rem">▼</span>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px">
+            <div>
+              <div style="color:#94a3b8;font-size:0.85rem;margin-bottom:8px"><strong>主要工作：</strong></div>
+              <div style="color:#cbd5e1;font-size:0.9rem">常规业务</div>
+            </div>
+            <div><div style="color:#4ade80;font-size:0.85rem;margin-bottom:8px"><strong>✓ 状态：</strong></div><div style="color:#86efac;font-size:0.9rem">本周无阻碍，进展顺利</div></div>
+          </div>
+
+          <div style="text-align:center;color:#64748b;font-size:0.8rem;padding-top:8px;border-top:1px solid #334155">
+            点击展开查看详细信息 ▼
+          </div>
+        </div>
+      
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-3')">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 optgD1Pc8h</h3>
+            <div style="display:flex;gap:12px;align-items:center">
+              <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">13人</span>
+              <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 79%</span>
+              <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">3个问题</span>
+              <span id="toggle-dept-3" style="color:#94a3b8;font-size:1.2rem">▼</span>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px">
+            <div>
+              <div style="color:#94a3b8;font-size:0.85rem;margin-bottom:8px"><strong>主要工作：</strong></div>
+              <div style="color:#cbd5e1;font-size:0.9rem">优化、测试、分析、品质</div>
+            </div>
+            <div>
+             <div style="color:#f87171;font-size:0.85rem;margin-bottom:8px"><strong>⚠️ 待解决问题：</strong></div>
+             <div style="color:#fca5a5;font-size:0.85rem;line-height:1.4">• 李安丽: 针对钜弘验货工厂配备人员不足且人员不稳定，严重影响工作进度。<br>• 石秀菊: EBay的货经常功能有问题或者漏配件，出货比较急，就导致我们基本都是全检多，就比较浪费时间希望EBay的产品来货有所改变品质上有改善   <br>...</div>
+           </div>
+          </div>
+
+          <div style="text-align:center;color:#64748b;font-size:0.8rem;padding-top:8px;border-top:1px solid #334155">
+            点击展开查看详细信息 ▼
+          </div>
+        </div>
+      
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-4')">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 optimlWHt5</h3>
+            <div style="display:flex;gap:12px;align-items:center">
+              <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">1人</span>
+              <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 100%</span>
+              <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
+              <span id="toggle-dept-4" style="color:#94a3b8;font-size:1.2rem">▼</span>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px">
+            <div>
+              <div style="color:#94a3b8;font-size:0.85rem;margin-bottom:8px"><strong>主要工作：</strong></div>
+              <div style="color:#cbd5e1;font-size:0.9rem">常规业务</div>
+            </div>
+            <div><div style="color:#4ade80;font-size:0.85rem;margin-bottom:8px"><strong>✓ 状态：</strong></div><div style="color:#86efac;font-size:0.9rem">本周无阻碍，进展顺利</div></div>
+          </div>
+
+          <div style="text-align:center;color:#64748b;font-size:0.8rem;padding-top:8px;border-top:1px solid #334155">
+            点击展开查看详细信息 ▼
+          </div>
+        </div>
+      
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-5')">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 产品研发部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">9人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 91%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">2个问题</span>
-              <span id="toggle-dept-2" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-5" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -160,14 +235,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-3')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-6')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 产品管理部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">4人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 79%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-3" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-6" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -184,14 +259,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-4')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-7')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 产品设计部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">4人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 95%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-4" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-7" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -208,14 +283,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-5')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-8')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 仓储发货部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">2人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 100%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-5" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-8" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -232,14 +307,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-6')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-9')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 品牌设计部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">4人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 98%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-6" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-9" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -256,14 +331,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-7')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-10')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 品质管理部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">1人</span>
               <span style="background:#0f172a;color:#facc15;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 60%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-7" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-10" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -280,14 +355,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-8')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-11')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 客户服务部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">1人</span>
               <span style="background:#0f172a;color:#facc15;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 50%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-8" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-11" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -304,14 +379,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-9')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-12')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 数据分析部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">5人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 94%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">1个问题</span>
-              <span id="toggle-dept-9" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-12" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -331,14 +406,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-10')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-13')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 测试部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">13人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 93%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-10" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-13" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -355,14 +430,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-11')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-14')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 物流部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">5人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 82%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">2个问题</span>
-              <span id="toggle-dept-11" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-14" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -382,14 +457,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-12')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-15')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 独立站运营部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">18人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 85%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">1个问题</span>
-              <span id="toggle-dept-12" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-15" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -409,14 +484,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-13')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-16')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 生产管理部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">3人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 80%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">1个问题</span>
-              <span id="toggle-dept-13" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-16" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -436,14 +511,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-14')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-17')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 用户运营部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">9人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 88%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-14" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-17" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -460,14 +535,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-15')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-18')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 薪酬绩效部</h3>
             <div style="display:flex;gap:12px;align-items:center">
-              <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">8人</span>
+              <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">9人</span>
               <span style="background:#0f172a;color:#facc15;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 68%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">1个问题</span>
-              <span id="toggle-dept-15" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-18" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -487,14 +562,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-16')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-19')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 视觉创意部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">22人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 76%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">8个问题</span>
-              <span id="toggle-dept-16" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-19" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -514,14 +589,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-17')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-20')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 财务部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">7人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 84%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-17" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-20" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -538,14 +613,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-18')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-21')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 运营部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">4人</span>
               <span style="background:#0f172a;color:#f87171;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 42%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">1个问题</span>
-              <span id="toggle-dept-18" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-21" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -565,14 +640,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-19')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-22')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 采购品质部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">7人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 91%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">4个问题</span>
-              <span id="toggle-dept-19" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-22" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -592,14 +667,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-20')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-23')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 销售部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">6人</span>
               <span style="background:#0f172a;color:#4ade80;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 77%</span>
               <span style="background:#dc2626;color:#fef2f2;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">2个问题</span>
-              <span id="toggle-dept-20" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-23" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -623,14 +698,14 @@
           </div>
         </div>
       
-        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-21')">
+        <div class="dept-overview-card" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;cursor:pointer" onclick="toggleDeptDetail('dept-24')">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
             <h3 style="font-size:1.2rem;font-weight:600;color:#60a5fa;margin:0">📁 高级设计部</h3>
             <div style="display:flex;gap:12px;align-items:center">
               <span style="background:#0f172a;color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:0.85rem">1人</span>
               <span style="background:#0f172a;color:#facc15;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">进度 70%</span>
               <span style="background:#059669;color:#d1fae5;padding:6px 12px;border-radius:8px;font-size:0.85rem;font-weight:600">无阻碍</span>
-              <span id="toggle-dept-21" style="color:#94a3b8;font-size:1.2rem">▼</span>
+              <span id="toggle-dept-24" style="color:#94a3b8;font-size:1.2rem">▼</span>
             </div>
           </div>
 
@@ -886,7 +961,7 @@ olivew-care.net、 dragontouchfan.com、survey.claimmygifts.com、cnest.net、ad
 
               <div>
                 <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
-                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1. shopify官网首页nav栏添加新入口，改为下拉显示详细页面���略图，同时修改PC和M端
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1. shopify官网首页nav栏添加新入口，改为下拉显示详细页面缩略图，同时修改PC和M端
 2. 官网二级页面，添加视频资源托管至vimeo/YouTube来优化页面加载
 3. 测评打标需求：调整测评打标页面展示字段，接口调整，添加备注字段值，优化图片展示
 4. 邀评管理：Review-img图片上传逻辑调整，图片上传组件优化，添加图片压缩WebP功能
@@ -950,8 +1025,788 @@ olivew-care.net、 dragontouchfan.com、survey.claimmygifts.com、cnest.net、ad
       
         <div id="dept-2" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
-            <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 产品研发部 详细信息</h3>
+            <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 optaZIEnow 详细信息</h3>
             <button onclick="toggleDeptDetail('dept-2')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+          </div>
+          <div style="display:grid;gap:16px">
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">赵倩倩</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">单证组长</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:100%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">100%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              <div>
+               <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📝 工作概述</h5>
+               <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.5;margin:0;background:#0f172a;padding:12px;border-radius:6px">海运和卡航发货</p>
+             </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">已全部处理完成</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">本周已验完未发货的相框提前到周四之前提货</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">魏燕琴</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">单证文员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:100%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">100%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              <div>
+               <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📝 工作概述</h5>
+               <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.5;margin:0;background:#0f172a;padding:12px;border-radius:6px">亚马逊快递发货订单处理</p>
+             </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1.完成本周亚马逊FBA自发货订单全部流程处理，累计订单1单，已按时发出</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">无</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">魏燕琴</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">单证文员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:100%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">100%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              <div>
+               <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📝 工作概述</h5>
+               <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.5;margin:0;background:#0f172a;padding:12px;border-radius:6px">数据报表处理</p>
+             </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1.完成本周在线数据填写</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">无</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          </div>
+        </div>
+      
+        <div id="dept-3" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
+            <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 optgD1Pc8h 详细信息</h3>
+            <button onclick="toggleDeptDetail('dept-3')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+          </div>
+          <div style="display:grid;gap:16px">
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">寇翠芳</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:100%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">100%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">本周完成夜视仪、多型号智能日历相框出货验货，开展品质不良排查、数据统计、供方异常跟进，输出验货报告，同步供应链落实品质管控要求。
+ 1、完成155台Sight-300夜视仪全批量出货全检，外观结构、整机功能、APP联网测试，检出屏内异物、镜头划伤、电池仓盖脱落等硬件不良，以及APP联网报错、连接电流声、文件不保存等批量软件通病，统计21.94%不良率并同步供应商整改。
+2、完成钜弘全系列智能相框多批次来料抽检验货，排查外观、装配、上电功能、安规配件全项目，识别面壳装配异常、整机不开机、电源适配器错料等批次风险，跟进工厂返工复检，完成异常闭环。
+3、汇总全机型验货品质数据，梳理外观脏污、包装条码异常、配件错配，整理验货明细报告。</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、完成相框剩余待入库批次首件验货、历史返工机全项复测，闭环存量品质异常。
+2、听从老大安排验货工作地点</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">张杰</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:100%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">100%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、4月10号完成泽冲（惠州）供应商运动相机配件（八爪鱼、浮力棒）验货工作：
+八爪鱼送检300pcs，抽检136pcs，不良8pcs，不良率5.88%，不良项为残胶、划伤、掉漆，判定合格，要求供应商包装前全检外观；浮力棒送检4020pcs，抽检1638pcs，不良28pcs，不良率1.71%，不良项为划伤、残胶、硅胶破皮、快拆头异常，同时32pcs下水测试2.5H后23pcs出现快拆头漏水、硅胶发白问题，LOGO丝印倾斜待确认可接受，检验结果待定，已寄产品给刘工确认，待刘工确认后再安排包装。
+2、4月11号完成钜弘（深圳）供应商智能/日历相框（Classic15 Pro、TM21、HT10、Classic10 Charm等多型号）验货工作：多数型号检验合格，其中TM21黑胡桃木色AU/US型号出现100%适配器规格用错问题，初检NG，返工重检后合格；Classic15 Pro出现1pcs屏内透光，不良率10%；TM21原木色US出现1pcs彩盒条码划伤，不良率1.85%；Classic10 Charm出现3pcs彩盒脏污、条码贴反，不良率2.61%。
+3、同步跟进两家供应商验货问题整改要求，明确外观全检、防水性能优化、配件规格核对等整改方向，确保出货品质符合标准。
+4、4月7-9号在仓库协助检验运动相机，相框和易贝产品。</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、跟进泽冲（惠州）浮力棒下水后硅胶套发白问题，待刘工反馈后完成最终检验判定，监督供应商落实包装前全检要求。
+2、跟进钜弘（深圳）适配器错用问题的整改复盘，要求供应商完善来料检验流程，避免同类问题重复发生。
+3、按计划开展后续供应商验货工作，严格把控产品外观、功能、结构及防水等关键指标，同步整理验货报告，同步相关问题至相品质部及生产部门。
+4、梳理本周验货数据，完成品质问题汇总分析，形成品质改善建议。
+</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">徐光娇</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:90%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">90%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">一、本周工作总结
+ 1.协助仓检入库的检验。
+2.与同事一起，完成联合光电，运动相机质检工作，按机型统计送检总数量、抽检数量，登记不良明细，并做好检验记录。
+3.梳理不良问题并反馈工厂整改。
+
+二、检数数量明细(按机型汇总)如下:
+ 1. EK7000 V53
+ 总送检数量：6114 台
+抽检数量：790 台
+不良数量：37 台
+不良率：4.68%
+不良明细：H支架装不到位、混旧防水壳、彩盒破损、配件装反/破损/错位、充电口铜片外露、包装破损等
+ 
+2. Brave 4 V35AX
+ 
+ 总送检数量：1512 台
+抽检数量：200 台
+不良数量：2 台
+不良率：1.00%
+不良种类：漏放遥控器、配件包装错位
+ 
+3. V50 X
+  总送检数量：60 台
+抽检数量：13 台
+
+ 本周NG拦截不良批次5批
+ </p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">三、下周工作计划
+ 
+1. 根据领导安排完成质检工作，重点加强EK7000 V53的抽检,严控包装、装配类核心不良。
+2. 对本周5个NG退货批次，下周核实整改后的效果，确保问题闭环。
+3.针对支架装配、配件错装/漏装、包装破损等问题推动源头整改，减少同类问题重复发生。
+
+ </p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">曹林子</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:95%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">95%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、仓库检验亚马逊来料22cm三脚架自拍杆，来料100pcs抽检20pcs，自拍杆紧少一节6pcs，混条码，条码模糊100%，后全检整批来料
+2、仓库检验浮力棒因混条码、少螺杆、快拆头漏打胶全检整批来料；
+3、仓库检验classic15pro  TM10 HT15 TM21 Modern10charm TH10等相框来料
+4、检验运动相机EK7000 Brave4来料
+5、检验依倍来料
+6、新斯贝克360全景相机全检裸机266pcs；整机成品检验。
+</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、新斯贝克全景相机裸机检验
+2、仓库检验亚马逊来料
+3、完成领导安排的工作</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">曹海霞</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#facc15;border-radius:6px;height:8px;width:60%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">60%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">
+1. 完成驻仓运动相机3批次验货工作，严格按照检验标准完成全项检查，发现1台产品存在漏贴防伪码问题，已同步工厂同事并跟进闭环。
+2. 完成相框5批次验货任务，检验过程中发现1台产品底壳划伤问题，已记录异常
+3. 完成全景产品1批次、22cm自拍杆1批次、浮力棒1批次的验货工作，按标准完成全项检验
+4. 完成EBAY品类产品3批次验货，针对批次内不良率过高的情况，已对该批次产品执行全检，筛选出不良品，保障出货产品质量。</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、持续跟进本周发现的漏贴防伪码、底壳划伤等异常问题的整改进度，按时完成复验，确保问题100%闭环
+2、 对该品类采购货升级检验标准，到货后执行100%全检，杜绝不良品入库；</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">李安丽</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#facc15;border-radius:6px;height:8px;width:60%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">60%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、完成智能相框全系列（HT10/TM10/TM15/Modern10/TP10/HT21/TM21）共23批次检验，累计送检7968PCS，抽检2167PCS，（其中包括返工后二次送检检验数据）总不良30PCS，整体平均不良率3.22%，同步跟进不良整改。
+2、完成运动DV EK7000 V53系列共8批次检验，累计送检4713PCS，抽检904PCS，（其中包括返工后二次送检检验数据）总不良28PCS，不良率3.10%，跟进NG批次返工及软件刷新。
+3、完成夜视仪Sight-300系列共3批次全检，累计送检391PCS，抽检391PCS，总不良60PCS，不良率15.35%，同步梳理APP异常、屏内异物等核心问题，已反馈给工厂品质和生产负责人加强管控。完成进度如下：1：Ek7000 V53遥控功能相反及软件刷新，工厂也全面返工再次抽检OK。
+2：Sight-300小屏内脏污及手指印工厂已改善。
+3：TM10原木色AU站点相框面壳未装配到位，工厂已针对此问题全面返工，再次抽检OK。</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">按排班计划执行验货，严格把控质量问题。</p>
+              </div>
+
+              <div style="background:#7f1d1d;border:1px solid #dc2626;border-radius:8px;padding:16px">
+               <h5 style="color:#fca5a5;font-size:0.9rem;margin:0 0 8px 0">⚠️ 工作阻碍</h5>
+               <p style="color:#fecaca;font-size:0.9rem;line-height:1.5;margin:0 0 12px 0">针对钜弘验货工厂配备人员不足且人员不稳定，严重影响工作进度。</p>
+               <div style="border-top:1px solid #b91c1c;padding-top:12px">
+                      <h6 style="color:#93c5fd;font-size:0.85rem;margin:0 0 6px 0">💡 需要支持</h6>
+                      <p style="color:#bfdbfe;font-size:0.85rem;line-height:1.5;margin:0">无</p>
+                    </div>
+             </div>
+              <div>
+               <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📌 补充说明</h5>
+               <p style="color:#cbd5e1;font-size:0.9rem;line-height:1.5;margin:0;background:#0f172a;padding:12px;border-radius:6px;font-style:italic">无</p>
+             </div>
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">杨秋丽</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#facc15;border-radius:6px;height:8px;width:60%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">60%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1. 正为工厂（运动DV、夜视仪）
+送检总数：2412台
+总抽检/全检合计：1921台
+4.06 验货明细
+裸机 运动DV EK7000V53版：送检537台，抽检120台
+夜视仪 Sight-300：全检96台
+ 运动DV EK7000 V53版（US）：送检420台，抽检64台
+运动DV EK7000 V53版（UK）：送检567台，抽检80台
+运动DV EK7000 V53版（US）：送检504台，抽检80台
+严重问题：运动DV漏刷新软件，配件遥控器功能相反的等，整批NG
+4.11 验货明细
+裸机运动DV EK7000V53版：送检748台，抽264台
+夜视仪 Sight-300：全检140台
+不良总数：47台
+不良率：2.45%
+常见问题：手机连不上APP、屏幕有毛丝异物划伤、外壳组装缝隙大、APP视频回放电流声、版本错误等
+2. 钜弘工厂（智能相框、日历相框）
+ 验货型号：Modern 10 Charm、Classic15 Pro、HT15黑胡桃木、HT15原木色、HT10黑胡桃木色、HT10原木色2、TM10原木色1、TM15原木色1、TM15黑胡桃木色、TM21白色、Classic10charm（frameo）
+2026.04.07：送检2317台，抽检250台
+2026.04.08：送检2993台，抽检443台
+2026.04.09：送检1297台，抽检175台
+2026.04.10：送检2903台，抽检492台
+本周合计：送检9510台（包括返工后再次送检数量），抽检1360台，不良：26台 不良率：0.53%
+简单小问题：彩盒脏污，破损、SN贴纸起皱、木框掉漆，
+重点严重问题：适配器不通电，整机不开机等</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、持续跟进正为科技、钜弘工厂各批次全流程检验，严格执行检验标准。
+2、跟进遥控器不良根因分析与全检整改，杜绝同类问题复发。
+3、汇总问题点，针对屏内异物、装配不良等高频问题优化制程。
+4、跟进返工批次复检，验证整改效果，提升产品合格率。</p>
+              </div>
+
+              
+              <div>
+               <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📌 补充说明</h5>
+               <p style="color:#cbd5e1;font-size:0.9rem;line-height:1.5;margin:0;background:#0f172a;padding:12px;border-radius:6px;font-style:italic">补充说明：本周正为科技EK7000V53版运动DV批次抽检，发现2台遥控器功能相反不良，已完成整批返工检验；夜视仪Sight-300批次不良率10.00%，主要为屏内异物，黑点、APP连接异常；日历相框、智能相框发现不开机、说明书印刷残影、螺丝刀尺寸不符等问题，已同步产线整改，所有异常均完成闭环，整体良率稳定。</p>
+             </div>
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">梁敏超</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#facc15;border-radius:6px;height:8px;width:65%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">65%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、整理海外不良客退机
+2、验证B7新UI测试每格电量续航20台
+3、浮力棒检验1171pcs,混条码2pcs,快拆头脱落5pcs,少螺杆1pcs，均不符合出货标准已全检OK
+4、B7/B8兔笼检验299pcs,兔笼前盖断11pcs，均不符合出货标准已全检OK
+5、相机/夜视仪检验319pcs
+6、相框检验32pcs
+7、Ebay太阳能照明检验47pcs
+1、开机显示屏不亮1pcs
+2、安卓B口线不充电1pcs
+3、喇叭杂音2pcs
+4、显示屏装歪1pcs
+5、充电器充电不变红灯1pcs
+6、按键无手感1pcs
+7、显示屏异物1pcs
+8、开机指示灯不亮1pcs
+9、机器摇晃异响1pcs
+10、机器充电指示灯不亮1pcs,均不符合出货标准已全检OK</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">根据下周实际工作安排</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">石秀菊</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#facc15;border-radius:6px;height:8px;width:60%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">60%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">4月10日 泽冲 ：
+八爪鱼送检数：300PCS抽检数：136PCS 不良数8PCS 不良率5.88%  （外观问题已通知后继工厂改善）
+浮力棒 送检数：4020PCS抽检数：1638PCS 不良数：28PCS 不良率1.71%
+严重问题：
+1、浮力棒LOGO丝印向右下角轻斜90% 属于批量问题 已通知下批改善
+2、浮力棒下水测试32PCS  下水时间2.5H  有23PCS快拆头部分漏水 、泡水2.5H浮力棒硅胶出现发白 已寄产品给刘工确认 产品待定 跟进中
+4月11日 钜弘 ：
+电子相框 日历相框 总数送检1706PCS总数抽检321PCS
+严重问题 ：
+1、TM21 黑胡桃木色 AU 站点 适配器用错（澳规用成美规）100%
+2、TM21 黑胡桃木色 US ���点 适配器用错（美规用成澳规）100%
+已通知工厂后续注意改善
+其它时间在仓库 协助仓库验运动相机  配件 相框  EBay的货  
+</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、听从领导工作安排
+2、跟进浮力棒 白发问题</p>
+              </div>
+
+              <div style="background:#7f1d1d;border:1px solid #dc2626;border-radius:8px;padding:16px">
+               <h5 style="color:#fca5a5;font-size:0.9rem;margin:0 0 8px 0">⚠️ 工作阻碍</h5>
+               <p style="color:#fecaca;font-size:0.9rem;line-height:1.5;margin:0 0 12px 0">EBay的货经常功能有问题或者漏配件，出货比较急，就导致我们基本都是全检多，就比较浪费时间希望EBay的产品来货有所改变品质上有改善   </p>
+               
+             </div>
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">邓胜芳</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:90%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">90%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">联合光电
+一）EK7000 V53版 - 黑色
+• 送检数量：5163 PCS
+• 抽检数量：773 PCS
+• 不良数量：20 PCS
+• 不良原因及数量：
+1. 屏内异物：1 PCS
+2. 大背夹刮花：1 PCS
+3. 浮力棒快拆头凹印：2 PCS
+4. 彩盒破损：4 PCS
+5. E支架螺帽脱落：1 PCS
+6. 多放说明书：1 PCS
+7. 机内混入旧电池：1 PCS
+8. A支架裂开：1 PCS
+9. 电池仓贴纸残缺：1 PCS
+10. 防水壳装反：1 PCS
+11. 配件白盒破损/装反：2 PCS
+12. 漏贴镜头膜：1 PCS
+
+二）EK7000 V53版 - 蓝色
+• 送检数量：1313 PCS
+• 抽检数量：203 PCS
+• 不良数量：13 PCS
+• 不良原因及数量：
+1. 旧防水壳：3 PCS
+2. 彩盒破损：7 PCS
+3. 防水壳柱子生锈：1 PCS
+4. A支架裂开：1 PCS
+5. 电池仓贴纸残缺断花：1 PCS
+三）V50 X V35AX版 - 灰色
+• 送检数量：393 PCS
+• 抽检数量：77 PCS
+• 不良数量：15 PCS
+• 不良原因及数量：
+1. 浮力棒脏污：1 PCS
+2. 浮力棒发白：1 PCS
+3. 大背夹错用成EK7000：13 PCS
+四） Brave 4 / Brave 4 V35AX双彩屏版 - 黑色
+• 送检数量：1542 PCS
+• 抽检数量：232 PCS
+• 不良数量：2 PCS
+• 不良原因及数量：
+1. 彩盒破损：1 PCS
+2. 漏放遥控器：1 PCS
+二福鑫（中山）
+Brave 4 Pro V35AX版（含64GB/128GB）
+• 送检数量：617 PCS
+• 抽检数量：86 PCS
+• 不良数量：24 PCS
+• 不良原因及数量：
+1. 防水壳底座碰伤：12 PCS
+2. 旧说明书：2 PCS
+3. 旧电池（超半年）：12 PCS
+4. 电池盖紧：1 PCS</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">按排产完成工作安排</p>
+              </div>
+
+              
+              <div>
+               <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📌 补充说明</h5>
+               <p style="color:#cbd5e1;font-size:0.9rem;line-height:1.5;margin:0;background:#0f172a;padding:12px;border-radius:6px;font-style:italic"> 联合光电不良集中在包装/配件类，福鑫不良集中在旧电池、防水壳外观类，可针对性做制程改善</p>
+             </div>
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">颜庆梅</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">质检组长</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:90%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">90%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、泽冲浮力棒因胶水挥发导致发白问题，工厂回复解决中，等下批到货验证改善情况
+2、相框漏贴醋酸胶布，海棉导致机器短路自动关机问题己返工改善，工厂品质增加检验工序-
+3、泰迅自拍杆拉不出来情况，工厂已分析原因胶水打多，胶水未干导致，下批批改善-等到货验证改善情况
+4、相框classic10Charm按压异响到仓库连续3批有异响，初步判定是屏边胶水不粘导致，下周等工厂分析具体原因-跟进中
+本周整体完成任务基本达标，下周聚焦改善进度</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">优先跟进相框classic10Charm按压异响问题改善推进情况
+</p>
+              </div>
+
+              <div style="background:#7f1d1d;border:1px solid #dc2626;border-radius:8px;padding:16px">
+               <h5 style="color:#fca5a5;font-size:0.9rem;margin:0 0 8px 0">⚠️ 工作阻碍</h5>
+               <p style="color:#fecaca;font-size:0.9rem;line-height:1.5;margin:0 0 12px 0">关于相机电池和遥控器电池保质期是1-2年超库龄问题已超半年停滞留在仓库，建议分到其他站点去销售买，超时1年返工成本高影响出货；
+从销提出货需求-检验发现问题-反馈部分领导和采购-下单申请物料-物料回仓库-更换加检验复杂流程与等待时间长，影响销售出货
+建议推进改善</p>
+               
+             </div>
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">马洁容</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#facc15;border-radius:6px;height:8px;width:60%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">60%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">一、本周检验概况
+日期：2026.04.06~2026.04.11
+工厂：正为科技、钜弘
+本周检验机型：Sight-300、EK7000 V53版、相框（Modern 10 Charm、Classic15Pro、TM10、TM15、HT10、HT15、HT21）
+总送检：13262PCS
+总抽检：2325PCS
+总不良：84PCS
+整体综合不良率：3.61%
+二、各机型品质状况如下：
+1、机型：Sight-300
+送检总数：236PCS，全检：236PCS
+不良：26PCS，不良率：11.02%
+判定：全检
+主要不良：
+APP视频回放电流声、屏内异物/尘点/黑点/毛丝、镜头内划伤脏污、底壳间隙大/脏污、电池盖脱落起翘、版本错误
+2、机型：EK7000 V53版
+送检总数：4813PCS，抽检：904PCS
+不良：26PCS，不良率：2.88%
+判定：共9批次，合格4批次，NG5批次，返工后抽检合格
+主要不良：
+中框凸点、电池盖掉漆、面壳间隙大、屏内毛丝、划伤、旧软件版本、机器漏校准、J型座开裂、H支架漏螺钉、遥控器功能相反、配件少钢丝绳、外箱破损
+3、机型：相框（Modern 10 Charm、Classic15Pro、TM10、TM15、HT10、HT15、HT21）
+送检总数：8213PCS，抽检：1185PCS
+不良：32PCS，不良率：2.70%
+判定：共23批次，合格20批次，NG3批次，返工后均合格
+主要不良：
+彩盒破损、脏污、适配器不通电、面壳装配不到位、残留油墨、后壳亮印、屏内异物、黑点、尘点、SN/二维码贴纸不良、木框掉漆、配件螺丝异常、螺丝刀尺寸不符</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、按排班计划执行验货</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">黄晓娟</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">AMZ质检员</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:98%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">98%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、泰讯22cm三脚架自拍杆少一截完成全检
+2、鑫丰华浮力棒退回工厂后回来还是存在漏打胶混条码，已完全全检
+3、相框漏附件盒，加抽200pcs无不良</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、完全相框检验   2、Ebay来货全检
+   3、有计划的检验，优先及发货</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          </div>
+        </div>
+      
+        <div id="dept-4" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
+            <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 optimlWHt5 详细信息</h3>
+            <button onclick="toggleDeptDetail('dept-4')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+          </div>
+          <div style="display:grid;gap:16px">
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">孙强</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">收货组长</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#4ade80;border-radius:6px;height:8px;width:100%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">100%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              <div>
+               <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📝 工作概述</h5>
+               <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.5;margin:0;background:#0f172a;padding:12px;border-radius:6px">收货入库 协助发货 物料发货</p>
+             </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">收货入库19337PCS 物料发货906PCS AMZ退货27PCS</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">AMZ收货 AMZ发货</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          </div>
+        </div>
+      
+        <div id="dept-5" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
+            <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 产品研发部 详细信息</h3>
+            <button onclick="toggleDeptDetail('dept-5')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -1375,10 +2230,10 @@ Sight-300项目：
           </div>
         </div>
       
-        <div id="dept-3" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-6" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 产品管理部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-3')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-6')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -1521,7 +2376,7 @@ Sight-300项目：
     整体完成度 70%；
 2：赛纳自研10.1寸日历 项目：预计下周2可完成手板组装；  
      整体完成度 10%；
-3：CA站点 新品认证——TP10\TP15\TP21 样机4-9号提供北测沟通测试，认证需从以前TM系列认证派生，时间、费用会减少；
+3：CA站点 新品认证——TP10\TP15\TP21 样机4-9号提供北测沟通测试，认证需从以前TM系列认证派生，时间、费用��减少；
     整体完成度 50%；
 4：TP系列日历样机签样，生产开始，预计4月9-10号可陆续出货；
      整体完成度 70%；
@@ -1543,7 +2398,7 @@ Sight-300项目：
               <div>
                 <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
                 <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1：日历产测软件继续跟进——10.1寸、15.6出导入生产情况；
-2：赛纳自研10.1寸日历 项目手板组装； 组装供应链正式介入评估产品；项目提交评审，领导层最终拍板；
+2：赛纳自研10.1寸日历 项目手板组装； 组装供应链正式介入评估产品；项���提交评审，领导层最终拍板；
 3：classic15 Pro 临时接到 JP站点23年库存货变更 EU 站点 签样；
 4：RK3326S 方案跟进、验证；
 5：EMCP 存储方案验证；
@@ -1567,10 +2422,10 @@ Sight-300项目：
           </div>
         </div>
       
-        <div id="dept-4" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-7" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 产品设计部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-4')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-7')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -1724,10 +2579,10 @@ EK7000_2026/04/09_李森</p>
           </div>
         </div>
       
-        <div id="dept-5" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-8" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 仓储发货部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-5')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-8')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -1802,10 +2657,10 @@ EK7000_2026/04/09_李森</p>
           </div>
         </div>
       
-        <div id="dept-6" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-9" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 品牌设计部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-6')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-9')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -1951,10 +2806,10 @@ EK7000_2026/04/09_李森</p>
           </div>
         </div>
       
-        <div id="dept-7" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-10" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 品质管理部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-7')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-10')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -2011,10 +2866,10 @@ EK7000_2026/04/09_李森</p>
           </div>
         </div>
       
-        <div id="dept-8" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-11" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 客户服务部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-8')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-11')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -2060,10 +2915,10 @@ EK7000_2026/04/09_李森</p>
           </div>
         </div>
       
-        <div id="dept-9" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-12" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 数据分析部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-9')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-12')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -2198,7 +3053,7 @@ EK7000_2026/04/09_李森</p>
 2、 周毛利提速： 本周依据部门实际操作同事操作习惯：自动生成对对表格、数据压缩（下周一辅助其完成）         
 3、待分摊费用梳理收尾 ： 依据提供的 品牌流程内容，费用中已经设别出此费用，结果已经发送领导。待后一步工作安排。
 4、目标达成、内占比等临时数据需求--周计划外工作
-5、历史商品信息提取： 历史商品���息提取便于采购填报月度 成本价格（为多维表格供数据）- 周计划外工作
+5、历史商品信息提取： 历史商品信息提取便于采购填报月度 成本价格（为多维表格供数据）- 周计划外工作
 
  </p>
               </div>
@@ -2274,10 +3129,10 @@ EK7000_2026/04/09_李森</p>
           </div>
         </div>
       
-        <div id="dept-10" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-13" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 测试部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-10')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-13')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -2480,7 +3335,7 @@ EK7000_2026/04/09_李森</p>
 3、美东仓TP测试事宜沟通（回复目前没有问题来做这方面的事情）
 4、Classic  10  Charm关于屏蔽罩事宜的返工数据跟进（已完成返工，正常报检中）
 5、夜视仪电流声问题分析已完成，确定是wifi天线焊接问题导致MIC产生干扰
-6、钜弘适配器返工数据跟进&新改善结构的产品签样（持续跟进中）
+6、���弘适配器返工数据跟进&新改善结构的产品签样（持续跟进中）
 7、wifi升级兼容WPA3协议的事宜，数据跟进（工厂业务暂未回复）
 8、classic15pro换适配器事宜样品的签核（跟进中，预计下周完成）
 9、大屏品线全功能测试报告评审（已完成）
@@ -2693,7 +3548,7 @@ EK7000_2026/04/09_李森</p>
                 <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
                 <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、Go7与Keychain3的IQ及防抖对比
 2、与玉霞姐一起完成Keychain3与B4-V35&EK7000-8816&EK7000-V53 图像与防抖对比测试
-3��AKASO360客诉问题验证
+3、AKASO360客诉问题验证
 4、日历相框重置设备问题复现</p>
               </div>
 
@@ -2745,10 +3600,10 @@ EK7000_2026/04/09_李森</p>
           </div>
         </div>
       
-        <div id="dept-11" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-14" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 物流部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-11')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-14')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -2960,10 +3815,10 @@ EK7000_2026/04/09_李森</p>
           </div>
         </div>
       
-        <div id="dept-12" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-15" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 独立站运营部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-12')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-15')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -3591,10 +4446,10 @@ Facebook广告：Mother's Day Sale专项广告同步上线</p>
           </div>
         </div>
       
-        <div id="dept-13" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-16" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 生产管理部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-13')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-16')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -3719,10 +4574,10 @@ SKU：X002CK9HB7
           </div>
         </div>
       
-        <div id="dept-14" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-17" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 用户运营部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-14')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-17')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -4159,10 +5014,10 @@ APP 转化优化：提交了提升 AKASO GO APP 注册率的产品需求；IT �
           </div>
         </div>
       
-        <div id="dept-15" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-18" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 薪酬绩效部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-15')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-18')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -4259,6 +5114,41 @@ APP 转化优化：提交了提升 AKASO GO APP 注册率的产品需求；IT �
 2、黎俊福美签面签资料准备；
 3、Ops Lab沙发、茶几选购；
 4、增长事业部出差人员差旅对接。</p>
+              </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📅 下周工作计划</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">—</p>
+              </div>
+
+              
+              
+            </div>
+          </div>
+        
+          <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #374151;padding-bottom:12px">
+              <div>
+                <h4 style="color:#e2e8f0;font-size:1.1rem;margin:0">余秋祥</h4>
+                <span style="color:#94a3b8;font-size:0.9rem">人力资源高级经理</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:80px;background:#374151;border-radius:6px;height:8px"><div style="background:#f87171;border-radius:6px;height:8px;width:0%"></div></div>
+                <span style="font-size:0.9rem;color:#e5e7eb;font-weight:600">0%</span>
+              </div>
+            </div>
+
+            <div style="display:grid;gap:16px">
+              <div>
+               <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">📝 工作概述</h5>
+               <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.5;margin:0;background:#0f172a;padding:12px;border-radius:6px">其他事宜</p>
+             </div>
+
+              <div>
+                <h5 style="color:#94a3b8;font-size:0.9rem;margin:0 0 8px 0">✅ 本周完成工作</h5>
+                <p style="color:#e5e7eb;font-size:0.9rem;line-height:1.6;margin:0;background:#0f172a;padding:12px;border-radius:6px">1、跟单工作复盘，招聘需求对接：经跟陈燕讨论分析，现阶段不需要新增需求，后期可能会考虑人员替换。
+2、物流专员人才画像对接；
+3、涂文辉沟通。</p>
               </div>
 
               <div>
@@ -4464,10 +5354,10 @@ APP 转化优化：提交了提升 AKASO GO APP 注册率的产品需求；IT �
           </div>
         </div>
       
-        <div id="dept-16" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-19" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 视觉创意部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-16')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-19')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -5401,10 +6291,10 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
           </div>
         </div>
       
-        <div id="dept-17" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-20" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 财务部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-17')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-20')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -5546,7 +6436,7 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
 5、每周二付款邮件核对事宜【上周五付款金额与NS系统进行比对，确保付款数据信息系统准确记录】
 6、2026年2月order、daily、return，报表数据填写【为合并报表提供数据支持】
 7、2026年3月发货跟踪表，3月成本初稿【为运营提供3月成本表提供初步数据支持（数据还不可直接使用）】
-8、易仓、中台、OA 、邮���组���其他相关流程及邮件单据审批【涉及采购发货、运营发货、合同审批、销售合同、样机申请流程etc】</p>
+8、易仓、中台、OA 、邮件组装其他相关流程及邮件单据审批【涉及采购发货、运营发货、合同审批、销售合同、样机申请流程etc】</p>
               </div>
 
               <div>
@@ -5671,10 +6561,10 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
           </div>
         </div>
       
-        <div id="dept-18" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-21" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 运营部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-18')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-21')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -5820,10 +6710,10 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
           </div>
         </div>
       
-        <div id="dept-19" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-22" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 采购品质部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-19')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-22')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -6101,13 +6991,15 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
 
               <div style="background:#7f1d1d;border:1px solid #dc2626;border-radius:8px;padding:16px">
                <h5 style="color:#fca5a5;font-size:0.9rem;margin:0 0 8px 0">⚠️ 工作阻碍</h5>
-               <p style="color:#fecaca;font-size:0.9rem;line-height:1.5;margin:0 0 12px 0">1. 非运动相机品类报价不知道找谁确认是否可以下单</p>
+               <p style="color:#fecaca;font-size:0.9rem;line-height:1.5;margin:0 0 12px 0">1. 非运动相机品类报价不知道找谁确认是否可以下单
+2. B7需求1032台，B7前壳工厂因数量太少不同意接单，要求至少下3000pcs</p>
                <div style="border-top:1px solid #b91c1c;padding-top:12px">
                       <h6 style="color:#93c5fd;font-size:0.85rem;margin:0 0 6px 0">💡 需要支持</h6>
                       <p style="color:#bfdbfe;font-size:0.85rem;line-height:1.5;margin:0">1. B7镜头饰圈已有订单，预计下周收到最新样品，需要产品项目加快测试进度
-2. TF内存卡测试需要产品等各部门大力支持，加快测试进度
-3. B7-19D新UI 464台重工费用（沅圣报价太高，推不动，需要领导协助）
-4. 球机bom核价（需要产品支持）</p>
+2. B7前壳需要领导帮忙协调下单
+3. TF内存卡测试需要产品等各部门大力支持，加快测试进度
+4. B7-19D新UI 464台重工费用（沅圣报价太高，推不动，需要领导协助）
+5. 球机bom核价（需要产品支持）</p>
                     </div>
              </div>
               
@@ -6178,10 +7070,10 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
           </div>
         </div>
       
-        <div id="dept-20" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-23" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 销售部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-20')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-23')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -6473,10 +7365,10 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
           </div>
         </div>
       
-        <div id="dept-21" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
+        <div id="dept-24" class="dept-detail" style="display:none;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:1px solid #334155;padding-bottom:16px">
             <h3 style="font-size:1.1rem;font-weight:600;color:#60a5fa;margin:0">📋 高级设计部 详细信息</h3>
-            <button onclick="toggleDeptDetail('dept-21')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
+            <button onclick="toggleDeptDetail('dept-24')" style="background:#374151;border:none;color:#e5e7eb;padding:8px 16px;border-radius:6px;cursor:pointer">收起</button>
           </div>
           <div style="display:grid;gap:16px">
           <div style="background:#1e293b;border:1px solid #374151;border-radius:10px;padding:20px">
@@ -6545,10 +7437,14 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
 进行外部飞书会议时，自动显示中文名，代理商成员不会说中文的不知道如何称呼我（Peter Ho）</td></tr><tr><td>贺玄烨</td><td style="color:#94a3b8">运营经理</td><td style="color:#f87171">交付严重delay，以及预期不明确</td><td style="color:#60a5fa">交货</td></tr><tr><td>刘重庆</td><td style="color:#94a3b8">独立站运营</td><td style="color:#f87171">广告费充值</td><td style="color:#60a5fa">广告充值</td></tr><tr><td>陈力</td><td style="color:#94a3b8">国家经理</td><td style="color:#f87171">Facebook账号，至今仍未能重建；</td><td style="color:#60a5fa">需要支持部分营销费用补贴</td></tr><tr><td>吴益红</td><td style="color:#94a3b8">采购跟单专员</td><td style="color:#f87171">友林和伟煜内存卡合同流程</td><td style="color:#60a5fa">—</td></tr><tr><td>陈燕</td><td style="color:#94a3b8">采购跟单主管</td><td style="color:#f87171">订单流程审单时效，不好一直催，但是工厂需要收到订单跟单才能有效推动交期。
 </td><td style="color:#60a5fa">1.针对验货异常，需要品质第一时间推动处理，中山联合最近返工问题很多影响整体交付；
 2.网采需求，品控太差。
-</td></tr><tr><td>唐倩</td><td style="color:#94a3b8">采购开发工程师</td><td style="color:#f87171">长颈鹿项目：影微A200NRE合同需要推进。</td><td style="color:#60a5fa">—</td></tr><tr><td>蔡迪</td><td style="color:#94a3b8">招聘经理</td><td style="color:#f87171">暂无</td><td style="color:#60a5fa">暂无</td></tr><tr><td>杨德春</td><td style="color:#94a3b8">经营分析总监</td><td style="color:#f87171">成本优化项目延期</td><td style="color:#60a5fa">暂无</td></tr><tr><td>秦旭娇</td><td style="color:#94a3b8">采购开发专员</td><td style="color:#f87171">1. 非运动相机品类报价不知道找谁确认是否可以下单</td><td style="color:#60a5fa">1. B7镜头饰圈已有订单，预计下周收到最新样品，需要产品项目加快测试进度
-2. TF内存卡测试需要产品等各部门大力支持，加快测试进度
-3. B7-19D新UI 464台重工费用（沅圣报价太高，推不动，需要领导协助）
-4. 球机bom核价（需要产品支持）</td></tr></tbody>
+</td></tr><tr><td>唐倩</td><td style="color:#94a3b8">采购开发工程师</td><td style="color:#f87171">长颈鹿项目：影微A200NRE合同需要推进。</td><td style="color:#60a5fa">—</td></tr><tr><td>蔡迪</td><td style="color:#94a3b8">招聘经理</td><td style="color:#f87171">暂无</td><td style="color:#60a5fa">暂无</td></tr><tr><td>杨德春</td><td style="color:#94a3b8">经营分析总监</td><td style="color:#f87171">成本优化项目延期</td><td style="color:#60a5fa">暂无</td></tr><tr><td>秦旭娇</td><td style="color:#94a3b8">采购开发专员</td><td style="color:#f87171">1. 非运动相机品类报价不知道找谁确认是否可以下单
+2. B7需求1032台，B7前壳工厂因数量太少不同意接单，要求至少下3000pcs</td><td style="color:#60a5fa">1. B7镜头饰圈已有订单，预计下周收到最新样品，需要产品项目加快测试进度
+2. B7前壳需要领导帮忙协调下单
+3. TF内存卡测试需要产品等各部门大力支持，加快测试进度
+4. B7-19D新UI 464台重工费用（沅圣报价太高，推不动，需要领导协助）
+5. 球机bom核价（需要产品支持）</td></tr><tr><td>颜庆梅</td><td style="color:#94a3b8">质检组长</td><td style="color:#f87171">关于相机电池和遥控器电池保质期是1-2年超库龄问题已超半年停滞留在仓库，建议分到其他站点去销售买，超时1年返工成本高影响出货；
+从销提出货需求-检验发现问题-反馈部分领导和采购-下单申请物料-物料回仓库-更换加检验复杂流程与等待时间长，影响销售出货
+建议推进改善</td><td style="color:#60a5fa">—</td></tr><tr><td>李安丽</td><td style="color:#94a3b8">质检员</td><td style="color:#f87171">针对钜弘验货工厂配备人员不足且人员不稳定，严重影响工作进度。</td><td style="color:#60a5fa">无</td></tr><tr><td>石秀菊</td><td style="color:#94a3b8">AMZ质检员</td><td style="color:#f87171">EBay的货经常功能有问题或者漏配件，出货比较急，就导致我们基本都是全检多，就比较浪费时间希望EBay的产品来货有所改变品质上有改善   </td><td style="color:#60a5fa">—</td></tr></tbody>
     </table>
   </div>
   <div class="card">
@@ -6565,8 +7461,8 @@ https://www.facebook.com/groups/akasoofficialcommunity/permalink/128096823064115
 new Chart(document.getElementById('deptChart'), {
   type: 'doughnut',
   data: {
-    labels: ["研发中心","营销中心","设计中心","产品中心","产品管理中心","供应链中心","生产中心","仓储物流中心","人力资源中心","财务中心","未分类","国际业务部","质量中心","客户管理部","经营分析中心"],
-    datasets: [{ data: [6,53,9,2,2,21,3,2,8,6,1,7,14,1,5], backgroundColor: ['#60a5fa','#4ade80','#facc15','#f87171','#a78bfa','#fb923c'], borderWidth: 0 }]
+    labels: ["研发中心","营销中心","设计中心","产品中心","产品管理中心","供应链中心","生产中心","仓储物流中心","人力资源中心","财务中心","国际业务部","质量中心","客户管理部","未分类","经营分析中心"],
+    datasets: [{ data: [6,53,9,2,2,21,3,6,9,7,7,27,1,1,4], backgroundColor: ['#60a5fa','#4ade80','#facc15','#f87171','#a78bfa','#fb923c'], borderWidth: 0 }]
   },
   options: { responsive: true, plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { size: 11 } } } } }
 });
@@ -6574,7 +7470,7 @@ new Chart(document.getElementById('progressChart'), {
   type: 'bar',
   data: {
     labels: ["0-25%","26-50%","51-75%","76-100%"],
-    datasets: [{ label: '人数', data: [3,9,17,94], backgroundColor: ['#f87171','#facc15','#60a5fa','#4ade80'], borderWidth: 0, borderRadius: 4 }]
+    datasets: [{ label: '人数', data: [3,9,23,105], backgroundColor: ['#f87171','#facc15','#60a5fa','#4ade80'], borderWidth: 0, borderRadius: 4 }]
   },
   options: {
     responsive: true,
