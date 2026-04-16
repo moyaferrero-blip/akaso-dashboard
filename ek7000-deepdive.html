@@ -1,428 +1,1005 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>EK7000-V53 高频标签深拆看板</title>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>EK7000-V53 · GRAND PRIX ANALYSIS</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;background:#0f172a;color:#e2e8f0;padding:20px;min-height:100vh}
-h1{font-size:1.5rem;margin-bottom:4px}
-.sub{color:#94a3b8;font-size:.85rem;margin-bottom:16px}
-.tabs{display:flex;gap:2px;margin-bottom:20px;background:#1e293b;border-radius:10px;padding:6px;overflow-x:auto}
-.tab{background:transparent;color:#94a3b8;border:none;border-bottom:3px solid transparent;padding:10px 16px;font-size:.9rem;cursor:pointer;border-radius:6px;white-space:nowrap;transition:.2s;font-family:inherit}
-.tab:hover{background:#263245;color:#e2e8f0}
-.tab.active{background:#263245;color:#fff;font-weight:600}
-.tab .cnt{background:#0f172a;padding:2px 8px;border-radius:10px;margin-left:8px;font-size:.72rem;color:#60a5fa}
-.panel{display:none}
-.panel.active{display:block}
-.kpi-row{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
-.kpi{flex:1;min-width:150px;background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px 18px}
-.kpi .label{font-size:.72rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em}
-.kpi .val{font-size:2rem;font-weight:800;margin-top:4px;color:#60a5fa;line-height:1}
-.kpi .val-s{font-size:.95rem;font-weight:600;margin-top:6px;color:#facc15;line-height:1.3}
-.kpi .mini{font-size:.7rem;color:#64748b;font-weight:400}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-@media(max-width:900px){.two-col{grid-template-columns:1fr}}
-.card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:16px}
-.card h3{font-size:.82rem;color:#94a3b8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em}
-.subrow{margin-bottom:10px}
-.sublabel{font-size:.82rem;color:#e2e8f0;margin-bottom:4px}
-.subbar{background:#0f172a;border-radius:4px;height:22px;position:relative;overflow:hidden}
-.subfill{height:100%;border-radius:4px;transition:width .4s}
-.subval{position:absolute;right:8px;top:3px;font-size:.72rem;color:#fff;font-weight:600;text-shadow:0 0 4px rgba(0,0,0,.8)}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-.chip{background:#0f172a;padding:4px 10px;border-radius:12px;font-size:.75rem;border:1px solid #334155}
-.chip b{color:#60a5fa;margin-left:4px}
-.sample-block{margin-top:12px;border-top:1px solid #334155;padding-top:10px}
-.sample-block h4{font-size:.78rem;color:#facc15;margin-bottom:8px}
-.sample{background:#0f172a;border-radius:6px;padding:8px 10px;margin-bottom:6px;font-size:.78rem;line-height:1.5}
-.sample .meta{color:#64748b;font-size:.7rem;display:block;margin-bottom:2px}
-.sample .quote{color:#cbd5e1}
-table{width:100%;border-collapse:collapse;font-size:.76rem;margin-top:4px}
-th{background:#0f172a;color:#94a3b8;text-align:left;padding:8px;font-weight:600;position:sticky;top:0}
-td{padding:8px;border-bottom:1px solid #243147;vertical-align:top}
-tr:hover td{background:#263245}
-.tag{background:#334155;padding:2px 8px;border-radius:4px;font-size:.7rem;white-space:nowrap}
-.desc{min-width:280px;max-width:440px;line-height:1.5}
-.sol{min-width:140px;max-width:240px;color:#facc15;font-size:.72rem}
-</style></head><body>
-<h1>EK7000-V53 高频标签深拆看板</h1>
-<div class="sub">客诉表 128 + 退货表 1625 · 6 个高频标签拆至可落地子类 · 2026/4/16 16:04:22</div>
-<div class="tabs"><button class="tab active" data-tab="漏件" style="border-bottom-color:#fb923c">漏件/缺件<span class="cnt">25</span></button><button class="tab" data-tab="开关机" style="border-bottom-color:#f87171">开关机问题<span class="cnt">54</span></button><button class="tab" data-tab="APP/WIFI" style="border-bottom-color:#60a5fa">APP/WIFI 问题<span class="cnt">43</span></button><button class="tab" data-tab="图像品质" style="border-bottom-color:#a78bfa">图像品质<span class="cnt">111</span></button><button class="tab" data-tab="按键" style="border-bottom-color:#facc15">按键问题（独立）<span class="cnt">18</span></button><button class="tab" data-tab="SD卡" style="border-bottom-color:#4ade80">SD 卡问题<span class="cnt">18</span></button></div>
+:root{--rb-navy:#0A0E27;--rb-blue:#15235C;--rb-blue-2:#1A2A6E;--rb-red:#D80812;--rb-gold:#FFC906;--rb-orange:#FF6B00;--rb-card:#131B42;--rb-border:#2A3670;--text:#E2E8F0;--muted:#94A3B8}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;background:linear-gradient(180deg,#060916 0%,var(--rb-navy) 300px,var(--rb-navy) 100%);color:var(--text);min-height:100vh;padding-bottom:40px}
 
-    <div class="panel active" data-panel="漏件">
+/* Header */
+.rb-header{position:relative;background:linear-gradient(135deg,var(--rb-blue) 0%,var(--rb-navy) 50%,var(--rb-blue-2) 100%);padding:28px 32px 20px;overflow:hidden;border-bottom:3px solid var(--rb-red)}
+.rb-header::before{content:"";position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,var(--rb-red) 0%,transparent 60%);opacity:.15;pointer-events:none}
+.rb-header-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center}
+.rb19{width:340px;height:90px}
+.helmet{width:70px;height:70px;filter:drop-shadow(0 4px 12px rgba(255,107,0,.35))}
+.brand-text{text-align:center}
+.season{font-size:.7rem;color:var(--rb-gold);letter-spacing:.4em;font-weight:700;margin-bottom:6px}
+.brand-text h1{font-size:1.65rem;font-weight:900;font-style:italic;letter-spacing:.03em;margin-bottom:4px}
+.brand-text h1 .highlight{background:linear-gradient(90deg,var(--rb-gold),var(--rb-orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.brand-text .subtitle{color:var(--muted);font-size:.82rem;letter-spacing:.08em}
+.flag-strip{height:4px;background:repeating-linear-gradient(90deg,#000 0 16px,#fff 16px 32px);margin-top:16px;opacity:.85}
+
+/* Content wrapper */
+.content{max-width:1400px;margin:0 auto;padding:20px 24px}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;margin-bottom:20px;background:linear-gradient(180deg,var(--rb-blue-2),var(--rb-blue));border-radius:10px;padding:6px;overflow-x:auto;border:1px solid var(--rb-border);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.tab{background:transparent;color:var(--muted);border:none;border-left:3px solid transparent;padding:10px 14px;font-size:.82rem;cursor:pointer;border-radius:6px;white-space:nowrap;transition:.2s;font-family:inherit;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:140px}
+.tab .round{font-size:.62rem;color:var(--rb-gold);letter-spacing:.18em;font-weight:700}
+.tab .gpname{font-size:.92rem;font-weight:600;color:var(--text)}
+.tab .cnt{font-size:.65rem;color:var(--muted);letter-spacing:.1em;font-weight:500}
+.tab:hover{background:rgba(255,255,255,.04);border-left-color:var(--acc)}
+.tab.active{background:linear-gradient(135deg,rgba(216,8,18,.12),rgba(255,201,6,.06));border-left-color:var(--acc);box-shadow:0 0 0 1px var(--rb-border), 0 4px 14px rgba(0,0,0,.3)}
+.tab.active .gpname{color:#fff}
+.tab.active .cnt{color:var(--rb-gold)}
+.panel{display:none}.panel.active{display:block}
+
+/* Round header */
+.round-header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:linear-gradient(90deg,rgba(216,8,18,.08),transparent);border:1px solid var(--rb-border);border-left:4px solid var(--acc);border-radius:8px;margin-bottom:16px}
+.rh-round{font-size:.72rem;letter-spacing:.3em;color:var(--rb-gold);font-weight:700;margin-bottom:4px}
+.rh-title{font-size:1.3rem;font-weight:800;font-style:italic;color:var(--text)}
+.rh-right{text-align:right}
+.telemetry{font-family:'SF Mono',Menlo,monospace;font-size:.7rem;color:var(--rb-red);letter-spacing:.15em;margin-bottom:4px}
+.telemetry::before{content:"● ";animation:blink 1.8s infinite}
+@keyframes blink{50%{opacity:.3}}
+.lap-counter{font-size:.75rem;color:var(--muted);letter-spacing:.1em}
+.lap-counter span{color:var(--rb-gold);font-size:1.1rem;font-weight:800;margin-left:6px}
+
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1.6fr;gap:12px;margin-bottom:16px}
+.kpi{background:linear-gradient(145deg,var(--rb-card),rgba(10,14,39,.95));border:1px solid var(--rb-border);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
+.kpi .label{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-weight:700}
+.kpi .val{font-size:2.2rem;font-weight:900;margin-top:6px;color:var(--acc);line-height:1;font-style:italic}
+.kpi .val-pit{font-size:2.2rem;font-weight:900;margin-top:6px;color:var(--rb-gold);line-height:1;font-style:italic}
+.kpi .val-dnf{font-size:2.2rem;font-weight:900;margin-top:6px;color:var(--rb-red);line-height:1;font-style:italic}
+.kpi .val-s{font-size:1rem;font-weight:700;margin-top:6px;color:var(--rb-gold);line-height:1.3}
+.kpi .sub-label{font-size:.7rem;color:var(--muted);margin-top:6px;letter-spacing:.02em}
+.kpi.kpi-main::before{background:linear-gradient(90deg,transparent,var(--rb-red),transparent)}
+.kpi.kpi-pole{background:linear-gradient(145deg,rgba(255,201,6,.1),var(--rb-card))}
+
+/* Cards */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:980px){.two-col{grid-template-columns:1fr}.kpi-row{grid-template-columns:1fr 1fr}}
+.card{background:linear-gradient(180deg,var(--rb-card),rgba(10,14,39,.7));border:1px solid var(--rb-border);border-radius:10px;padding:16px}
+.card h3{font-size:.82rem;color:var(--muted);margin-bottom:14px;letter-spacing:.1em;font-weight:600;display:flex;align-items:center;gap:8px}
+.tech{color:var(--rb-gold);font-family:'SF Mono',Menlo,monospace;font-size:.7rem;letter-spacing:.15em;padding:2px 8px;background:rgba(255,201,6,.08);border:1px solid rgba(255,201,6,.25);border-radius:3px}
+
+/* Subbars */
+.subrow{margin-bottom:10px}
+.sublabel{font-size:.85rem;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.podium{font-size:1rem}
+.podium.pX{background:var(--rb-border);color:var(--muted);padding:0 6px;border-radius:3px;font-size:.65rem;font-weight:700;letter-spacing:.05em}
+.subbar{background:rgba(10,14,39,.6);border-radius:4px;height:24px;position:relative;overflow:hidden;border:1px solid var(--rb-border)}
+.subfill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--acc),color-mix(in srgb, var(--acc) 60%, #fff));transition:width .4s;box-shadow:inset 0 -2px 6px rgba(0,0,0,.2)}
+.subval{position:absolute;right:10px;top:4px;font-size:.74rem;color:#fff;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.7);letter-spacing:.02em}
+.subval em{color:var(--rb-gold);font-style:normal;font-weight:600;font-size:.7rem;margin-left:2px}
+
+/* Chips */
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.chip{background:rgba(10,14,39,.8);padding:5px 12px;border-radius:14px;font-size:.75rem;border:1px solid var(--rb-border);font-family:'SF Mono',Menlo,monospace;letter-spacing:.05em}
+.chip b{color:var(--rb-gold);margin-left:6px;font-size:.8rem}
+
+/* Samples (Team radio) */
+.sample-block{margin-top:10px;border-top:1px dashed var(--rb-border);padding-top:10px}
+.sample-block h4{font-size:.76rem;color:var(--rb-red);margin-bottom:8px;font-weight:700;letter-spacing:.05em}
+.tele{font-family:'SF Mono',Menlo,monospace;font-size:.72rem;color:var(--rb-orange)}
+.sample{background:rgba(10,14,39,.7);border-radius:6px;padding:8px 12px;margin-bottom:6px;font-size:.78rem;line-height:1.5;border-left:2px solid var(--rb-border)}
+.sample:hover{border-left-color:var(--acc)}
+.sample .meta{color:var(--muted);font-size:.68rem;display:block;margin-bottom:3px;font-family:'SF Mono',Menlo,monospace;letter-spacing:.05em}
+.sample .quote{color:#cbd5e1;font-style:italic}
+
+/* Table */
+table{width:100%;border-collapse:collapse;font-size:.76rem;margin-top:4px}
+th{background:rgba(10,14,39,.95);color:var(--rb-gold);text-align:left;padding:9px 8px;font-weight:700;position:sticky;top:0;border-bottom:2px solid var(--rb-red);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+td{padding:8px;border-bottom:1px solid rgba(42,54,112,.4);vertical-align:top}
+tr:hover td{background:rgba(42,54,112,.25)}
+.tag{background:rgba(255,201,6,.1);border:1px solid rgba(255,201,6,.35);color:var(--rb-gold);padding:2px 8px;border-radius:3px;font-size:.7rem;white-space:nowrap;font-weight:600}
+.src{font-family:'SF Mono',Menlo,monospace;font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:3px;display:inline-block}
+.src-pit{background:rgba(255,201,6,.15);color:var(--rb-gold);border:1px solid rgba(255,201,6,.4)}
+.src-dnf{background:rgba(216,8,18,.18);color:#FFA8B0;border:1px solid rgba(216,8,18,.5)}
+.desc{min-width:280px;max-width:440px;line-height:1.5;color:#CBD5E1}
+.sol{min-width:140px;max-width:240px;color:var(--rb-gold);font-size:.72rem}
+
+/* Footer */
+footer{max-width:1400px;margin:28px auto 0;padding:18px 24px;text-align:center;border-top:1px solid var(--rb-border)}
+footer .newey{font-family:'SF Mono',Menlo,monospace;font-size:.72rem;color:var(--rb-gold);letter-spacing:.18em;margin-bottom:8px}
+footer .cad{font-family:'SF Mono',Menlo,monospace;font-size:.66rem;color:var(--muted);letter-spacing:.15em}
+footer .cad span{color:var(--rb-red)}
+</style></head><body>
+
+<header class="rb-header">
+  <div class="rb-header-inner">
+    <svg viewBox="0 0 420 110" xmlns="http://www.w3.org/2000/svg" class="rb19">
+  <!-- 地面阴影 -->
+  <ellipse cx="210" cy="98" rx="180" ry="4" fill="#000" opacity="0.4"/>
+  <!-- 后翼（左侧） -->
+  <rect x="22" y="36" width="5" height="40" fill="#0E1645"/>
+  <rect x="10" y="32" width="28" height="6" fill="#0E1645"/>
+  <rect x="10" y="40" width="28" height="2" fill="#D80812"/>
+  <rect x="10" y="44" width="28" height="1" fill="#FFC906"/>
+  <!-- 底板延伸 -->
+  <path d="M 40 82 L 380 82 L 380 88 L 40 88 Z" fill="#0A0E27"/>
+  <!-- 主车身 -->
+  <path d="M 40 76 L 75 70 L 120 62 L 165 56 Q 200 52, 230 52 L 300 54 Q 335 58, 360 64 L 395 72 L 395 80 L 40 80 Z" fill="#15235C"/>
+  <!-- 侧箱红色装饰 -->
+  <path d="M 140 62 L 280 62 L 290 54 L 150 54 Z" fill="#D80812"/>
+  <!-- 侧箱金色条 -->
+  <rect x="150" y="63" width="130" height="1.5" fill="#FFC906"/>
+  <!-- 进气口 -->
+  <path d="M 175 56 Q 180 48, 195 48 L 225 48 Q 235 48, 235 54 L 235 56 Z" fill="#0A0E27"/>
+  <!-- 头盔 -->
+  <ellipse cx="205" cy="48" rx="11" ry="8" fill="#FF6B00"/>
+  <rect x="198" y="44" width="14" height="2" fill="#AE1C28"/>
+  <rect x="198" y="46" width="14" height="1" fill="#fff"/>
+  <rect x="198" y="47" width="14" height="1.5" fill="#21468B"/>
+  <!-- Halo -->
+  <path d="M 180 54 Q 205 36, 230 54" fill="none" stroke="#0A0E27" stroke-width="2.5"/>
+  <!-- 号码 -->
+  <text x="115" y="72" font-size="14" text-anchor="middle" fill="#FFC906" font-weight="900" font-style="italic" font-family="Arial Black">1</text>
+  <!-- 鼻锥 -->
+  <path d="M 340 66 L 400 74 L 400 78 L 340 72 Z" fill="#15235C"/>
+  <!-- 前翼 -->
+  <rect x="385" y="78" width="30" height="3" fill="#D80812"/>
+  <rect x="382" y="81" width="33" height="2" fill="#15235C"/>
+  <rect x="385" y="83" width="30" height="1.5" fill="#FFC906"/>
+  <!-- 后轮（左） -->
+  <circle cx="85" cy="88" r="15" fill="#0A0E27"/>
+  <circle cx="85" cy="88" r="10" fill="#1a1a1a"/>
+  <circle cx="85" cy="88" r="5" fill="#444"/>
+  <text x="85" y="91" font-size="5" text-anchor="middle" fill="#FFC906" font-weight="bold">P</text>
+  <!-- 前轮（右） -->
+  <circle cx="345" cy="88" r="13" fill="#0A0E27"/>
+  <circle cx="345" cy="88" r="9" fill="#1a1a1a"/>
+  <circle cx="345" cy="88" r="4" fill="#444"/>
+  <!-- Oracle 字样占位 -->
+  <text x="240" y="72" font-size="6" text-anchor="middle" fill="#FFC906" font-weight="bold" letter-spacing="1">ORACLE</text>
+</svg>
+    <div class="brand-text">
+      <div class="season">2026 SEASON · AKASO RACING · ROUND 01-06</div>
+      <h1>EK7000-V53 <span class="highlight">GRAND PRIX</span> ANALYSIS</h1>
+      <div class="subtitle">客诉+退货双源合并 · 269 条数据 · 六标签拆至可落地子类 · 2026/4/16 16:20:54</div>
+    </div>
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" class="helmet">
+  <!-- 头盔主体 -->
+  <path d="M 15 45 Q 15 15, 40 15 Q 65 15, 65 45 L 65 60 L 15 60 Z" fill="#FF6B00"/>
+  <!-- 顶部荷兰三色 -->
+  <path d="M 24 18 Q 24 16, 40 16 Q 56 16, 56 18 L 56 20 L 24 20 Z" fill="#AE1C28"/>
+  <rect x="24" y="20" width="32" height="2" fill="#fff"/>
+  <rect x="24" y="22" width="32" height="2" fill="#21468B"/>
+  <!-- 面罩 -->
+  <path d="M 20 38 Q 20 30, 40 30 Q 60 30, 60 38 L 60 52 L 20 52 Z" fill="#0A0E27"/>
+  <!-- 面罩反光 -->
+  <path d="M 24 34 Q 24 32, 40 32 Q 56 32, 56 34 L 56 42 L 24 42 Z" fill="#15235C" opacity="0.7"/>
+  <!-- 狮子（荷兰国徽风格化）- 简化为金色侧影 -->
+  <g transform="translate(30 44)" fill="#FFC906">
+    <circle cx="10" cy="4" r="3"/>
+    <rect x="5" y="6" width="14" height="5" rx="1"/>
+    <path d="M 4 8 L 2 12 M 20 8 L 22 12" stroke="#FFC906" stroke-width="1.5"/>
+  </g>
+  <!-- 号码 1 -->
+  <text x="40" y="72" font-size="16" text-anchor="middle" fill="#FFC906" font-weight="900" font-family="Arial Black" font-style="italic">1</text>
+  <!-- 底部风琴纹 -->
+  <rect x="20" y="58" width="40" height="2" fill="#0A0E27"/>
+</svg>
+  </div>
+  <div class="flag-strip"></div>
+</header>
+
+<div class="content">
+  <div class="tabs"><button class="tab active" data-tab="漏件" style="--acc:#FF6B00">
+      <span class="round">ROUND 01</span>
+      <span class="gpname">漏件/缺件</span>
+      <span class="cnt">25 LAPS</span>
+    </button><button class="tab" data-tab="开关机" style="--acc:#D80812">
+      <span class="round">ROUND 02</span>
+      <span class="gpname">开关机问题</span>
+      <span class="cnt">54 LAPS</span>
+    </button><button class="tab" data-tab="APP/WIFI" style="--acc:#4F95FF">
+      <span class="round">ROUND 03</span>
+      <span class="gpname">APP/WIFI 问题</span>
+      <span class="cnt">43 LAPS</span>
+    </button><button class="tab" data-tab="图像品质" style="--acc:#FFC906">
+      <span class="round">ROUND 04</span>
+      <span class="gpname">图像品质</span>
+      <span class="cnt">111 LAPS</span>
+    </button><button class="tab" data-tab="按键" style="--acc:#F472B6">
+      <span class="round">ROUND 05</span>
+      <span class="gpname">按键问题（独立）</span>
+      <span class="cnt">18 LAPS</span>
+    </button><button class="tab" data-tab="SD卡" style="--acc:#4ADE80">
+      <span class="round">ROUND 06</span>
+      <span class="gpname">SD 卡问题</span>
+      <span class="cnt">18 LAPS</span>
+    </button></div>
+  
+    <div class="panel active" data-panel="漏件" style="--acc:#FF6B00">
+      <div class="round-header">
+        <div class="rh-left">
+          <div class="rh-round">ROUND 01 · GRAND PRIX</div>
+          <div class="rh-title">漏件/缺件</div>
+        </div>
+        <div class="rh-right">
+          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
+          <div class="lap-counter">TOTAL LAPS <span>25</span></div>
+        </div>
+      </div>
+
       <div class="kpi-row">
-        <div class="kpi"><div class="label">总量</div><div class="val" style="color:#fb923c">25</div></div>
-        <div class="kpi"><div class="label">客诉端</div><div class="val">25</div></div>
-        <div class="kpi"><div class="label">退货端</div><div class="val">0</div></div>
-        <div class="kpi"><div class="label">最高频子类</div><div class="val-s">缺电池<br><span class="mini">13 条 (52%)</span></div></div>
+        <div class="kpi kpi-main">
+          <div class="label">GRID TOTAL</div>
+          <div class="val">25</div>
+          <div class="sub-label">发车总量</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🔧 IN PIT LANE</div>
+          <div class="val-pit">25</div>
+          <div class="sub-label">客诉端 · 待修复</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🏳️ DNF</div>
+          <div class="val-dnf">0</div>
+          <div class="sub-label">退货端 · 已退赛</div>
+        </div>
+        <div class="kpi kpi-pole">
+          <div class="label">🏆 POLE POSITION</div>
+          <div class="val-s">缺电池</div>
+          <div class="sub-label">13 条 · 52% 占比</div>
+        </div>
       </div>
+
       <div class="two-col">
-        <div class="card"><h3>📊 子类分布（拆穿标签）</h3><div class="subrow"><div class="sublabel">缺电池</div><div class="subbar"><div class="subfill" style="width:100%;background:#f87171"></div><span class="subval">13 (52%)</span></div></div><div class="subrow"><div class="sublabel">缺SD卡</div><div class="subbar"><div class="subfill" style="width:62%;background:#fb923c"></div><span class="subval">8 (32%)</span></div></div><div class="subrow"><div class="sublabel">缺支架/卡扣/配件</div><div class="subbar"><div class="subfill" style="width:15%;background:#facc15"></div><span class="subval">2 (8%)</span></div></div><div class="subrow"><div class="sublabel">缺充电器/线</div><div class="subbar"><div class="subfill" style="width:8%;background:#4ade80"></div><span class="subval">1 (4%)</span></div></div><div class="subrow"><div class="sublabel">缺防水壳</div><div class="subbar"><div class="subfill" style="width:8%;background:#60a5fa"></div><span class="subval">1 (4%)</span></div></div></div>
-        <div class="card"><h3>🌍 站点分布</h3><div class="chips"><span class="chip">US <b>19</b></span><span class="chip">UK <b>2</b></span><span class="chip">IT <b>1</b></span><span class="chip">FR <b>1</b></span><span class="chip">AU <b>1</b></span><span class="chip">CA <b>1</b></span></div>
-      <div class="sample-block"><h4>「缺电池」代表原文</h4><div class="sample"><span class="meta">客诉·4077·US·S</span><div class="quote">我今天收到了从亚马逊购买的相机（EK7000），准备用于即将到来的旅行，但盒子里没有电池。我们已经把盒子里所有配件都翻找了好几遍。有充电器但没有电池，而且据我所知，相机应该配备两块电池。请尽快回复，因为我们两周后就要出行，需要用到这台相机。</div></div><div class="sample"><span class="meta">客诉·4115·US·S</span><div class="quote">没有配备电池充电器。</div></div><div class="sample"><span class="meta">客诉·4125·US·S</span><div class="quote">没有收到电池的充电器。</div></div><div class="sample"><span class="meta">客诉·5067·US·S</span><div class="quote">我儿子给我买了一个EK7000。它似乎什么都有，就是没有电池充电器（尽管说明书上说“包装内附带”一个）。你能尽快给我寄一个吗？</div></div></div>
-      <div class="sample-block"><h4>「缺SD卡」代表原文</h4><div class="sample"><span class="meta">客诉·5586·US·S</span><div class="quote">你在亚马逊上购买的套餐包含存储卡，但收到的商品却没有存储卡。</div></div><div class="sample"><span class="meta">客诉·5614·US·S</span><div class="quote">购买信息显示会包含一张存储卡，但你没有收到。</div></div><div class="sample"><span class="meta">客诉·5624·US·S</span><div class="quote">丢失64GB SD存储卡</div></div><div class="sample"><span class="meta">客诉·5652·US·S</span><div class="quote">我没有收到这个包裹里的microSD卡。我已经检查了很多次，包装盒里没有microSD卡。</div></div></div>
-      <div class="sample-block"><h4>「缺支架/卡扣/配件」代表原文</h4><div class="sample"><span class="meta">客诉·5235·AU·S</span><div class="quote">我们收到的包裹中缺少两个附件。扣式支架x1缺失。E型支架x1缺失。</div></div><div class="sample"><span class="meta">客诉·5361·CA·S</span><div class="quote">您购买了带漂浮手柄的相机，但该配件不在包装内。</div></div></div></div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
+          <div class="subrow">
+        <div class="sublabel"><span class="podium">🏆</span>缺电池</div>
+        <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">13 <em>(52%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥈</span>缺SD卡</div>
+        <div class="subbar"><div class="subfill" style="width:62%"></div><span class="subval">8 <em>(32%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥉</span>缺支架/卡扣/配件</div>
+        <div class="subbar"><div class="subfill" style="width:15%"></div><span class="subval">2 <em>(8%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P4</span>缺充电器/线</div>
+        <div class="subbar"><div class="subfill" style="width:8%"></div><span class="subval">1 <em>(4%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P5</span>缺防水壳</div>
+        <div class="subbar"><div class="subfill" style="width:8%"></div><span class="subval">1 <em>(4%)</em></span></div>
       </div>
-      <div class="card"><h3>📋 明细（25 条）</h3>
+        </div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 2</span>赛道分布 & TEAM RADIO</h3>
+          <div class="chips"><span class="chip">US <b>19</b></span><span class="chip">UK <b>2</b></span><span class="chip">IT <b>1</b></span><span class="chip">FR <b>1</b></span><span class="chip">AU <b>1</b></span><span class="chip">CA <b>1</b></span></div>
+          
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P1 「缺电池」</span></h4>
+        <div class="sample"><span class="meta">客诉·#4077·US·S</span><div class="quote">"我今天收到了从亚马逊购买的相机（EK7000），准备用于即将到来的旅行，但盒子里没有电池。我们已经把盒子里所有配件都翻找了好几遍。有充电器但没有电池，而且据我所知，相机应该配备两块电池。请尽快回复，因为我们两周后就要出行，需要用到这台相机。"</div></div><div class="sample"><span class="meta">客诉·#4115·US·S</span><div class="quote">"没有配备电池充电器。"</div></div><div class="sample"><span class="meta">客诉·#4125·US·S</span><div class="quote">"没有收到电池的充电器。"</div></div><div class="sample"><span class="meta">客诉·#5067·US·S</span><div class="quote">"我儿子给我买了一个EK7000。它似乎什么都有，就是没有电池充电器（尽管说明书上说“包装内附带”一个）。你能尽快给我寄一个吗？"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P2 「缺SD卡」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5586·US·S</span><div class="quote">"你在亚马逊上购买的套餐包含存储卡，但收到的商品却没有存储卡。"</div></div><div class="sample"><span class="meta">客诉·#5614·US·S</span><div class="quote">"购买信息显示会包含一张存储卡，但你没有收到。"</div></div><div class="sample"><span class="meta">客诉·#5624·US·S</span><div class="quote">"丢失64GB SD存储卡"</div></div><div class="sample"><span class="meta">客诉·#5652·US·S</span><div class="quote">"我没有收到这个包裹里的microSD卡。我已经检查了很多次，包装盒里没有microSD卡。"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P3 「缺支架/卡扣/配件」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5235·AU·S</span><div class="quote">"我们收到的包裹中缺少两个附件。扣式支架x1缺失。E型支架x1缺失。"</div></div><div class="sample"><span class="meta">客诉·#5361·CA·S</span><div class="quote">"您购买了带漂浮手柄的相机，但该配件不在包装内。"</div></div>
+      </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="tech">▸ SECTOR 3</span>完整圈速表 · 25 LAPS</h3>
         <table><thead><tr><th>子类</th><th>来源</th><th>ID</th><th>站点</th><th>原标签</th><th>状态</th><th>描述</th><th>方案</th></tr></thead><tbody>
-      <tr><td><span class="tag">缺SD卡</span></td><td>客诉</td><td>5586</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">你在亚马逊上购买的套餐包含存储卡，但收到的商品却没有存储卡。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺SD卡</span></td><td>客诉</td><td>5614</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">购买信息显示会包含一张存储卡，但你没有收到。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺SD卡</span></td><td>客诉</td><td>5624</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">丢失64GB SD存储卡</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺SD卡</span></td><td>客诉</td><td>5652</td><td>US</td><td>漏件</td><td>已关闭</td><td class="desc">我没有收到这个包裹里的microSD卡。我已经检查了很多次，包装盒里没有microSD卡。</td><td class="sol">美西带卡组装漏件</td></tr>
-      <tr><td><span class="tag">缺SD卡</span></td><td>客诉</td><td>5714</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">你购买的相机配有64GB存储卡，但它不在你的包裹里</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺SD卡</span></td><td>客诉</td><td>5743</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我没有收到64G的微型SD卡，我购买的是包含SD卡的选项。你能给我发送这张卡吗？</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺SD卡</span></td><td>客诉</td><td>5762</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">下午好， 在组装相机时，我发现64GB的MicroSD卡不见了。 能请你寄一张吗？否则，我将不得不退货。谢谢！</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺SD卡</span></td><td>客诉</td><td>5929</td><td>US</td><td>漏件</td><td>-</td><td class="desc">我们再次检查了盒子里的所有东西。里面没有带SD卡的塑料盒。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺充电器/线</span></td><td>客诉</td><td>5178</td><td>FR</td><td>漏件</td><td>待确认</td><td class="desc">我收到的相机没有充电器。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺支架/卡扣/配件</span></td><td>客诉</td><td>5235</td><td>AU</td><td>漏件</td><td>待确认</td><td class="desc">我们收到的包裹中缺少两个附件。扣式支架x1缺失。E型支架x1缺失。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺支架/卡扣/配件</span></td><td>客诉</td><td>5361</td><td>CA</td><td>漏件</td><td>待确认</td><td class="desc">您购买了带漂浮手柄的相机，但该配件不在包装内。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>4077</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我今天收到了从亚马逊购买的相机（EK7000），准备用于即将到来的旅行，但盒子里没有电池。我们已经把盒子里所有配件都翻找了好几遍。有充电器但没有电池，而且据我所知，相机应该配备两块电池。请尽快回复，因为我们两周后就要出行，需要用到这台相机。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>4115</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">没有配备电池充电器。</td><td class="sol">LH250704V1C4525</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>4125</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">没有收到电池的充电器。</td><td class="sol">@苏意梅有回复SN号麻烦及时补充填写，谢谢</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5067</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我儿子给我买了一个EK7000。它似乎什么都有，就是没有电池充电器（尽管说明书上说“包装内附带”一个）。你能尽快给我寄一个吗？</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5177</td><td>IT</td><td>漏件</td><td>待确认</td><td class="desc">描述中写着包含两块电池，但包装里只有一块。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5251</td><td>UK</td><td>漏件</td><td>待确认</td><td class="desc">嗨，我已经收到商品了，但电池的充电器不见了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5287</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我儿子收到了AKASO EK7000作为礼物。但缺少电池和充电器。不确定你们能否寄送这些缺失的部件？或者能否告知我需要哪种电池和充电器，以便我们使用相机。相机是在亚马逊购买的，但找不到点击查看发票的地方。下方有截图。如果截图无法显示，作为购买证明，我也愿意购买电池。电池会附带充电器吗？因为包装里也没有充电器。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5651</td><td>US</td><td>漏件</td><td>已关闭</td><td class="desc">嗨，我订购了EK7000运动相机套装，里面应该有64GB的SD卡，但内存卡不在包装里。我检查了所有的盒子、所有独立的袋子、相机、电池充电器等等，所有包装都检查过了，就是没有。除此之外，这是个非常不错的产品。请看附件中的二维码和序列号图片。</td><td class="sol">美西带卡组装漏件</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5764</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">没有收到随产品附赠的电池小充电盒🔋</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5782</td><td>US</td><td>漏件 / 04-结构装配</td><td>待确认</td><td class="desc">SD卡无法插入相机，我尝试插入时相机就会关机。这张SD卡是套装选项中盒子里附带的那一个，而且电池充电盒不见了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5791</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">早上好，我购买了EK7000运动相机，包装里本应包含2块电池，但实际上只有1块，包装完好无损。等待回复，谢谢。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5828</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我得到了一台没有电池的相机。但它本应配备电池，没有电池的话这台相机就没什么用处了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺电池</span></td><td>客诉</td><td>5833</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我订购了两台EK7000相机，今天收到了。第一台相机的包装盒里有两个可充电电池组，但第二个包装盒里只有一个可充电电池组。我们需要你们把第二个可充电电池组寄给我们。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">缺防水壳</span></td><td>客诉</td><td>5565</td><td>UK</td><td>漏件</td><td>待确认</td><td class="desc">缺失的部件如下：防水壳、遥控器，最重要的是A卡口——没有这个卡口，我们无法安装相机。</td><td class="sol">-</td></tr></tbody></table>
+      <tr><td><span class="tag">缺SD卡</span></td><td class="src src-pit">PIT</td><td>5586</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">你在亚马逊上购买的套餐包含存储卡，但收到的商品却没有存储卡。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺SD卡</span></td><td class="src src-pit">PIT</td><td>5614</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">购买信息显示会包含一张存储卡，但你没有收到。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺SD卡</span></td><td class="src src-pit">PIT</td><td>5624</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">丢失64GB SD存储卡</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺SD卡</span></td><td class="src src-pit">PIT</td><td>5652</td><td>US</td><td>漏件</td><td>已关闭</td><td class="desc">我没有收到这个包裹里的microSD卡。我已经检查了很多次，包装盒里没有microSD卡。</td><td class="sol">美西带卡组装漏件</td></tr>
+      <tr><td><span class="tag">缺SD卡</span></td><td class="src src-pit">PIT</td><td>5714</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">你购买的相机配有64GB存储卡，但它不在你的包裹里</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺SD卡</span></td><td class="src src-pit">PIT</td><td>5743</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我没有收到64G的微型SD卡，我购买的是包含SD卡的选项。你能给我发送这张卡吗？</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺SD卡</span></td><td class="src src-pit">PIT</td><td>5762</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">下午好， 在组装相机时，我发现64GB的MicroSD卡不见了。 能请你寄一张吗？否则，我将不得不退货。谢谢！</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺SD卡</span></td><td class="src src-pit">PIT</td><td>5929</td><td>US</td><td>漏件</td><td>-</td><td class="desc">我们再次检查了盒子里的所有东西。里面没有带SD卡的塑料盒。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺充电器/线</span></td><td class="src src-pit">PIT</td><td>5178</td><td>FR</td><td>漏件</td><td>待确认</td><td class="desc">我收到的相机没有充电器。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺支架/卡扣/配件</span></td><td class="src src-pit">PIT</td><td>5235</td><td>AU</td><td>漏件</td><td>待确认</td><td class="desc">我们收到的包裹中缺少两个附件。扣式支架x1缺失。E型支架x1缺失。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺支架/卡扣/配件</span></td><td class="src src-pit">PIT</td><td>5361</td><td>CA</td><td>漏件</td><td>待确认</td><td class="desc">您购买了带漂浮手柄的相机，但该配件不在包装内。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>4077</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我今天收到了从亚马逊购买的相机（EK7000），准备用于即将到来的旅行，但盒子里没有电池。我们已经把盒子里所有配件都翻找了好几遍。有充电器但没有电池，而且据我所知，相机应该配备两块电池。请尽快回复，因为我们两周后就要出行，需要用到这台相机。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>4115</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">没有配备电池充电器。</td><td class="sol">LH250704V1C4525</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>4125</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">没有收到电池的充电器。</td><td class="sol">@苏意梅有回复SN号麻烦及时补充填写，谢谢</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5067</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我儿子给我买了一个EK7000。它似乎什么都有，就是没有电池充电器（尽管说明书上说“包装内附带”一个）。你能尽快给我寄一个吗？</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5177</td><td>IT</td><td>漏件</td><td>待确认</td><td class="desc">描述中写着包含两块电池，但包装里只有一块。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5251</td><td>UK</td><td>漏件</td><td>待确认</td><td class="desc">嗨，我已经收到商品了，但电池的充电器不见了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5287</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我儿子收到了AKASO EK7000作为礼物。但缺少电池和充电器。不确定你们能否寄送这些缺失的部件？或者能否告知我需要哪种电池和充电器，以便我们使用相机。相机是在亚马逊购买的，但找不到点击查看发票的地方。下方有截图。如果截图无法显示，作为购买证明，我也愿意购买电池。电池会附带充电器吗？因为包装里也没有充电器。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5651</td><td>US</td><td>漏件</td><td>已关闭</td><td class="desc">嗨，我订购了EK7000运动相机套装，里面应该有64GB的SD卡，但内存卡不在包装里。我检查了所有的盒子、所有独立的袋子、相机、电池充电器等等，所有包装都检查过了，就是没有。除此之外，这是个非常不错的产品。请看附件中的二维码和序列号图片。</td><td class="sol">美西带卡组装漏件</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5764</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">没有收到随产品附赠的电池小充电盒🔋</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5782</td><td>US</td><td>漏件 / 04-结构装配</td><td>待确认</td><td class="desc">SD卡无法插入相机，我尝试插入时相机就会关机。这张SD卡是套装选项中盒子里附带的那一个，而且电池充电盒不见了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5791</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">早上好，我购买了EK7000运动相机，包装里本应包含2块电池，但实际上只有1块，包装完好无损。等待回复，谢谢。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5828</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我得到了一台没有电池的相机。但它本应配备电池，没有电池的话这台相机就没什么用处了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺电池</span></td><td class="src src-pit">PIT</td><td>5833</td><td>US</td><td>漏件</td><td>待确认</td><td class="desc">我订购了两台EK7000相机，今天收到了。第一台相机的包装盒里有两个可充电电池组，但第二个包装盒里只有一个可充电电池组。我们需要你们把第二个可充电电池组寄给我们。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">缺防水壳</span></td><td class="src src-pit">PIT</td><td>5565</td><td>UK</td><td>漏件</td><td>待确认</td><td class="desc">缺失的部件如下：防水壳、遥控器，最重要的是A卡口——没有这个卡口，我们无法安装相机。</td><td class="sol">—</td></tr></tbody></table>
       </div>
     </div>
-    <div class="panel" data-panel="开关机">
+    <div class="panel" data-panel="开关机" style="--acc:#D80812">
+      <div class="round-header">
+        <div class="rh-left">
+          <div class="rh-round">ROUND 02 · GRAND PRIX</div>
+          <div class="rh-title">开关机问题</div>
+        </div>
+        <div class="rh-right">
+          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
+          <div class="lap-counter">TOTAL LAPS <span>54</span></div>
+        </div>
+      </div>
+
       <div class="kpi-row">
-        <div class="kpi"><div class="label">总量</div><div class="val" style="color:#f87171">54</div></div>
-        <div class="kpi"><div class="label">客诉端</div><div class="val">10</div></div>
-        <div class="kpi"><div class="label">退货端</div><div class="val">44</div></div>
-        <div class="kpi"><div class="label">最高频子类</div><div class="val-s">简述"不能用/有问题"<br><span class="mini">20 条 (37%)</span></div></div>
+        <div class="kpi kpi-main">
+          <div class="label">GRID TOTAL</div>
+          <div class="val">54</div>
+          <div class="sub-label">发车总量</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🔧 IN PIT LANE</div>
+          <div class="val-pit">10</div>
+          <div class="sub-label">客诉端 · 待修复</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🏳️ DNF</div>
+          <div class="val-dnf">44</div>
+          <div class="sub-label">退货端 · 已退赛</div>
+        </div>
+        <div class="kpi kpi-pole">
+          <div class="label">🏆 POLE POSITION</div>
+          <div class="val-s">简述"不能用/有问题"</div>
+          <div class="sub-label">20 条 · 37% 占比</div>
+        </div>
       </div>
+
       <div class="two-col">
-        <div class="card"><h3>📊 子类分布（拆穿标签）</h3><div class="subrow"><div class="sublabel">简述"不能用/有问题"</div><div class="subbar"><div class="subfill" style="width:100%;background:#f87171"></div><span class="subval">20 (37%)</span></div></div><div class="subrow"><div class="sublabel">完全无法开机</div><div class="subbar"><div class="subfill" style="width:60%;background:#fb923c"></div><span class="subval">12 (22%)</span></div></div><div class="subrow"><div class="sublabel">使用中/录像中自动关机</div><div class="subbar"><div class="subfill" style="width:45%;background:#facc15"></div><span class="subval">9 (17%)</span></div></div><div class="subrow"><div class="sublabel">充电后仍不开机</div><div class="subbar"><div class="subfill" style="width:25%;background:#4ade80"></div><span class="subval">5 (9%)</span></div></div><div class="subrow"><div class="sublabel">卡在欢迎/启动界面（启动循环）</div><div class="subbar"><div class="subfill" style="width:20%;background:#60a5fa"></div><span class="subval">4 (7%)</span></div></div><div class="subrow"><div class="sublabel">死机/冻结</div><div class="subbar"><div class="subfill" style="width:15%;background:#a78bfa"></div><span class="subval">3 (6%)</span></div></div><div class="subrow"><div class="sublabel">进水/受潮后失效</div><div class="subbar"><div class="subfill" style="width:5%;background:#f472b6"></div><span class="subval">1 (2%)</span></div></div></div>
-        <div class="card"><h3>🌍 站点分布</h3><div class="chips"><span class="chip">US <b>49</b></span><span class="chip">FR <b>2</b></span><span class="chip">UK <b>1</b></span><span class="chip">IT <b>1</b></span><span class="chip">CA <b>1</b></span></div>
-      <div class="sample-block"><h4>「简述"不能用/有问题"」代表原文</h4><div class="sample"><span class="meta">客诉·5493·FR·S</span><div class="quote">您好，相机几天前就不能用了，屏幕一片漆黑。怎么说在保修期内呢？您好，我们试过了，相机屏幕还是黑的。这是我的订单号。</div></div><div class="sample"><span class="meta">退货·1223·US·-</span><div class="quote">无法使用</div></div><div class="sample"><span class="meta">退货·1248·US·-</span><div class="quote">这不是我需要的。</div></div><div class="sample"><span class="meta">退货·1277·US·-</span><div class="quote">无法让它工作</div></div></div>
-      <div class="sample-block"><h4>「完全无法开机」代表原文</h4><div class="sample"><span class="meta">客诉·5203·UK·S</span><div class="quote">我买了这个东西，但它不能用，相机根本打不开，我已经试过所有方法了，请问有机会更换一个吗？</div></div><div class="sample"><span class="meta">客诉·5719·US·S</span><div class="quote">按照支持说明进行了多次尝试后，相机仍然无法开机。我的相机只在干燥环境中使用，主要是清晨骑行时使用一小时左右。我已经取出了电池和SD卡，并使用5V2A的适配器给相机充电。然后长按电源键3秒尝试开机，但仍然无法启动。我该如何向你们发送视频？</div></div><div class="sample"><span class="meta">退货·1126·US·-</span><div class="quote">无法打开</div></div><div class="sample"><span class="meta">退货·1261·US·-</span><div class="quote">商品有缺陷，相机无法开机</div></div></div>
-      <div class="sample-block"><h4>「使用中/录像中自动关机」代表原文</h4><div class="sample"><span class="meta">客诉·5197·US·S</span><div class="quote">嗨！我购买了AKASO相机，昨天尝试使用时发现它无法正常工作。相机总是随机关机，有时还无法录制。我尝试过更换电池、开关相机以及重启设备。</div></div><div class="sample"><span class="meta">客诉·5650·US·S</span><div class="quote">我不想留下差评，因为你们目前是100%的好评，我收到的可能只是个有故障的产品。但我带着它去度假时，它总是无法保持开机状态。我试了两块电池，都充满了电，但相机在录制过程中会突然关机。这太令人沮丧了，因为我本来很依赖它。</div></div><div class="sample"><span class="meta">退货·1215·US·-</span><div class="quote">它会正常工作并且随机关机吗</div></div><div class="sample"><span class="meta">退货·1304·US·-</span><div class="quote">相机随机关机</div></div></div></div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
+          <div class="subrow">
+        <div class="sublabel"><span class="podium">🏆</span>简述"不能用/有问题"</div>
+        <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">20 <em>(37%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥈</span>完全无法开机</div>
+        <div class="subbar"><div class="subfill" style="width:60%"></div><span class="subval">12 <em>(22%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥉</span>使用中/录像中自动关机</div>
+        <div class="subbar"><div class="subfill" style="width:45%"></div><span class="subval">9 <em>(17%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P4</span>充电后仍不开机</div>
+        <div class="subbar"><div class="subfill" style="width:25%"></div><span class="subval">5 <em>(9%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P5</span>卡在欢迎/启动界面（启动循环）</div>
+        <div class="subbar"><div class="subfill" style="width:20%"></div><span class="subval">4 <em>(7%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P6</span>死机/冻结</div>
+        <div class="subbar"><div class="subfill" style="width:15%"></div><span class="subval">3 <em>(6%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P7</span>进水/受潮后失效</div>
+        <div class="subbar"><div class="subfill" style="width:5%"></div><span class="subval">1 <em>(2%)</em></span></div>
       </div>
-      <div class="card"><h3>📋 明细（54 条）</h3>
+        </div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 2</span>赛道分布 & TEAM RADIO</h3>
+          <div class="chips"><span class="chip">US <b>49</b></span><span class="chip">FR <b>2</b></span><span class="chip">UK <b>1</b></span><span class="chip">IT <b>1</b></span><span class="chip">CA <b>1</b></span></div>
+          
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P1 「简述"不能用/有问题"」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5493·FR·S</span><div class="quote">"您好，相机几天前就不能用了，屏幕一片漆黑。怎么说在保修期内呢？您好，我们试过了，相机屏幕还是黑的。这是我的订单号。"</div></div><div class="sample"><span class="meta">退货·#1223·US·-</span><div class="quote">"无法使用"</div></div><div class="sample"><span class="meta">退货·#1248·US·-</span><div class="quote">"这不是我需要的。"</div></div><div class="sample"><span class="meta">退货·#1277·US·-</span><div class="quote">"无法让它工作"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P2 「完全无法开机」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5203·UK·S</span><div class="quote">"我买了这个东西，但它不能用，相机根本打不开，我已经试过所有方法了，请问有机会更换一个吗？"</div></div><div class="sample"><span class="meta">客诉·#5719·US·S</span><div class="quote">"按照支持说明进行了多次尝试后，相机仍然无法开机。我的相机只在干燥环境中使用，主要是清晨骑行时使用一小时左右。我已经取出了电池和SD卡，并使用5V2A的适配器给相机充电。然后长按电源键3秒尝试开机，但仍然无法启动。我该如何向你们发送视频？"</div></div><div class="sample"><span class="meta">退货·#1126·US·-</span><div class="quote">"无法打开"</div></div><div class="sample"><span class="meta">退货·#1261·US·-</span><div class="quote">"商品有缺陷，相机无法开机"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P3 「使用中/录像中自动关机」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5197·US·S</span><div class="quote">"嗨！我购买了AKASO相机，昨天尝试使用时发现它无法正常工作。相机总是随机关机，有时还无法录制。我尝试过更换电池、开关相机以及重启设备。"</div></div><div class="sample"><span class="meta">客诉·#5650·US·S</span><div class="quote">"我不想留下差评，因为你们目前是100%的好评，我收到的可能只是个有故障的产品。但我带着它去度假时，它总是无法保持开机状态。我试了两块电池，都充满了电，但相机在录制过程中会突然关机。这太令人沮丧了，因为我本来很依赖它。"</div></div><div class="sample"><span class="meta">退货·#1215·US·-</span><div class="quote">"它会正常工作并且随机关机吗"</div></div><div class="sample"><span class="meta">退货·#1304·US·-</span><div class="quote">"相机随机关机"</div></div>
+      </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="tech">▸ SECTOR 3</span>完整圈速表 · 54 LAPS</h3>
         <table><thead><tr><th>子类</th><th>来源</th><th>ID</th><th>站点</th><th>原标签</th><th>状态</th><th>描述</th><th>方案</th></tr></thead><tbody>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>客诉</td><td>5197</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">嗨！我购买了AKASO相机，昨天尝试使用时发现它无法正常工作。相机总是随机关机，有时还无法录制。我尝试过更换电池、开关相机以及重启设备。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>客诉</td><td>5650</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">我不想留下差评，因为你们目前是100%的好评，我收到的可能只是个有故障的产品。但我带着它去度假时，它总是无法保持开机状态。我试了两块电池，都充满了电，但相机在录制过程中会突然关机。这太令人沮丧了，因为我本来很依赖它。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>退货</td><td>1215</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">它会正常工作并且随机关机吗</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>退货</td><td>1304</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机随机关机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>退货</td><td>1788</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">显示屏几秒后关闭</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>退货</td><td>1833</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">录制时视频不断关闭。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>退货</td><td>1983</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法关机。长按按钮后会关闭，但大约1秒后又会重新开机。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>退货</td><td>2713</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机出问题了，它无法保持开机状态</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td>退货</td><td>2750</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">有缺陷|无法开机并保持开机状态</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">充电后仍不开机</span></td><td>客诉</td><td>5424</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">用了一会儿就关机了，给电池充了电也没反应。试着只用USB线连接相机，但什么都没发生，正在寻找替代品。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">充电后仍不开机</span></td><td>退货</td><td>1419</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">充电并放入电池后，它无法开机。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">充电后仍不开机</span></td><td>退货</td><td>1515</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">电池已充满电，但在30-45秒后关闭。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">充电后仍不开机</span></td><td>退货</td><td>1699</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">这个东西充电后完全打不开。我已经把它放回盒子里了，所以应该没问题。不过它看起来还是全新的，状态良好。我买的另一个能用，谢谢。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">充电后仍不开机</span></td><td>退货</td><td>2394</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">DOA，相机完全无法开机。电池已充满电，但仍然无法工作。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">卡在欢迎/启动界面（启动循环）</span></td><td>客诉</td><td>5318</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">当相机开机时，它会自动显示标志，然后出现黑屏。电池已充满电，相机也没有损坏。屏幕上显示着AKASO / EK7000的欢迎界面……然后就变黑了。仅此而已。只有当我取出电池，重新装上电池，再开机时，它才会恢复……但同样的情况又会发生。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">卡在欢迎/启动界面（启动循环）</span></td><td>客诉</td><td>5711</td><td>FR</td><td>12-开关机问题</td><td>待确认</td><td class="desc">我的设备能开机，但停留在“Akaso EK7000”欢迎界面，这是怎么回事？该如何修复呢？在对我的Akaso EK7000进行4次重置尝试后，当我装好电池并设置好语言、日期和时间，对SD卡格式化请求选择“是”或“否”后，屏幕就会熄灭，蓝色指示灯一直亮着，直到电池耗尽。再次开机时，一切都卡在欢迎界面。感谢您的帮助。</td><td class="sol">FX53251114V101197</td></tr>
-      <tr><td><span class="tag">卡在欢迎/启动界面（启动循环）</span></td><td>客诉</td><td>5866</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">听到您在使用EK7000相机时遇到困难，尤其是上传视频和相机随机关机的问题，我深感抱歉。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">卡在欢迎/启动界面（启动循环）</span></td><td>退货</td><td>1280</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">格式化SD卡后相机卡在启动 splash 屏幕上</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>客诉</td><td>5203</td><td>UK</td><td>12-开关机问题</td><td>待确认</td><td class="desc">我买了这个东西，但它不能用，相机根本打不开，我已经试过所有方法了，请问有机会更换一个吗？</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>客诉</td><td>5719</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">按照支持说明进行了多次尝试后，相机仍然无法开机。我的相机只在干燥环境中使用，主要是清晨骑行时使用一小时左右。我已经取出了电池和SD卡，并使用5V2A的适配器给相机充电。然后长按电源键3秒尝试开机，但仍然无法启动。我该如何向你们发送视频？</td><td class="sol">此台不开机已寄回国内分析</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>1126</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法打开</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>1261</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">商品有缺陷，相机无法开机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>1328</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机无法开机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>1437</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">尽管已装入电池，相机仍无法开机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>2101</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机只用过一次，现在无法开机了</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>2194</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法开机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>2267</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法开机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>2610</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机完全无法开机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>2618</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">产品无法开机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全无法开机</span></td><td>退货</td><td>2651</td><td>IT</td><td>质量-开关机</td><td>退货</td><td class="desc">再也打不开了</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">死机/冻结</span></td><td>退货</td><td>1076</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机死机了</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">死机/冻结</span></td><td>退货</td><td>1776</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">它工作不正常。总是死机，而且画面不清楚</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">死机/冻结</span></td><td>退货</td><td>2121</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机死机且无法将照片导出到手机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>客诉</td><td>5493</td><td>FR</td><td>12-开关机问题</td><td>待确认</td><td class="desc">您好，相机几天前就不能用了，屏幕一片漆黑。怎么说在保修期内呢？您好，我们试过了，相机屏幕还是黑的。这是我的订单号。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>1223</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>1248</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">这不是我需要的。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>1277</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法让它工作</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>1406</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>1494</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">已经打开但无法工作</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>1574</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">用不了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>1848</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机在30分钟后停止工作</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2013</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">Falrante 工作不正常，损坏了，有缺陷。 （说明：“Falrante” 可能是专有名词（如产品名、设备名等），由于未提供更多背景信息，暂时保留原名不翻译。若其为拼写错误，需根据具体正确词汇调整。）</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2144</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">设备间歇性关机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2186</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2217</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">设备间歇性关机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2259</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">不起作用。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2392</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2515</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">不起作用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2524</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">用不了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2570</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2625</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">没起作用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2714</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机无法工作</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td>退货</td><td>2900</td><td>CA</td><td>质量-开关机</td><td>退货</td><td class="desc">持续开关机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">进水/受潮后失效</span></td><td>客诉</td><td>5942</td><td>US</td><td>12-开关机问题</td><td>-</td><td class="desc">起初显示的是模糊的图像，现在则无法开机。你取出了SD卡和电池，只使用USB线，但问题依旧。相机没有进水损坏。 问题仍然存在。有时能开机，但在使用过程中会中途关机。由于我对该产品不满意，请安排退款。</td><td class="sol">-</td></tr></tbody></table>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-pit">PIT</td><td>5197</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">嗨！我购买了AKASO相机，昨天尝试使用时发现它无法正常工作。相机总是随机关机，有时还无法录制。我尝试过更换电池、开关相机以及重启设备。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-pit">PIT</td><td>5650</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">我不想留下差评，因为你们目前是100%的好评，我收到的可能只是个有故障的产品。但我带着它去度假时，它总是无法保持开机状态。我试了两块电池，都充满了电，但相机在录制过程中会突然关机。这太令人沮丧了，因为我本来很依赖它。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-dnf">DNF</td><td>1215</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">它会正常工作并且随机关机吗</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-dnf">DNF</td><td>1304</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机随机关机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-dnf">DNF</td><td>1788</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">显示屏几秒后关闭</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-dnf">DNF</td><td>1833</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">录制时视频不断关闭。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-dnf">DNF</td><td>1983</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法关机。长按按钮后会关闭，但大约1秒后又会重新开机。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-dnf">DNF</td><td>2713</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机出问题了，它无法保持开机状态</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">使用中/录像中自动关机</span></td><td class="src src-dnf">DNF</td><td>2750</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">有缺陷|无法开机并保持开机状态</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">充电后仍不开机</span></td><td class="src src-pit">PIT</td><td>5424</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">用了一会儿就关机了，给电池充了电也没反应。试着只用USB线连接相机，但什么都没发生，正在寻找替代品。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">充电后仍不开机</span></td><td class="src src-dnf">DNF</td><td>1419</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">充电并放入电池后，它无法开机。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">充电后仍不开机</span></td><td class="src src-dnf">DNF</td><td>1515</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">电池已充满电，但在30-45秒后关闭。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">充电后仍不开机</span></td><td class="src src-dnf">DNF</td><td>1699</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">这个东西充电后完全打不开。我已经把它放回盒子里了，所以应该没问题。不过它看起来还是全新的，状态良好。我买的另一个能用，谢谢。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">充电后仍不开机</span></td><td class="src src-dnf">DNF</td><td>2394</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">DOA，相机完全无法开机。电池已充满电，但仍然无法工作。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">卡在欢迎/启动界面（启动循环）</span></td><td class="src src-pit">PIT</td><td>5318</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">当相机开机时，它会自动显示标志，然后出现黑屏。电池已充满电，相机也没有损坏。屏幕上显示着AKASO / EK7000的欢迎界面……然后就变黑了。仅此而已。只有当我取出电池，重新装上电池，再开机时，它才会恢复……但同样的情况又会发生。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">卡在欢迎/启动界面（启动循环）</span></td><td class="src src-pit">PIT</td><td>5711</td><td>FR</td><td>12-开关机问题</td><td>待确认</td><td class="desc">我的设备能开机，但停留在“Akaso EK7000”欢迎界面，这是怎么回事？该如何修复呢？在对我的Akaso EK7000进行4次重置尝试后，当我装好电池并设置好语言、日期和时间，对SD卡格式化请求选择“是”或“否”后，屏幕就会熄灭，蓝色指示灯一直亮着，直到电池耗尽。再次开机时，一切都卡在欢迎界面。感谢您的帮助。</td><td class="sol">FX53251114V101197</td></tr>
+      <tr><td><span class="tag">卡在欢迎/启动界面（启动循环）</span></td><td class="src src-pit">PIT</td><td>5866</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">听到您在使用EK7000相机时遇到困难，尤其是上传视频和相机随机关机的问题，我深感抱歉。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">卡在欢迎/启动界面（启动循环）</span></td><td class="src src-dnf">DNF</td><td>1280</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">格式化SD卡后相机卡在启动 splash 屏幕上</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-pit">PIT</td><td>5203</td><td>UK</td><td>12-开关机问题</td><td>待确认</td><td class="desc">我买了这个东西，但它不能用，相机根本打不开，我已经试过所有方法了，请问有机会更换一个吗？</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-pit">PIT</td><td>5719</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">按照支持说明进行了多次尝试后，相机仍然无法开机。我的相机只在干燥环境中使用，主要是清晨骑行时使用一小时左右。我已经取出了电池和SD卡，并使用5V2A的适配器给相机充电。然后长按电源键3秒尝试开机，但仍然无法启动。我该如何向你们发送视频？</td><td class="sol">此台不开机已寄回国内分析</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>1126</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法打开</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>1261</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">商品有缺陷，相机无法开机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>1328</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机无法开机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>1437</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">尽管已装入电池，相机仍无法开机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>2101</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机只用过一次，现在无法开机了</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>2194</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法开机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>2267</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法开机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>2610</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机完全无法开机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>2618</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">产品无法开机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全无法开机</span></td><td class="src src-dnf">DNF</td><td>2651</td><td>IT</td><td>质量-开关机</td><td>退货</td><td class="desc">再也打不开了</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">死机/冻结</span></td><td class="src src-dnf">DNF</td><td>1076</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机死机了</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">死机/冻结</span></td><td class="src src-dnf">DNF</td><td>1776</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">它工作不正常。总是死机，而且画面不清楚</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">死机/冻结</span></td><td class="src src-dnf">DNF</td><td>2121</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机死机且无法将照片导出到手机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-pit">PIT</td><td>5493</td><td>FR</td><td>12-开关机问题</td><td>待确认</td><td class="desc">您好，相机几天前就不能用了，屏幕一片漆黑。怎么说在保修期内呢？您好，我们试过了，相机屏幕还是黑的。这是我的订单号。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>1223</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>1248</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">这不是我需要的。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>1277</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法让它工作</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>1406</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>1494</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">已经打开但无法工作</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>1574</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">用不了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>1848</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机在30分钟后停止工作</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2013</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">Falrante 工作不正常，损坏了，有缺陷。 （说明：“Falrante” 可能是专有名词（如产品名、设备名等），由于未提供更多背景信息，暂时保留原名不翻译。若其为拼写错误，需根据具体正确词汇调整。）</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2144</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">设备间歇性关机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2186</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2217</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">设备间歇性关机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2259</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">不起作用。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2392</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2515</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">不起作用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2524</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">用不了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2570</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">无法使用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2625</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">没起作用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2714</td><td>US</td><td>质量-开关机</td><td>退货</td><td class="desc">相机无法工作</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">简述"不能用/有问题"</span></td><td class="src src-dnf">DNF</td><td>2900</td><td>CA</td><td>质量-开关机</td><td>退货</td><td class="desc">持续开关机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">进水/受潮后失效</span></td><td class="src src-pit">PIT</td><td>5942</td><td>US</td><td>12-开关机问题</td><td>待确认</td><td class="desc">起初显示的是模糊的图像，现在则无法开机。你取出了SD卡和电池，只使用USB线，但问题依旧。相机没有进水损坏。 问题仍然存在。有时能开机，但在使用过程中会中途关机。由于我对该产品不满意，请安排退款。</td><td class="sol">@廖月滢确认下客人卡速和内存是否符合要求，使用时可能是卡速不符、或者未开启循环录像导致内存不足，相机停录后的自动关机</td></tr></tbody></table>
       </div>
     </div>
-    <div class="panel" data-panel="APP/WIFI">
+    <div class="panel" data-panel="APP/WIFI" style="--acc:#4F95FF">
+      <div class="round-header">
+        <div class="rh-left">
+          <div class="rh-round">ROUND 03 · GRAND PRIX</div>
+          <div class="rh-title">APP/WIFI 问题</div>
+        </div>
+        <div class="rh-right">
+          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
+          <div class="lap-counter">TOTAL LAPS <span>43</span></div>
+        </div>
+      </div>
+
       <div class="kpi-row">
-        <div class="kpi"><div class="label">总量</div><div class="val" style="color:#60a5fa">43</div></div>
-        <div class="kpi"><div class="label">客诉端</div><div class="val">11</div></div>
-        <div class="kpi"><div class="label">退货端</div><div class="val">32</div></div>
-        <div class="kpi"><div class="label">最高频子类</div><div class="val-s">WiFi 连不上<br><span class="mini">19 条 (44%)</span></div></div>
+        <div class="kpi kpi-main">
+          <div class="label">GRID TOTAL</div>
+          <div class="val">43</div>
+          <div class="sub-label">发车总量</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🔧 IN PIT LANE</div>
+          <div class="val-pit">11</div>
+          <div class="sub-label">客诉端 · 待修复</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🏳️ DNF</div>
+          <div class="val-dnf">32</div>
+          <div class="sub-label">退货端 · 已退赛</div>
+        </div>
+        <div class="kpi kpi-pole">
+          <div class="label">🏆 POLE POSITION</div>
+          <div class="val-s">WiFi 连不上</div>
+          <div class="sub-label">19 条 · 44% 占比</div>
+        </div>
       </div>
+
       <div class="two-col">
-        <div class="card"><h3>📊 子类分布（拆穿标签）</h3><div class="subrow"><div class="sublabel">WiFi 连不上</div><div class="subbar"><div class="subfill" style="width:100%;background:#f87171"></div><span class="subval">19 (44%)</span></div></div><div class="subrow"><div class="sublabel">系统兼容性（iOS/Android）</div><div class="subbar"><div class="subfill" style="width:42%;background:#fb923c"></div><span class="subval">8 (19%)</span></div></div><div class="subrow"><div class="sublabel">预览/播放加载失败</div><div class="subbar"><div class="subfill" style="width:26%;background:#facc15"></div><span class="subval">5 (12%)</span></div></div><div class="subrow"><div class="sublabel">传输/同步失败</div><div class="subbar"><div class="subfill" style="width:21%;background:#4ade80"></div><span class="subval">4 (9%)</span></div></div><div class="subrow"><div class="sublabel">综合/简述 APP 问题</div><div class="subbar"><div class="subfill" style="width:16%;background:#60a5fa"></div><span class="subval">3 (7%)</span></div></div><div class="subrow"><div class="sublabel">固件/OTA 升级失败</div><div class="subbar"><div class="subfill" style="width:11%;background:#a78bfa"></div><span class="subval">2 (5%)</span></div></div><div class="subrow"><div class="sublabel">WiFi/蓝牙无法开启/关闭</div><div class="subbar"><div class="subfill" style="width:5%;background:#f472b6"></div><span class="subval">1 (2%)</span></div></div><div class="subrow"><div class="sublabel">应用连不上相机</div><div class="subbar"><div class="subfill" style="width:5%;background:#2dd4bf"></div><span class="subval">1 (2%)</span></div></div></div>
-        <div class="card"><h3>🌍 站点分布</h3><div class="chips"><span class="chip">US <b>41</b></span><span class="chip">UK <b>1</b></span><span class="chip">CA <b>1</b></span></div>
-      <div class="sample-block"><h4>「WiFi 连不上」代表原文</h4><div class="sample"><span class="meta">客诉·4556·US·S</span><div class="quote">你好， 我刚买了新款的Akaso Ek7000，却无法连接到Akaso Go应用程序。此外，为了关闭无线网络，我不得不关掉手机，按下向下按钮无法关闭它。请帮帮我。几周后我要去旅行，急需帮助。 现在一切似乎都正常了。我把手机调成飞行模式后，它就能连接到Akaso Go了。</div></div><div class="sample"><span class="meta">客诉·5497·US·S</span><div class="quote">WiFi已开启并连接到您的手机，但应用程序一直停留在显示您手机的WiFi设置界面。您关闭了移动数据，删除了应用程序，但都没有用。摄像头的WiFi在屏幕上显示，所有权限都已允许。</div></div><div class="sample"><span class="meta">退货·1120·US·-</span><div class="quote">无法连接到WiFi。使用起来非常复杂！</div></div><div class="sample"><span class="meta">退货·1140·US·-</span><div class="quote">我尝试在多个设备上连接摄像头的WiFi，但都连接不上。</div></div></div>
-      <div class="sample-block"><h4>「系统兼容性（iOS/Android）」代表原文</h4><div class="sample"><span class="meta">客诉·5686·CA·-</span><div class="quote">我觉得这款相机的应用程序非常不友好。我试了好几次使用Wi-Fi和蓝牙，但都连接不上。我想把照片和视频传输到手机上，却无法通过应用程序实现。我也尝试过将相机直接连接到手机进行数据传输，但也没有成功。 相机本身以及照片和视频的质量都很棒……毫无疑问，绝对是五星好评。电池续航惊人。遥控功能绝对是个加分项，而且工作得非常完美。防抖功能无与伦比，无可挑剔。 应用程序说它适用于安卓和iPhone，但对我来说却不起作用。我觉得它很难导航和操作。目前我只能把存储卡插进笔记本电脑，下载文件，然后再传输到手机上。在我看来，这是一个非常不必要的步骤。如果您能提供任何帮助，我将</div></div><div class="sample"><span class="meta">退货·1209·US·-</span><div class="quote">BAD-DEFECTIVE-无法与iPhone Max Pro X配合使用</div></div><div class="sample"><span class="meta">退货·1351·US·-</span><div class="quote">太难用了，无法将视频同步到我的iPhone。</div></div><div class="sample"><span class="meta">退货·1542·US·-</span><div class="quote">这款相机无法在安卓系统上使用。它似乎只与iPhone兼容，与宣传不符。</div></div></div>
-      <div class="sample-block"><h4>「预览/播放加载失败」代表原文</h4><div class="sample"><span class="meta">客诉·3960·US·S</span><div class="quote">无法在应用程序上访问我的视频。是的，我能够连接到应用程序，但无法访问我的视频或照片。它一直在加载。 我尝试重启其他设备，也重新安装了应用程序，还重置了我的相机。 我也尝试过格式化和使用其他方法。但应用程序连接后就会冻结。</div></div><div class="sample"><span class="meta">客诉·4012·US·S</span><div class="quote">我昨天从Akaso的亚马逊店铺购买了Akaso EK7000相机，但根本无法将其与我的手机连接。我多次按照所有说明操作，多次将相机、手机和Wi-Fi等设备开关重启，卸载并重新安装了应用程序，甚至还换了另一部手机尝试连接，但仍然没有成功。我真的不知道还能做些什么了。它总是卡在“实时预览”加载界面。相机序列号是SN - 53 - 250604 - V1。</div></div><div class="sample"><span class="meta">客诉·4075·US·S</span><div class="quote">我最近购买了这款产品，在通过“AKASO GO”应用程序进行同步时遇到了问题。当我打开应用程序添加设备时，屏幕一直显示旋转/加载界面（见附件）。我还注意到相机的 Wi-Fi 显示没有网络连接，但不确定这是否是问题所在。</div></div><div class="sample"><span class="meta">退货·1097·US·-</span><div class="quote">相机无法使用。它能开机，但连接到手机应用程序时不显示实时画面。</div></div></div></div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
+          <div class="subrow">
+        <div class="sublabel"><span class="podium">🏆</span>WiFi 连不上</div>
+        <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">19 <em>(44%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥈</span>系统兼容性（iOS/Android）</div>
+        <div class="subbar"><div class="subfill" style="width:42%"></div><span class="subval">8 <em>(19%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥉</span>预览/播放加载失败</div>
+        <div class="subbar"><div class="subfill" style="width:26%"></div><span class="subval">5 <em>(12%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P4</span>传输/同步失败</div>
+        <div class="subbar"><div class="subfill" style="width:21%"></div><span class="subval">4 <em>(9%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P5</span>综合/简述 APP 问题</div>
+        <div class="subbar"><div class="subfill" style="width:16%"></div><span class="subval">3 <em>(7%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P6</span>固件/OTA 升级失败</div>
+        <div class="subbar"><div class="subfill" style="width:11%"></div><span class="subval">2 <em>(5%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P7</span>WiFi/蓝牙无法开启/关闭</div>
+        <div class="subbar"><div class="subfill" style="width:5%"></div><span class="subval">1 <em>(2%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P8</span>应用连不上相机</div>
+        <div class="subbar"><div class="subfill" style="width:5%"></div><span class="subval">1 <em>(2%)</em></span></div>
       </div>
-      <div class="card"><h3>📋 明细（43 条）</h3>
+        </div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 2</span>赛道分布 & TEAM RADIO</h3>
+          <div class="chips"><span class="chip">US <b>41</b></span><span class="chip">UK <b>1</b></span><span class="chip">CA <b>1</b></span></div>
+          
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P1 「WiFi 连不上」</span></h4>
+        <div class="sample"><span class="meta">客诉·#4556·US·S</span><div class="quote">"你好， 我刚买了新款的Akaso Ek7000，却无法连接到Akaso Go应用程序。此外，为了关闭无线网络，我不得不关掉手机，按下向下按钮无法关闭它。请帮帮我。几周后我要去旅行，急需帮助。 现在一切似乎都正常了。我把手机调成飞行模式后，它就能连接到Akaso Go了。"</div></div><div class="sample"><span class="meta">客诉·#5497·US·S</span><div class="quote">"WiFi已开启并连接到您的手机，但应用程序一直停留在显示您手机的WiFi设置界面。您关闭了移动数据，删除了应用程序，但都没有用。摄像头的WiFi在屏幕上显示，所有权限都已允许。"</div></div><div class="sample"><span class="meta">退货·#1120·US·-</span><div class="quote">"无法连接到WiFi。使用起来非常复杂！"</div></div><div class="sample"><span class="meta">退货·#1140·US·-</span><div class="quote">"我尝试在多个设备上连接摄像头的WiFi，但都连接不上。"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P2 「系统兼容性（iOS/Android）」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5686·CA·-</span><div class="quote">"我觉得这款相机的应用程序非常不友好。我试了好几次使用Wi-Fi和蓝牙，但都连接不上。我想把照片和视频传输到手机上，却无法通过应用程序实现。我也尝试过将相机直接连接到手机进行数据传输，但也没有成功。 相机本身以及照片和视频的质量都很棒……毫无疑问，绝对是五星好评。电池续航惊人。遥控功能绝对是个加分项，而且工作得非常完美。防抖功能无与伦比，无可挑剔。 应用程序说它适用于安卓和iPhone，但对我来说却不起作用。我觉得它很难导航和操作。目前我只能把存储卡插进笔记本电脑，下载文件，然后再传输到手机上。在我看来，这是一个非常不必要的步骤。如果您能提供任何帮助，我将"</div></div><div class="sample"><span class="meta">退货·#1209·US·-</span><div class="quote">"BAD-DEFECTIVE-无法与iPhone Max Pro X配合使用"</div></div><div class="sample"><span class="meta">退货·#1351·US·-</span><div class="quote">"太难用了，无法将视频同步到我的iPhone。"</div></div><div class="sample"><span class="meta">退货·#1542·US·-</span><div class="quote">"这款相机无法在安卓系统上使用。它似乎只与iPhone兼容，与宣传不符。"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P3 「预览/播放加载失败」</span></h4>
+        <div class="sample"><span class="meta">客诉·#3960·US·S</span><div class="quote">"无法在应用程序上访问我的视频。是的，我能够连接到应用程序，但无法访问我的视频或照片。它一直在加载。 我尝试重启其他设备，也重新安装了应用程序，还重置了我的相机。 我也尝试过格式化和使用其他方法。但应用程序连接后就会冻结。"</div></div><div class="sample"><span class="meta">客诉·#4012·US·S</span><div class="quote">"我昨天从Akaso的亚马逊店铺购买了Akaso EK7000相机，但根本无法将其与我的手机连接。我多次按照所有说明操作，多次将相机、手机和Wi-Fi等设备开关重启，卸载并重新安装了应用程序，甚至还换了另一部手机尝试连接，但仍然没有成功。我真的不知道还能做些什么了。它总是卡在“实时预览”加载界面。相机序列号是SN - 53 - 250604 - V1。"</div></div><div class="sample"><span class="meta">客诉·#4075·US·S</span><div class="quote">"我最近购买了这款产品，在通过“AKASO GO”应用程序进行同步时遇到了问题。当我打开应用程序添加设备时，屏幕一直显示旋转/加载界面（见附件）。我还注意到相机的 Wi-Fi 显示没有网络连接，但不确定这是否是问题所在。"</div></div><div class="sample"><span class="meta">退货·#1097·US·-</span><div class="quote">"相机无法使用。它能开机，但连接到手机应用程序时不显示实时画面。"</div></div>
+      </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="tech">▸ SECTOR 3</span>完整圈速表 · 43 LAPS</h3>
         <table><thead><tr><th>子类</th><th>来源</th><th>ID</th><th>站点</th><th>原标签</th><th>状态</th><th>描述</th><th>方案</th></tr></thead><tbody>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>客诉</td><td>4556</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">你好， 我刚买了新款的Akaso Ek7000，却无法连接到Akaso Go应用程序。此外，为了关闭无线网络，我不得不关掉手机，按下向下按钮无法关闭它。请帮帮我。几周后我要去旅行，急需帮助。 现在一切似乎都正常了。我把手机调成飞行模式后，它就能连接到Akaso Go了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>客诉</td><td>5497</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">WiFi已开启并连接到您的手机，但应用程序一直停留在显示您手机的WiFi设置界面。您关闭了移动数据，删除了应用程序，但都没有用。摄像头的WiFi在屏幕上显示，所有权限都已允许。</td><td class="sol">描述为电话客服总结</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1120</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi。使用起来非常复杂！</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1140</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">我尝试在多个设备上连接摄像头的WiFi，但都连接不上。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1269</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1276</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">Wifi无法关闭，我一直在查阅指南，但Wifi仍然无法开启，或者我的手机检测不到它</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1286</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">手机Wi-Fi连接不正常</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1329</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到手机应用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1467</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到应用。太难了</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1473</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1479</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到手机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1480</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法保持 Wi-Fi 连接。必须反复手动重新连接摄像头，而且通常仍然无法连接 Wi-Fi 或应用程序。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1485</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到蓝牙</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>1576</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>2195</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">WiFi无法连接</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>2268</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">WiFi无法连接</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>2314</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到手机。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>2387</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">它声称支持Wi-Fi连接，但你无法连接到其他设备，只能连接随附的遥控器。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi 连不上</span></td><td>退货</td><td>2452</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">WiFi/蓝牙无法开启/关闭</span></td><td>客诉</td><td>4104</td><td>US</td><td>13-WiFi问题</td><td>-</td><td class="desc">问题报告：相机无法激活 Wi-Fi 最新情况：你最近购买了这款相机，并尝试连接到应用程序。你按下向下按钮，但屏幕上没有任何显示。你取出相机电池后重新插入，相同的问题仍然存在。 我能够通过按下并按住向下按钮调出 Wi-Fi 连接选项，但它无法保持连接。如果我没有 Wi-Fi 接入会怎样？有蓝牙选项吗？</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">传输/同步失败</span></td><td>客诉</td><td>3970</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">我如何将视频传输到手机上？ 手机显示存储空间已满，但实际并非如此。我清理了缓存，仍然无法下载一个2分钟的视频。我已经对两台设备都进行了重置。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">传输/同步失败</span></td><td>退货</td><td>1101</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">��无法将它下载到我的智能手机或电脑上</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">传输/同步失败</span></td><td>退货</td><td>1707</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法同步到设备</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">传输/同步失败</span></td><td>退货</td><td>2116</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">与我使用的应用程序不同步，无法使用。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">固件/OTA 升级失败</span></td><td>客诉</td><td>4040</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">事情是这样的，我试图将我的手机连接到相机上，这触发了一次固件更新。但更新失败了，现在相机无法开机。</td><td class="sol">LH250626V1C1232</td></tr>
-      <tr><td><span class="tag">固件/OTA 升级失败</span></td><td>客诉</td><td>5940</td><td>US</td><td>06-电池 / 20-客户体验或者其他 / 13-WiFi问题</td><td>-</td><td class="desc">我刚买了这款EK7000相机，但在设置以及通过你们的应用程序将其连接到我的手机时遇到了很多问题。（1）一开始，用手机登录应用程序就遇到了问题——在我重置了4次密码后，现在总算能登录了……这简直太离谱了！（2）延长保修和50%折扣的注册功能无法使用——后来已修复。（3）当人物身后有窗户开着时，在室内无���拍���清晰的照片。照片很暗，因为没有背景光补偿……这是另一个问题。（4）最新的问题是，按照说明从应用程序启用Wi-Fi后，应用程序没有进入下一步设置……因此无法完成相机与手机的连接。你们可不是付钱让我来找bug或者修复bug的！ 我按照你们的指示重置了相机，然后终于按照之前遵循的相同说明将相机连接到了我的手机。根据你们的说明：相机存在逆光问题的局限性，且无法通过升级解决。然而，又出现了一个新问题（4）电池耗电很快。我刚把相机附带的两块电池都装到充电器里，会试着追踪它们的电量。我只是试着测</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">应用连不上相机</span></td><td>退货</td><td>1111</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">按照说明和步骤操作后，多次尝试连接应用程序。此外，相机很快就会发热。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td>客诉</td><td>5686</td><td>CA</td><td>13-WiFi问题</td><td>-</td><td class="desc">我觉得这款相机的应用程序非常不友好。我试了好几次使用Wi-Fi和蓝牙，但都连接不上。我想把照片和视频传输到手机上，却无法通过应用程序实现。我也尝试过将相机直接连接到手机进行数据传输，但也没有成功。 相机本身以及照片和视频的质量都很棒……毫无疑问，绝对是五星好评。电池续航惊人。遥控功能绝对是个加分项，而且工作得非常完美。防抖功能无与伦比，无可挑剔。 应用程序说它适用于安卓和iPhone，但对我来说却不起作用。我觉得它很难导航和操作。目前我只能把存储卡插进笔记本电脑，下载文件，然后再传输到手机上。在我看来，这是一个非常不必要的步骤。如果您能提供任何帮助，我将不胜感激。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td>退货</td><td>1209</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">BAD-DEFECTIVE-无法与iPhone Max Pro X配合使用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td>退货</td><td>1351</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">太难用了，无法将视频同步到我的iPhone。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td>退货</td><td>1542</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">这款相机无法在安卓系统上使用。它似乎只与iPhone兼容，与宣传不符。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td>退货</td><td>2036</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">与自身之外的应用程序不兼容</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td>退货</td><td>2137</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">iPhone无法连接WiFi</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td>退货</td><td>2210</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">iPhone无法连接WiFi</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td>退货</td><td>2408</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">描述中提到Akaso应用用于传输视频，但该应用无法在iPhone iOS系统上下载</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">综合/简述 APP 问题</span></td><td>客诉</td><td>5480</td><td>UK</td><td>11-APP问题</td><td>待确认</td><td class="desc">我在黑色星期五促销活动中购买了这款产品，但直到现在才尝试使用。我们现在在马尔代夫度假，我和丈夫都无法让它正常工作。我已经阅读了手册，也观看了 YouTube 视频。现在我已经将它连接到了应用程序，但它无法录制视频，而我本想在浮潜时使用它。</td><td class="sol">@廖月滢确认下本机无法录制还是连接APP后无法录制。 APP无法录制检查下手机摄像等其他授权有没有打开 ok</td></tr>
-      <tr><td><span class="tag">综合/简述 APP 问题</span></td><td>退货</td><td>1168</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">不适用于我们的应用程序</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">综合/简述 APP 问题</span></td><td>退货</td><td>1988</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">应用连接很差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">预览/播放加载失败</span></td><td>客诉</td><td>3960</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">无法在应用程序上访问我的视频。是的，我能够连接到应用程序，但无法访问我的视频或照片。它一直在加载。 我尝试重启其他设备，也重新安装了应用程序，还重置了我的相机。 我也尝试过格式化和使用其他方法。但应用程序连接后就会冻结。</td><td class="sol">@廖月滢反馈给APP组，看他们需要什么信息，烦请重点跟进下</td></tr>
-      <tr><td><span class="tag">预览/播放加载失败</span></td><td>客诉</td><td>4012</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">我昨天从Akaso的亚马逊店铺购买了Akaso EK7000相机，但根本无法将其与我的手机连接。我多次按照所有说明操作，多次将相机、手机和Wi-Fi等设备开关重启，卸载并重新安装了应用程序，甚至还换了另一部手机尝试连接，但仍然没有成功。我真的不知道还能做些什么了。它总是卡在“实时预览”加载界面。相机序列号是SN - 53 - 250604 - V1。</td><td class="sol">@苏意梅如之前8328方案一样，重点跟进下，谢谢@蒋兴国@田奇该客户通过关闭蜂窝数据解决</td></tr>
-      <tr><td><span class="tag">预览/播放加载失败</span></td><td>客诉</td><td>4075</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">我最近购买了这款产品，在通过“AKASO GO”应用程序进行同步时遇到了问题。当我打开应用程序添加设备时，屏幕一直显示旋转/加载界面（见附件）。我还注意到相机的 Wi-Fi 显示没有网络连接，但不确定这是否是问题所在。</td><td class="sol">闭蜂窝数据之后解决</td></tr>
-      <tr><td><span class="tag">预览/播放加载失败</span></td><td>退货</td><td>1097</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">相机无法使用。它能开机，但连接到手机应用程序时不显示实时画面。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">预览/播放加载失败</span></td><td>退货</td><td>2385</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">产品完全无法实现其应有的功能，并且会卡在WiFi设置界面，除非拔掉电池否则无法退出。我不想再处理这个问题了。</td><td class="sol">-</td></tr></tbody></table>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-pit">PIT</td><td>4556</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">你好， 我刚买了新款的Akaso Ek7000，却无法连接到Akaso Go应用程序。此外，为了关闭无线网络，我不得不关掉手机，按下向下按钮无法关闭它。请帮帮我。几周后我要去旅行，急需帮助。 现在一切似乎都正常了。我把手机调成飞行模式后，它就能连接到Akaso Go了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-pit">PIT</td><td>5497</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">WiFi已开启并连接到您的手机，但应用程序一直停留在显示您手机的WiFi设置界面。您关闭了移动数据，删除了应用程序，但都没有用。摄像头的WiFi在屏幕上显示，所有权限都已允许。</td><td class="sol">描述为电话客服总结</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1120</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi。使用起来非常复杂！</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1140</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">我尝试在多个设备上连接摄像头的WiFi，但都连接不上。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1269</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1276</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">Wifi无法关闭，我一直在查阅指南，但Wifi仍然无法开启，或者我的手机检测不到它</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1286</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">手机Wi-Fi连接不正常</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1329</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到手机应用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1467</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到应用。太难了</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1473</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1479</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到手机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1480</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法保持 Wi-Fi 连接。必须反复手动重新连接摄像头，而且通常仍然无法连接 Wi-Fi 或应用程序。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1485</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到蓝牙</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>1576</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>2195</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">WiFi无法连接</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>2268</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">WiFi无法连接</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>2314</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到手机。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>2387</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">它声称支持Wi-Fi连接，但你无法连接到其他设备，只能连接随附的遥控器。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>2452</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">WiFi/蓝牙无法开启/关闭</span></td><td class="src src-pit">PIT</td><td>4104</td><td>US</td><td>13-WiFi问题</td><td>-</td><td class="desc">问题报告：相机无法激活 Wi-Fi 最新情况：你最近购买了这款相机，并尝试连接到应用程序。你按下向下按钮，但屏幕上没有任何显示。你取出相机电池后重新插入，相同的问题仍然存在。 我能够通过按下并按住向下按钮调出 Wi-Fi 连接选项，但它无法保持连接。如果我没有 Wi-Fi 接入会怎样？有蓝牙选项吗？</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-pit">PIT</td><td>3970</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">我如何将视频传输到手机上？ 手机显示存储空间已满，但实际并非如此。我清理了缓存，仍然无法下载一个2分钟的视频。我已经对两台设备都进行了重置。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-dnf">DNF</td><td>1101</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">��无法将它下载到我的智能手机或电脑上</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-dnf">DNF</td><td>1707</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法同步到设备</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-dnf">DNF</td><td>2116</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">与我使用的应用程序不同步，无法使用。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">固件/OTA 升级失败</span></td><td class="src src-pit">PIT</td><td>4040</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">事情是这样的，我试图将我的手机连接到相机上，这触发了一次固件更新。但更新失败了，现在相机无法开机。</td><td class="sol">LH250626V1C1232</td></tr>
+      <tr><td><span class="tag">固件/OTA 升级失败</span></td><td class="src src-pit">PIT</td><td>5940</td><td>US</td><td>06-电池 / 20-客户体验或者其他 / 13-WiFi问题</td><td>-</td><td class="desc">我刚买了这款EK7000相机，但在设置以及通过你们的应用程序将其连接到我的手机时遇到了很多问题。（1）一开始，用手机登录应用程序就遇到了问题——在我重置了4次密码后，现在总算能登录了……这简直太离谱了！（2）延长保修和50%折扣的注册功能无法使用——后来已修复。（3）当人物身后有窗户开着时，在室内无法拍出清晰的照片。照片很暗，因为没有背景光补偿……这是另一个问题。（4）最新的问题是，按照说明从应用程序启用Wi-Fi后，应用程序没有进入下一步设置……因此无法完成相机与手机的连接。你们可不是付钱让我来找bug或者修复bug的！ 我按照你们的指示重置了相机，然后终于按照之前遵循的相同说明将相机连接到了我的手机。根据你们的说明：相机存在逆光问题的局限性，且无法通过升级解决。然而，又出现了一个新问题（4）电池耗电很快。我刚把相机附带的两块电池都装到充电器里，会试着追踪它们的电量。我只是试着测试相机录</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">应用连不上相机</span></td><td class="src src-dnf">DNF</td><td>1111</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">按照说明和步骤操作后，多次尝试连接应用程序。此外，相机很快就会发热。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td class="src src-pit">PIT</td><td>5686</td><td>CA</td><td>13-WiFi问题</td><td>-</td><td class="desc">我觉得这款相机的应用程序非常不友好。我试了好几次使用Wi-Fi和蓝牙，但都连接不上。我想把照片和视频传输到手机上，却无法通过应用程序实现。我也尝试过将相机直接连接到手机进行数据传输，但也没有成功。 相机本身以及照片和视频的质量都很棒……毫无疑问，绝对是五星好评。电池续航惊人。遥控功能绝对是个加分项，而且工作得非常完美。防抖功能无与伦比，无可挑剔。 应用程序说它适用于安卓和iPhone，但对我来说却不起作用。我觉得它很难导航和操作。目前我只能把存储卡插进笔记本电脑，下载文件，然后再传输到手机上。在我看来，这是一个非常不必要的步骤。如果您能提供任何帮助，我将不胜感激。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td class="src src-dnf">DNF</td><td>1209</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">BAD-DEFECTIVE-无法与iPhone Max Pro X配合使用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td class="src src-dnf">DNF</td><td>1351</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">太难用了，无法将视频同步到我的iPhone。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td class="src src-dnf">DNF</td><td>1542</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">这款相机无法在安卓系统上使用。它似乎只与iPhone兼容，与宣传不符。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td class="src src-dnf">DNF</td><td>2036</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">与自身之外的应用程序不兼容</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td class="src src-dnf">DNF</td><td>2137</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">iPhone无法连接WiFi</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td class="src src-dnf">DNF</td><td>2210</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">iPhone无法连接WiFi</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">系统兼容性（iOS/Android）</span></td><td class="src src-dnf">DNF</td><td>2408</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">描述中提到Akaso应用用于传输视频，但该应用无法在iPhone iOS系统上下载</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">综合/简述 APP 问题</span></td><td class="src src-pit">PIT</td><td>5480</td><td>UK</td><td>11-APP问题</td><td>待确认</td><td class="desc">我在黑色星期五促销活动中购买了这款产品，但直到现在才尝试使用。我们现在在马尔代夫度假，我和丈夫都无法让它正常工作。我已经阅读了手册，也观看了 YouTube 视频。现在我已经将它连接到了应用程序，但它无法录制视频，而我本想在浮潜时使用它。</td><td class="sol">@廖月滢确认下本机无法录制还是连接APP后无法录制。 APP无法录制检查下手机摄像等其他授权有没有打开 ok</td></tr>
+      <tr><td><span class="tag">综合/简述 APP 问题</span></td><td class="src src-dnf">DNF</td><td>1168</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">不适用于我们的应用程序</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">综合/简述 APP 问题</span></td><td class="src src-dnf">DNF</td><td>1988</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">应用连接很差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">预览/播放加载失败</span></td><td class="src src-pit">PIT</td><td>3960</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">无法在应用程序上访问我的视频。是的，我能够连接到应用程序，但无法访问我的视频或照片。它一直在加载。 我尝试重启其他设备，也重新安装了应用程序，还重置了我的相机。 我也尝试过格式化和使用其他方法。但应用程序连接后就会冻结。</td><td class="sol">@廖月滢反馈给APP组，看他们需要什么信息，烦请重点跟进下</td></tr>
+      <tr><td><span class="tag">预览/播放加载失败</span></td><td class="src src-pit">PIT</td><td>4012</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">我昨天从Akaso的亚马逊店铺购买了Akaso EK7000相机，但根本无法将其与我的手机连接。我多次按照所有说明操作，多次将相机、手机和Wi-Fi等设备开关重启，卸载并重新安装了应用程序，甚至还换了另一部手机尝试连接，但仍然没有成功。我真的不知道还能做些什么了。它总是卡在“实时预览”加载界面。相机序列号是SN - 53 - 250604 - V1。</td><td class="sol">@苏意梅如之前8328方案一样，重点跟进下，谢谢@蒋兴国@田奇该客户通过关闭蜂窝数据解决</td></tr>
+      <tr><td><span class="tag">预览/播放加载失败</span></td><td class="src src-pit">PIT</td><td>4075</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">我最近购买了这款产品，在通过“AKASO GO”应用程序进行同步时遇到了问题。当我打开应用程序添加设备时，屏幕一直显示旋转/加载界面（见附件）。我还注意到相机的 Wi-Fi 显示没有网络连接，但不确定这是否是问题所在。</td><td class="sol">闭蜂窝数据之后解决</td></tr>
+      <tr><td><span class="tag">预览/播放加载失败</span></td><td class="src src-dnf">DNF</td><td>1097</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">相机无法使用。它能开机，但连接到手机应用程序时不显示实时画面。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">预览/播放加载失败</span></td><td class="src src-dnf">DNF</td><td>2385</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">产品完全无法实现其应有的功能，并且会卡在WiFi设置界面，除非拔掉电池否则无法退出。我不想再处理这个问题了。</td><td class="sol">—</td></tr></tbody></table>
       </div>
     </div>
-    <div class="panel" data-panel="图像品质">
+    <div class="panel" data-panel="图像品质" style="--acc:#FFC906">
+      <div class="round-header">
+        <div class="rh-left">
+          <div class="rh-round">ROUND 04 · GRAND PRIX</div>
+          <div class="rh-title">图像品质</div>
+        </div>
+        <div class="rh-right">
+          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
+          <div class="lap-counter">TOTAL LAPS <span>111</span></div>
+        </div>
+      </div>
+
       <div class="kpi-row">
-        <div class="kpi"><div class="label">总量</div><div class="val" style="color:#a78bfa">111</div></div>
-        <div class="kpi"><div class="label">客诉端</div><div class="val">3</div></div>
-        <div class="kpi"><div class="label">退货端</div><div class="val">108</div></div>
-        <div class="kpi"><div class="label">最高频子类</div><div class="val-s">画质差（笼统）<br><span class="mini">44 条 (40%)</span></div></div>
+        <div class="kpi kpi-main">
+          <div class="label">GRID TOTAL</div>
+          <div class="val">111</div>
+          <div class="sub-label">发车总量</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🔧 IN PIT LANE</div>
+          <div class="val-pit">3</div>
+          <div class="sub-label">客诉端 · 待修复</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🏳️ DNF</div>
+          <div class="val-dnf">108</div>
+          <div class="sub-label">退货端 · 已退赛</div>
+        </div>
+        <div class="kpi kpi-pole">
+          <div class="label">🏆 POLE POSITION</div>
+          <div class="val-s">画质差（笼统）</div>
+          <div class="sub-label">44 条 · 40% 占比</div>
+        </div>
       </div>
+
       <div class="two-col">
-        <div class="card"><h3>📊 子类分布（拆穿标签）</h3><div class="subrow"><div class="sublabel">画质差（笼统）</div><div class="subbar"><div class="subfill" style="width:100%;background:#f87171"></div><span class="subval">44 (40%)</span></div></div><div class="subrow"><div class="sublabel">防抖差/抖动</div><div class="subbar"><div class="subfill" style="width:45%;background:#fb923c"></div><span class="subval">20 (18%)</span></div></div><div class="subrow"><div class="sublabel">4K/分辨率不符</div><div class="subbar"><div class="subfill" style="width:39%;background:#facc15"></div><span class="subval">17 (15%)</span></div></div><div class="subrow"><div class="sublabel">其他/预期不符</div><div class="subbar"><div class="subfill" style="width:32%;background:#4ade80"></div><span class="subval">14 (13%)</span></div></div><div class="subrow"><div class="sublabel">夜拍/低光差</div><div class="subbar"><div class="subfill" style="width:14%;background:#60a5fa"></div><span class="subval">6 (5%)</span></div></div><div class="subrow"><div class="sublabel">音频质量差</div><div class="subbar"><div class="subfill" style="width:9%;background:#a78bfa"></div><span class="subval">4 (4%)</span></div></div><div class="subrow"><div class="sublabel">水下/防水壳画质差</div><div class="subbar"><div class="subfill" style="width:7%;background:#f472b6"></div><span class="subval">3 (3%)</span></div></div><div class="subrow"><div class="sublabel">颜色/颗粒感/噪点</div><div class="subbar"><div class="subfill" style="width:5%;background:#2dd4bf"></div><span class="subval">2 (2%)</span></div></div><div class="subrow"><div class="sublabel">对焦/变焦问题</div><div class="subbar"><div class="subfill" style="width:2%;background:#94a3b8"></div><span class="subval">1 (1%)</span></div></div></div>
-        <div class="card"><h3>🌍 站点分布</h3><div class="chips"><span class="chip">US <b>102</b></span><span class="chip">CA <b>3</b></span><span class="chip">DE <b>2</b></span><span class="chip">EU <b>1</b></span><span class="chip">AE <b>1</b></span><span class="chip">AU <b>1</b></span><span class="chip">JP <b>1</b></span></div>
-      <div class="sample-block"><h4>「画质差（笼统）」代表原文</h4><div class="sample"><span class="meta">退货·1100·US·-</span><div class="quote">图像质量太差</div></div><div class="sample"><span class="meta">退货·1119·US·-</span><div class="quote">清澈海水中的照片质量很差</div></div><div class="sample"><span class="meta">退货·1144·US·-</span><div class="quote">视频质量很差。</div></div><div class="sample"><span class="meta">退货·1157·US·-</span><div class="quote">视频质量差</div></div></div>
-      <div class="sample-block"><h4>「防抖差/抖动」代表原文</h4><div class="sample"><span class="meta">退货·1124·US·-</span><div class="quote">我打开并拍摄了一段短视频，但这段视频不合格。我原以为它会有防抖功能，结果视频非常抖。</div></div><div class="sample"><span class="meta">退货·1130·EU·-</span><div class="quote">我把它用在自行车上，图像防抖效果非常差，声音也很糟糕，录出来的视频完全是晃动的，这不是我想要的。</div></div><div class="sample"><span class="meta">退货·1210·US·-</span><div class="quote">我打开并测试了相机，它没有达到预期。录制时进行缩放操作，回放时视频会卡顿。图像清晰度没有达到我的需求。防抖效果勉强还行。</div></div><div class="sample"><span class="meta">退货·1399·US·-</span><div class="quote">录制开始前一切似乎都正常且稳定，但结果却不稳定且缓慢。</div></div></div>
-      <div class="sample-block"><h4>「4K/分辨率不符」代表原文</h4><div class="sample"><span class="meta">客诉·5032·CA·-</span><div class="quote">我试着贪便宜买了一个这种廉价运动相机。天哪，我已经后悔了。 优点：配件还不错。如果单独买的话，这些配件加起来也要不少钱。相机看起来足够坚固，所有的带子质量都还可以，魔术贴看起来也能经受一些折腾。价格显然很诱人。 缺点：这个价格对不起它的质量，我知道“一分钱一分货”，但我真没想到会这么差。刚开始用的几次和设置过程还算简单。我不知道是不是我的这台有问题，它变得非常非常烫，而且当时并没有放在防水壳里。我感觉最终它会因为太热而停止运行。防抖功能根本不存在，虽然你可以用软件后期添加，但作为一款运动相机，为什么不内置这个功能呢，这完全说不通。因为没有内置防抖，你最终</div></div><div class="sample"><span class="meta">客诉·5836·US·-</span><div class="quote">我有两台GoPro相机（一台是10年前的Hero Session和一台2年前的Hero 12 Black），想在我的视频录制设备包里再添几台相机。这些相机的评价加上价格让我心动了。我买了两台，它们的表现完全一样，所以不是我收到了有问题的产品。我不知道这些评论说的到底是什么产品，但肯定不是我收到的这个。没错，这些相机确实能录像。文件大小和图像尺寸显示是4K，但画质简直糟透了。我最早的那台GoPro（Digital Hero3）虽然分辨率低得多，但画质都比这些好。这些相机拍出来的画面模糊不清，而且一点也不流畅。视频的帧率感觉比宣传的低很多。不管描述怎么说，这</div></div><div class="sample"><span class="meta">退货·1174·US·-</span><div class="quote">相机质量与描述不符。它不是4K的。</div></div><div class="sample"><span class="meta">退货·1218·US·-</span><div class="quote">4k但画质差</div></div></div></div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
+          <div class="subrow">
+        <div class="sublabel"><span class="podium">🏆</span>画质差（笼统）</div>
+        <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">44 <em>(40%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥈</span>防抖差/抖动</div>
+        <div class="subbar"><div class="subfill" style="width:45%"></div><span class="subval">20 <em>(18%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥉</span>4K/分辨率不符</div>
+        <div class="subbar"><div class="subfill" style="width:39%"></div><span class="subval">17 <em>(15%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P4</span>其他/预期不符</div>
+        <div class="subbar"><div class="subfill" style="width:32%"></div><span class="subval">14 <em>(13%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P5</span>夜拍/低光差</div>
+        <div class="subbar"><div class="subfill" style="width:14%"></div><span class="subval">6 <em>(5%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P6</span>音频质量差</div>
+        <div class="subbar"><div class="subfill" style="width:9%"></div><span class="subval">4 <em>(4%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P7</span>水下/防水壳画质差</div>
+        <div class="subbar"><div class="subfill" style="width:7%"></div><span class="subval">3 <em>(3%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P8</span>颜色/颗粒感/噪点</div>
+        <div class="subbar"><div class="subfill" style="width:5%"></div><span class="subval">2 <em>(2%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P9</span>对焦/变焦问题</div>
+        <div class="subbar"><div class="subfill" style="width:2%"></div><span class="subval">1 <em>(1%)</em></span></div>
       </div>
-      <div class="card"><h3>📋 明细（111 条）</h3>
+        </div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 2</span>赛道分布 & TEAM RADIO</h3>
+          <div class="chips"><span class="chip">US <b>102</b></span><span class="chip">CA <b>3</b></span><span class="chip">DE <b>2</b></span><span class="chip">EU <b>1</b></span><span class="chip">AE <b>1</b></span><span class="chip">AU <b>1</b></span><span class="chip">JP <b>1</b></span></div>
+          
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P1 「画质差（笼统）」</span></h4>
+        <div class="sample"><span class="meta">退货·#1100·US·-</span><div class="quote">"图像质量太差"</div></div><div class="sample"><span class="meta">退货·#1119·US·-</span><div class="quote">"清澈海水中的照片质量很差"</div></div><div class="sample"><span class="meta">退货·#1144·US·-</span><div class="quote">"视频质量很差。"</div></div><div class="sample"><span class="meta">退货·#1157·US·-</span><div class="quote">"视频质量差"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P2 「防抖差/抖动」</span></h4>
+        <div class="sample"><span class="meta">退货·#1124·US·-</span><div class="quote">"我打开并拍摄了一段短视频，但这段视频不合格。我原以为它会有防抖功能，结果视频非常抖。"</div></div><div class="sample"><span class="meta">退货·#1130·EU·-</span><div class="quote">"我把它用在自行车上，图像防抖效果非常差，声音也很糟糕，录出来的视频完全是晃动的，这不是我想要的。"</div></div><div class="sample"><span class="meta">退货·#1210·US·-</span><div class="quote">"我打开并测试了相机，它没有达到预期。录制时进行缩放操作，回放时视频会卡顿。图像清晰度没有达到我的需求。防抖效果勉强还行。"</div></div><div class="sample"><span class="meta">退货·#1399·US·-</span><div class="quote">"录制开始前一切似乎都正常且稳定，但结果却不稳定且缓慢。"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P3 「4K/分辨率不符」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5032·CA·-</span><div class="quote">"我试着贪便宜买了一个这种廉价运动相机。天哪，我已经后悔了。 优点：配件还不错。如果单独买的话，这些配件加起来也要不少钱。相机看起来足够坚固，所有的带子质量都还可以，魔术贴看起来也能经受一些折腾。价格显然很诱人。 缺点：这个价格对不起它的质量，我知道“一分钱一分货”，但我真没想到会这么差。刚开始用的几次和设置过程还算简单。我不知道是不是我的这台有问题，它变得非常非常烫，而且当时并没有放在防水壳里。我感觉最终它会因为太热而停止运行。防抖功能根本不存在，虽然你可以用软件后期添加，但作为一款运动相机，为什么不内置这个功能呢，这完全说不通。因为没有内置防抖，你最终"</div></div><div class="sample"><span class="meta">客诉·#5836·US·-</span><div class="quote">"我有两台GoPro相机（一台是10年前的Hero Session和一台2年前的Hero 12 Black），想在我的视频录制设备包里再添几台相机。这些相机的评价加上价格让我心动了。我买了两台，它们的表现完全一样，所以不是我收到了有问题的产品。我不知道这些评论说的到底是什么产品，但肯定不是我收到的这个。没错，这些相机确实能录像。文件大小和图像尺寸显示是4K，但画质简直糟透了。我最早的那台GoPro（Digital Hero3）虽然分辨率低得多，但画质都比这些好。这些相机拍出来的画面模糊不清，而且一点也不流畅。视频的帧率感觉比宣传的低很多。不管描述怎么说，这"</div></div><div class="sample"><span class="meta">退货·#1174·US·-</span><div class="quote">"相机质量与描述不符。它不是4K的。"</div></div><div class="sample"><span class="meta">退货·#1218·US·-</span><div class="quote">"4k但画质差"</div></div>
+      </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="tech">▸ SECTOR 3</span>完整圈速表 · 111 LAPS</h3>
         <table><thead><tr><th>子类</th><th>来源</th><th>ID</th><th>站点</th><th>原标签</th><th>状态</th><th>描述</th><th>方案</th></tr></thead><tbody>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>客诉</td><td>5032</td><td>CA</td><td>17-图像品质</td><td>-</td><td class="desc">我试着贪便宜买了一个这种廉价运动相机。天哪，我已经后悔了。 优点：配件还不错。如果单独买的话，这些配件加起来也要不少钱。相机看起来足够坚固，所有的带子质量都还可以，魔术贴看起来也能经受一些折腾。价格显然很诱人。 缺点：这个价格对不起它的质量，我知道“一分钱一分货”，但我真没想到会这么差。刚开始用的几次和设置过程还算简单。我不知道是不是我的这台有问题，它变得非常非常烫，而且当时并没有放在防水壳里。我感觉最终它会因为太热而停止运行。防抖功能根本不存在，虽然你可以用软件后期添加，但作为一款运动相机，为什么不内置这个功能呢，这完全说不通。因为没有内置防抖，你最终得到的就是抖动的画面，而且对此无能为力。你只能在抖动的画面和有丢帧的防抖画面之间二选一。4k30fps的画质让这东西卡得要死，我觉得这个功能根本就不该被列入配置表，因为完全没法用。用4k模式录制后，相机会卡顿、崩溃，迫使你强制重启，然后录制</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>客诉</td><td>5836</td><td>US</td><td>03-声音问题 / 17-图像品质</td><td>-</td><td class="desc">我有两台GoPro相机（一台是10年前的Hero Session和一台2年前的Hero 12 Black），想在我的视频录制设备包里再添几台相机。这些相机的评价加上价格让我心动了。我买了两台，它们的表现完全一样，所以不是我收到了有问题的产品。我不知道这些评论说的到底是什么产品，但肯定不是我收到的这个。没错，这些相机确实能录像。文件大小和图像尺寸显示是4K，但画质简直糟透了。我最早的那台GoPro（Digital Hero3）虽然分辨率低得多，但画质都比这些好。这些相机拍出来的画面模糊不清，而且一点也不流畅。视频的帧率感觉比宣传的低很多。不管描述怎么说，这些相机根本不支持MP4格式录制，而是用MOV格式。都什么年代了，他们为什么要选择MOV格式？不像其他一些相机，你根本不能选择其他录制格式，只能用MOV。音质呢？音质也完全是垃圾！我把它们装在一辆噪音很大的肌肉车上，它们确实录到了声音，但即使</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>1174</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">相机质量与描述不符。它不是4K的。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>1218</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">4k但画质差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>1237</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差，没对焦，也没放在防水壳里。我用的是4K模式。出现了存储卡读取错误，我在开始前已经格式化过了。用的是64GB的存储卡，产品说明说最大支持256GB。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>1303</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差得离谱，而且根本不是4K的。使用起来非常复杂。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>1388</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量不是4K。分辨率非常差，手机摄像头的画面都比这好</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>1712</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">像素质量比我预期的要低</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2037</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">放大时视频/照片质量极差。只有数字变焦，本质上只是放大现有像素</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2065</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频和照片质量低于预期</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2179</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">它似乎无法以4K模式录制</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2252</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">似乎无法录制4K视频</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2279</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频持续卡顿。画质并非所列出的4K。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2290</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">它标明是4K，但甚至连1080p都达不到。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2471</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">在4K模式下根本无法清晰变焦</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2632</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">描述称其为4K，但这种画质并非4K。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">4K/分辨率不符</span></td><td>退货</td><td>2850</td><td>AU</td><td>图像品质</td><td>退货</td><td class="desc">质量极差，1080p 60fps下几乎什么都看不清……</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>1205</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片不是很好。需要更好的</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>1274</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这个视频没有预期的那么好。决定改买GoPro了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>1294</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我不喜欢这些图片的质量</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>1432</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我可能需要质量更好的视频片段。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>1456</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">连我五年前的旧手机都比这个效果好。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>1478</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不喜欢相机的质量和照片</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>1827</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这款相机没有我在自行车骑行用相机上所期望的运动稳定性。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>2014</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像稳定效果不如描述的准确</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>2098</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">没有图像稳定功能</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>2148</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不喜欢图片的质量</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>2151</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不想处理这个20年的旧东西！</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>2221</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不喜欢图片的质量</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>2224</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不想处理这个20年的旧东西！</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他/预期不符</span></td><td>退货</td><td>2484</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">相机无法稳定保持画面</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">夜拍/低光差</span></td><td>退货</td><td>1106</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">相机在傍晚和黄昏时分无法录制高质量视频，画质非常低，画面太暗，且无法针对不同光线条件进行调整。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">夜拍/低光差</span></td><td>退货</td><td>1211</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我认为视频质量不达标，尤其是在夜间场景</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">夜拍/低光差</span></td><td>退货</td><td>2079</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">夜间视频质量差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">夜拍/低光差</span></td><td>退货</td><td>2160</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">测试图像的画质非常差且昏暗，清晰度也很差。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">夜拍/低光差</span></td><td>退货</td><td>2233</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">测试图像的画质非常差且昏暗，清晰度也非常低。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">夜拍/低光差</span></td><td>退货</td><td>2276</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不适合夜间使用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">对焦/变焦问题</span></td><td>退货</td><td>2071</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这些照片看起来距离很远，而且没有对焦。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">水下/防水壳画质差</span></td><td>退货</td><td>1868</td><td>AE</td><td>图像品质</td><td>退货</td><td class="desc">水下的视频和图片质量相当低！</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">水下/防水壳画质差</span></td><td>退货</td><td>2024</td><td>US</td><td>图像品���</td><td>退货</td><td class="desc">水下无法自动对焦，太模糊了，整体无法使用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">水下/防水壳画质差</span></td><td>退货</td><td>2467</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">很棒的小相机，但在水下清晰度不高</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1100</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像质量太差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1119</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">清澈海水中的照片质量很差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1144</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量很差。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1157</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1227</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像质量没有达到我的预期</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1289</td><td>DE</td><td>图像品质</td><td>退货</td><td class="desc">它拍照效果不好，所有的照片都很模糊。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1290</td><td>DE</td><td>图像品质</td><td>退货</td><td class="desc">图片/视频质量很差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1305</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">包装和配件都不错，但照片质量不符合我的需求。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1414</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量很差，不好</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1428</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片质量不如预期。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1440</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">拍的画面一点也不清楚。我非常失望。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1452</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片不清晰</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1453</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像和视频质量比预期差很多，差太多了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1466</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1483</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片质量差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1501</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量不是很好。所有配件未拆封。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1507</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像和影片质量非常差……</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1508</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">产品分辨率和低质量</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1509</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">运动视频的画质不是很好</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1516</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频捕捉质量差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1533</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像质量不佳</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1589</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片不清晰。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1592</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">质量非常非常差。相机清晰度糟糕透了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1715</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1718</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">低质量视频</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1761</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">照片质量不够</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>1816</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频录制质量和稳定性都很差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2088</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">质量差的照片和视频</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2097</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我对这个相机的视频质量不满意。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2196</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我只用了大约10分钟，但它的拍摄分辨率质量不好，看起来非常模糊，拍摄效果不佳，我想我会选择大疆INSTA 360。谢谢</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2269</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我只用了大约10分钟，但它的录像分辨率质量不好，看起来非常模糊，录得不清楚，我想我会选择大疆INSTA 360。谢谢</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2336</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">相机质量没有达到我的预期。对我的工作来说，它太模糊了。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2353</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">质量差的电影</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2355</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">画质不好</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2389</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">低质量镜头</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2395</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片质量差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2451</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量非常差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2513</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像和视频质量未达到预期</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2529</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">试用时视频质量非常低，不想要这款相机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2554</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我要退回这个物品，因为我试的第一个质量很差。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2622</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">低质量视频</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2637</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">低质量视频</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2720</td><td>CA</td><td>图像品质</td><td>退货</td><td class="desc">照片质量不是很好</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">画质差（笼统）</span></td><td>退货</td><td>2838</td><td>CA</td><td>图像品质</td><td>退货</td><td class="desc">图片质量差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>1124</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我打开并拍摄了一段短视频，但这段视频不合格。我原以为它会有防抖功能，结果视频非常抖。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>1130</td><td>EU</td><td>图像品质</td><td>退货</td><td class="desc">我把它用在自行车上，图像防抖效果非常差，声音也很糟糕，录出来的视频完全是晃动的，这不是我想要的。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>1210</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我打开并测试了相机，它没有达到预期。录制时进行缩放操作，回放时视频会卡顿。图像清晰度没有达到我的需求。防抖效果勉强还行。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>1399</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">录制开始前一切似乎都正常且稳定，但结果却不稳定且缓慢。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>1433</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">质量极差，稳定性差。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>1505</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">画面非常抖动的视频</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>1864</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">进一步研究后，我决定买一台带防抖功能的相机，而这款没有。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>1989</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我想要更好的视频防抖效果。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2123</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">山地自行车骑行时非常摇晃</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2134</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">对图片质量印象不佳，图片模糊，视频也很抖</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2173</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这款相机在移动时无法稳定画面。它宣传称具备可覆盖跑步、骑行乃至水中潜水的防抖功能，但所有视频都模糊且失焦。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2189</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">没有EIS，不是131英尺，不是超高清</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2191</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">录制不稳定，电池续航极差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2207</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">对图片质量不太满意，照片模糊，视频也很抖</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2246</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这款相机在移动时无法稳定图像。它显示并声称具备可覆盖跑步、骑行甚至水中潜水的防抖功能，但所有视频都模糊且失焦。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2262</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不要EIS，不要131英尺，不要超高清</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2264</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">录制不稳定，电池续航很差</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2365</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">使用效果不佳，存在抖动问题。设置无法打开。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2371</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频不够清晰并且仍然抖动</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">防抖差/抖动</span></td><td>退货</td><td>2854</td><td>JP</td><td>图像品质</td><td>退货</td><td class="desc">虽然带有防抖功能，但几乎没有效果。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">音频质量差</span></td><td>客诉</td><td>5076</td><td>US</td><td>发热问题 / 17-图像品质</td><td>待确认</td><td class="desc">这台相机即使只用2分钟也经常过热。而且音频几乎没有，质量也比宣传的差。我知道这是一款低成本相机，但我在亚马逊应用上看到的宣传显示整体质量会好一些。</td><td class="sol">SN-53-250703-V2 重置后画质好一些</td></tr>
-      <tr><td><span class="tag">音频质量差</span></td><td>退货</td><td>1525</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">未录制到音频，帧率非常低。录制不如我想要的流畅</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">音频质量差</span></td><td>退货</td><td>2360</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像和音质不是很好</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">音频质量差</span></td><td>退货</td><td>2553</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差，音频录制糟糕。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">颜色/颗粒感/噪点</span></td><td>退货</td><td>2185</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">极其严重的颗粒感</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">颜色/颗粒感/噪点</span></td><td>退货</td><td>2258</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">极其严重的颗粒感</td><td class="sol">-</td></tr></tbody></table>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-pit">PIT</td><td>5032</td><td>CA</td><td>17-图像品质</td><td>-</td><td class="desc">我试着贪便宜买了一个这种廉价运动相机。天哪，我已经后悔了。 优点：配件还不错。如果单独买的话，这些配件加起来也要不少钱。相机看起来足够坚固，所有的带子质量都还可以，魔术贴看起来也能经受一些折腾。价格显然很诱人。 缺点：这个价格对不起它的质量，我知道“一分钱一分货”，但我真没想到会这么差。刚开始用的几次和设置过程还算简单。我不知道是不是我的这台有问题，它变得非常非常烫，而且当时并没有放在防水壳里。我感觉最终它会因为太热而停止运行。防抖功能根本不存在，虽然你可以用软件后期添加，但作为一款运动相机，为什么不内置这个功能呢，这完全说不通。因为没有内置防抖，你最终得到的就是抖动的画面，而且对此无能为力。你只能在抖动的画面和有丢帧的防抖画面之间二选一。4k30fps的画质让这东西卡得要死，我觉得这个功能根本就不该被列入配置表，因为完全没法用。用4k模式录制后，相机会卡顿、崩溃，迫使你强制重启，然后录制</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-pit">PIT</td><td>5836</td><td>US</td><td>03-声音问题 / 17-图像品质</td><td>-</td><td class="desc">我有两台GoPro相机（一台是10年前的Hero Session和一台2年前的Hero 12 Black），想在我的视频录制设备包里再添几台相机。这些相机的评价加上价格让我心动了。我买了两台，它们的表现完全一样，所以不是我收到了有问题的产品。我不知道这些评论说的到底是什么产品，但肯定不是我收到的这个。没错，这些相机确实能录像。文件大小和图像尺寸显示是4K，但画质简直糟透了。我最早的那台GoPro（Digital Hero3）虽然分辨率低得多，但画质都比这些好。这些相机拍出来的画面模糊不清，而且一点也不流畅。视频的帧率感觉比宣传的低很多。不管描述怎么说，这些相机根本不支持MP4格式录制，而是用MOV格式。都什么年代了，他们为什么要选择MOV格式？不像其他一些相机，你根本不能选择其他录制格式，只能用MOV。音质呢？音质也完全是垃圾！我把它们装在一辆噪音很大的肌肉车上，它们确实录到了声音，但即使</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>1174</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">相机质量与描述不符。它不是4K的。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>1218</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">4k但画质差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>1237</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差，没对焦，也没放在防水壳里。我用的是4K模式。出现了存储卡读取错误，我在开始前已经格式化过了。用的是64GB的存储卡，产品说明说最大支持256GB。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>1303</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差得离谱，而且根本不是4K的。使用起来非常复杂。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>1388</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量不是4K。分辨率非常差，手机摄像头的画面都比这好</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>1712</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">像素质量比我预期的要低</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2037</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">放大时视频/照片质量极差。只有数字变焦，本质上只是放大现有像素</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2065</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频和照片质量低于预期</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2179</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">它似乎无法以4K模式录制</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2252</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">似乎无法录制4K视频</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2279</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频持续卡顿。画质并非所列出的4K。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2290</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">它标明是4K，但甚至连1080p都达不到。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2471</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">在4K模式下根本无法清晰变焦</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2632</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">描述称其为4K，但这种画质并非4K。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">4K/分辨率不符</span></td><td class="src src-dnf">DNF</td><td>2850</td><td>AU</td><td>图像品质</td><td>退货</td><td class="desc">质量极差，1080p 60fps下几乎什么都看不清……</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>1205</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片不是很好。需要更好的</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>1274</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这个视频没有预期的那么好。决定改买GoPro了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>1294</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我不喜欢这些图片的质量</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>1432</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我可能需要质量更好的视频片段。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>1456</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">连我五年前的旧手机都比这个效果好。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>1478</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不喜欢相机的质量和照片</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>1827</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这款相机没有我在自行车骑行用相机上所期望的运动稳定性。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>2014</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像稳定效果不如描述的准确</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>2098</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">没有图像稳定功能</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>2148</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不喜欢图片的质量</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>2151</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不想处理这个20年的旧东西！</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>2221</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不喜欢图片的质量</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>2224</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不想处理这个20年的旧东西！</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他/预期不符</span></td><td class="src src-dnf">DNF</td><td>2484</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">相机无法稳定保持画面</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">夜拍/低光差</span></td><td class="src src-dnf">DNF</td><td>1106</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">相机在傍晚和黄昏时分无法录制高质量视频，画质非常低，画面太暗，且无法针对不同光线条件进行调整。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">夜拍/低光差</span></td><td class="src src-dnf">DNF</td><td>1211</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我认为视频质量不达标，尤其是在夜间场景</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">夜拍/低光差</span></td><td class="src src-dnf">DNF</td><td>2079</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">夜间视频质量差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">夜拍/低光差</span></td><td class="src src-dnf">DNF</td><td>2160</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">测试图像的画质非常差且昏暗，清晰度也很差。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">夜拍/低光差</span></td><td class="src src-dnf">DNF</td><td>2233</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">测试图像的画质非常差且昏暗，清晰度也非常低。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">夜拍/低光差</span></td><td class="src src-dnf">DNF</td><td>2276</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不适合夜间使用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">对焦/变焦问题</span></td><td class="src src-dnf">DNF</td><td>2071</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这些照片看起来距离很远，而且没有对焦。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">水下/防水壳画质差</span></td><td class="src src-dnf">DNF</td><td>1868</td><td>AE</td><td>图像品质</td><td>退货</td><td class="desc">水下的视频和图片质量相当低！</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">水下/防水壳画质差</span></td><td class="src src-dnf">DNF</td><td>2024</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">水下无法自动对焦，太模糊了，整体无法使用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">水下/防水壳画质差</span></td><td class="src src-dnf">DNF</td><td>2467</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">很棒的小相机，但在水下清晰度不高</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1100</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像质量太差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1119</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">清澈海水中的照片质量很差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1144</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量很差。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1157</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1227</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像质量没有达到我的预期</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1289</td><td>DE</td><td>图像品质</td><td>退货</td><td class="desc">它拍照效果不好，所有的照片都很模糊。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1290</td><td>DE</td><td>图像品质</td><td>退货</td><td class="desc">图片/视频质量很差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1305</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">包装和配件都不错，但照片质量不符合我的需求。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1414</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量很差，不好</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1428</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片质量不如预期。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1440</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">拍的画面一点也不清楚。我非常失望。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1452</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片不清晰</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1453</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像和视频质量比预期差很多，差太多了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1466</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1483</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片质量差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1501</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量不是很好。所有配件未拆封。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1507</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像和影片质量非常差……</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1508</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">产品分辨率和低质量</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1509</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">运动视频的画质不是很好</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1516</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频捕捉质量差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1533</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像质量不佳</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1589</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片不清晰。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1592</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">质量非常非常差。相机清晰度糟糕透了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1715</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1718</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">低质量视频</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1761</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">照片质量不够</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>1816</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频录制质量和稳定性都很差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2088</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">质量差的照片和视频</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2097</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我对这个相机的视频质量不满意。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2196</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我只用了大约10分钟，但它的拍摄分辨率质量不好，看起来非常模糊，拍摄效果不佳，我想我会选择大疆INSTA 360。谢谢</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2269</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我只用了大约10分钟，但它的录像分辨率质量不好，看起来非常模糊，录得不清楚，我想我会选择大疆INSTA 360。谢谢</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2336</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">相机质量没有达到我的预期。对我的工作来说，它太模糊了。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2353</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">质量差的电影</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2355</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">画质不好</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2389</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">低质量镜头</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2395</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图片质量差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2451</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量非常差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2513</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像和视频质量未达到预期</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2529</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">试用时视频质量非常低，不想要这款相机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2554</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我要退回这个物品，因为我试的第一个质量很差。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2622</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">低质量视频</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2637</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">低质量视频</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2720</td><td>CA</td><td>图像品质</td><td>退货</td><td class="desc">照片质量不是很好</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">画质差（笼统）</span></td><td class="src src-dnf">DNF</td><td>2838</td><td>CA</td><td>图像品质</td><td>退货</td><td class="desc">图片质量差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>1124</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我打开并拍摄了一段短视频，但这段视频不合格。我原以为它会有防抖功能，结果视频非常抖。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>1130</td><td>EU</td><td>图像品质</td><td>退货</td><td class="desc">我把它用在自行车上，图像防抖效果非常差，声音也很糟糕，录出来的视频完全是晃动的，这不是我想要的。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>1210</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我打开并测试了相机，它没有达到预期。录制时进行缩放操作，回放时视频会卡顿。图像清晰度没有达到我的需求。防抖效果勉强还行。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>1399</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">录制开始前一切似乎都正常且稳定，但结果却不稳定且缓慢。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>1433</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">质量极差，稳定性差。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>1505</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">画面非常抖动的视频</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>1864</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">进一步研究后，我决定买一台带防抖功能的相机，而这款没有。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>1989</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">我想要更好的视频防抖效果。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2123</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">山地自行车骑行时非常摇晃</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2134</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">对图片质量印象不佳，图片模糊，视频也很抖</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2173</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这款相机在移动时无法稳定画面。它宣传称具备可覆盖跑步、骑行乃至水中潜水的防抖功能，但所有视频都模糊且失焦。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2189</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">没有EIS，不是131英尺，不是超高清</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2191</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">录制不稳定，电池续航极差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2207</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">对图片质量不太满意，照片模糊，视频也很抖</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2246</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">这款相机在移动时无法稳定图像。它显示并声称具备可覆盖跑步、骑行甚至水中潜水的防抖功能，但所有视频都模糊且失焦。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2262</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">不要EIS，不要131英尺，不要超高清</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2264</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">录制不稳定，电池续航很差</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2365</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">使用效果不佳，存在抖动问题。设置无法打开。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2371</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频不够清晰并且仍然抖动</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">防抖差/抖动</span></td><td class="src src-dnf">DNF</td><td>2854</td><td>JP</td><td>图像品质</td><td>退货</td><td class="desc">虽然带有防抖功能，但几乎没有效果。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">音频质量差</span></td><td class="src src-pit">PIT</td><td>5076</td><td>US</td><td>发热问题 / 17-图像品质</td><td>待确认</td><td class="desc">这台相机即使只用2分钟也经常过热。而且音频几乎没有，质量也比宣传的差。我知道这是一款低成本相机，但我在亚马逊应用上看到的宣传显示整体质量会好一些。</td><td class="sol">SN-53-250703-V2 重置后画质好一些</td></tr>
+      <tr><td><span class="tag">音频质量差</span></td><td class="src src-dnf">DNF</td><td>1525</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">未录制到音频，帧率非常低。录制不如我想要的流畅</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">音频质量差</span></td><td class="src src-dnf">DNF</td><td>2360</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">图像和音质不是很好</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">音频质量差</span></td><td class="src src-dnf">DNF</td><td>2553</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">视频质量差，音频录制糟糕。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">颜色/颗粒感/噪点</span></td><td class="src src-dnf">DNF</td><td>2185</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">极其严重的颗粒感</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">颜色/颗粒感/噪点</span></td><td class="src src-dnf">DNF</td><td>2258</td><td>US</td><td>图像品质</td><td>退货</td><td class="desc">极其严重的颗粒感</td><td class="sol">—</td></tr></tbody></table>
       </div>
     </div>
-    <div class="panel" data-panel="按键">
+    <div class="panel" data-panel="按键" style="--acc:#F472B6">
+      <div class="round-header">
+        <div class="rh-left">
+          <div class="rh-round">ROUND 05 · GRAND PRIX</div>
+          <div class="rh-title">按键问题（独立）</div>
+        </div>
+        <div class="rh-right">
+          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
+          <div class="lap-counter">TOTAL LAPS <span>18</span></div>
+        </div>
+      </div>
+
       <div class="kpi-row">
-        <div class="kpi"><div class="label">总量</div><div class="val" style="color:#facc15">18</div></div>
-        <div class="kpi"><div class="label">客诉端</div><div class="val">7</div></div>
-        <div class="kpi"><div class="label">退货端</div><div class="val">11</div></div>
-        <div class="kpi"><div class="label">最高频子类</div><div class="val-s">快门/拍照/录像键失灵<br><span class="mini">4 条 (22%)</span></div></div>
+        <div class="kpi kpi-main">
+          <div class="label">GRID TOTAL</div>
+          <div class="val">18</div>
+          <div class="sub-label">发车总量</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🔧 IN PIT LANE</div>
+          <div class="val-pit">7</div>
+          <div class="sub-label">客诉端 · 待修复</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🏳️ DNF</div>
+          <div class="val-dnf">11</div>
+          <div class="sub-label">退货端 · 已退赛</div>
+        </div>
+        <div class="kpi kpi-pole">
+          <div class="label">🏆 POLE POSITION</div>
+          <div class="val-s">快门/拍照/录像键失灵</div>
+          <div class="sub-label">4 条 · 22% 占比</div>
+        </div>
       </div>
+
       <div class="two-col">
-        <div class="card"><h3>📊 子类分布（拆穿标签）</h3><div class="subrow"><div class="sublabel">快门/拍照/录像键失灵</div><div class="subbar"><div class="subfill" style="width:100%;background:#f87171"></div><span class="subval">4 (22%)</span></div></div><div class="subrow"><div class="sublabel">方向键失灵（上/下/模式）</div><div class="subbar"><div class="subfill" style="width:75%;background:#fb923c"></div><span class="subval">3 (17%)</span></div></div><div class="subrow"><div class="sublabel">按键卡住</div><div class="subbar"><div class="subfill" style="width:75%;background:#facc15"></div><span class="subval">3 (17%)</span></div></div><div class="subrow"><div class="sublabel">电源键失灵</div><div class="subbar"><div class="subfill" style="width:75%;background:#4ade80"></div><span class="subval">3 (17%)</span></div></div><div class="subrow"><div class="sublabel">变焦键失灵</div><div class="subbar"><div class="subfill" style="width:50%;background:#60a5fa"></div><span class="subval">2 (11%)</span></div></div><div class="subrow"><div class="sublabel">其他按键问题</div><div class="subbar"><div class="subfill" style="width:50%;background:#a78bfa"></div><span class="subval">2 (11%)</span></div></div><div class="subrow"><div class="sublabel">播放键失灵</div><div class="subbar"><div class="subfill" style="width:25%;background:#f472b6"></div><span class="subval">1 (6%)</span></div></div></div>
-        <div class="card"><h3>🌍 站点分布</h3><div class="chips"><span class="chip">US <b>16</b></span><span class="chip">UK <b>1</b></span><span class="chip">DE <b>1</b></span></div>
-      <div class="sample-block"><h4>「快门/拍照/录像键失灵」代表原文</h4><div class="sample"><span class="meta">客诉·5926·US·-</span><div class="quote">我最近通过亚马逊购买了一台新的AKASO EK7000相机以及一张新的AKASO 64GB microSD卡（U3，，，HD，4K UHD，MicroSD卡）。电池已充满电，我插入了电池和SD卡。我成功格式化了SD卡。但是，当我尝试测试相机时，无法让它开始录制视频。我必须按很多次快门按钮，如果它开始录制了，我又很难让它停止录制。我通常不得不按模式按钮来关闭相机。我尝试过更换电池，重新安装SD卡并重新格式化。我还应该尝试其他方法吗，还是相机或SD卡（或两者都）有问题？ 抱歉过了这么久才回复你，“生活”总是会妨碍（就像往常一样）。按照你的建议，我重置了相机。</div></div><div class="sample"><span class="meta">退货·1359·US·-</span><div class="quote">快门按钮大部分时间无法工作</div></div><div class="sample"><span class="meta">退货·1490·DE·-</span><div class="quote">拍照或录像按钮无法使用，它卡住了</div></div><div class="sample"><span class="meta">退货·2620·US·-</span><div class="quote">快门按钮的弹簧在使用一次后就坏了</div></div></div>
-      <div class="sample-block"><h4>「方向键失灵（上/下/模式）」代表原文</h4><div class="sample"><span class="meta">客诉·4624·US·-</span><div class="quote">向上的按钮坏了。</div></div><div class="sample"><span class="meta">客诉·5054·US·-</span><div class="quote">AKASO EK7000的向下按钮卡住了，我还没用过呢，它一直在防水壳里放着。</div></div><div class="sample"><span class="meta">退货·2369·US·-</span><div class="quote">侧边按钮故障</div></div></div>
-      <div class="sample-block"><h4>「按键卡住」代表原文</h4><div class="sample"><span class="meta">客诉·5648·US·-</span><div class="quote">我在2025年12月购买的相机出现了按钮卡住且无法正常工作的问题。</div></div><div class="sample"><span class="meta">退货·1769·US·-</span><div class="quote">按钮卡住了</div></div><div class="sample"><span class="meta">退货·2556·US·-</span><div class="quote">相机盖按钮卡住，导致相机无法关闭。</div></div></div></div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
+          <div class="subrow">
+        <div class="sublabel"><span class="podium">🏆</span>快门/拍照/录像键失灵</div>
+        <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">4 <em>(22%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥈</span>方向键失灵（上/下/模式）</div>
+        <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥉</span>按键卡住</div>
+        <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P4</span>电源键失灵</div>
+        <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P5</span>变焦键失灵</div>
+        <div class="subbar"><div class="subfill" style="width:50%"></div><span class="subval">2 <em>(11%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P6</span>其他按键问题</div>
+        <div class="subbar"><div class="subfill" style="width:50%"></div><span class="subval">2 <em>(11%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P7</span>播放键失灵</div>
+        <div class="subbar"><div class="subfill" style="width:25%"></div><span class="subval">1 <em>(6%)</em></span></div>
       </div>
-      <div class="card"><h3>📋 明细（18 条）</h3>
+        </div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 2</span>赛道分布 & TEAM RADIO</h3>
+          <div class="chips"><span class="chip">US <b>16</b></span><span class="chip">UK <b>1</b></span><span class="chip">DE <b>1</b></span></div>
+          
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P1 「快门/拍照/录像键失灵」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5926·US·-</span><div class="quote">"我最近通过亚马逊购买了一台新的AKASO EK7000相机以及一张新的AKASO 64GB microSD卡（U3，，，HD，4K UHD，MicroSD卡）。电池已充满电，我插入了电池和SD卡。我成功格式化了SD卡。但是，当我尝试测试相机时，无法让它开始录制视频。我必须按很多次快门按钮，如果它开始录制了，我又很难让它停止录制。我通常不得不按模式按钮来关闭相机。我尝试过更换电池，重新安装SD卡并重新格式化。我还应该尝试其他方法吗，还是相机或SD卡（或两者都）有问题？ 抱歉过了这么久才回复你，“生活”总是会妨碍（就像往常一样）。按照你的建议，我重置了相机。"</div></div><div class="sample"><span class="meta">退货·#1359·US·-</span><div class="quote">"快门按钮大部分时间无法工作"</div></div><div class="sample"><span class="meta">退货·#1490·DE·-</span><div class="quote">"拍照或录像按钮无法使用，它卡住了"</div></div><div class="sample"><span class="meta">退货·#2620·US·-</span><div class="quote">"快门按钮的弹簧在使用一次后就坏了"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P2 「方向键失灵（上/下/模式）」</span></h4>
+        <div class="sample"><span class="meta">客诉·#4624·US·-</span><div class="quote">"向上的按钮坏了。"</div></div><div class="sample"><span class="meta">客诉·#5054·US·-</span><div class="quote">"AKASO EK7000的向下按钮卡住了，我还没用过呢，它一直在防水壳里放着。"</div></div><div class="sample"><span class="meta">退货·#2369·US·-</span><div class="quote">"侧边按钮故障"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P3 「按键卡住」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5648·US·-</span><div class="quote">"我在2025年12月购买的相机出现了按钮卡住且无法正常工作的问题。"</div></div><div class="sample"><span class="meta">退货·#1769·US·-</span><div class="quote">"按钮卡住了"</div></div><div class="sample"><span class="meta">退货·#2556·US·-</span><div class="quote">"相机盖按钮卡住，导致相机无法关闭。"</div></div>
+      </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="tech">▸ SECTOR 3</span>完整圈速表 · 18 LAPS</h3>
         <table><thead><tr><th>子类</th><th>来源</th><th>ID</th><th>站点</th><th>原标签</th><th>状态</th><th>描述</th><th>方案</th></tr></thead><tbody>
-      <tr><td><span class="tag">其他按键问题</span></td><td>客诉</td><td>5239</td><td>UK</td><td>05-按键</td><td>-</td><td class="desc">相机能够开机，但无法使用镜头旁的按钮切换模式或关机</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他按键问题</span></td><td>退货</td><td>2590</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">相机按钮在防水壳内无法使用，只有在壳外时偶尔能工作</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">变焦键失灵</span></td><td>客诉</td><td>4585</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">我的相机出了些问题。变焦按钮不再起作用了。 请查看附件视频，视频中拉近镜头按钮无法正常工作。它有时能随机正常工作，但大多数时候不行。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">变焦键失灵</span></td><td>客诉</td><td>5500</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">嗨，我刚刚和亚马逊客服沟通过。他们说我可以联系您。很遗憾，AKASO相机的变焦按钮坏了。它现在无法使用，按不下去。由于产品还在保修期内，请问是否可以维修或更换产品？谢谢。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">快门/拍照/录像键失灵</span></td><td>客诉</td><td>5926</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">我最近通过亚马逊购买了一台新的AKASO EK7000相机以及一张新的AKASO 64GB microSD卡（U3，，，HD，4K UHD，MicroSD卡）。电池已充满电，我插入了电池和SD卡。我成功格式化了SD卡。但是，当我尝试测试相机时，无法让它开始录制视频。我必须按很多次快门按钮，如果它开始录制了，我又很难让它停止录制。我通常不得不按模式按钮来关闭相机。我尝试过更换电池，重新安装SD卡并重新格式化。我还应该尝试其他方法吗，还是相机或SD卡（或两者都）有问题？ 抱歉过了这么久才回复你，“生活”总是会妨碍（就像往常一样）。按照你的建议，我重置了相机。现在它似乎工作得更好了，当我手持相机时，双击快门按钮可以稳定地开始和停止录制。当相机放在稳固的表面上时，我只需按一次快门按钮就能开始和停止录制。 我可以接受这种情况，除非你还有其他快速的方法让我尝试。 我在之前的邮件中描述的情况是在没有防水</td><td class="sol">发送新固件测试</td></tr>
-      <tr><td><span class="tag">快门/拍照/录像键失灵</span></td><td>退货</td><td>1359</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">快门按钮大部分时间无法工作</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">快门/拍照/录像键失灵</span></td><td>退货</td><td>1490</td><td>DE</td><td>质量-按键</td><td>退货</td><td class="desc">拍照或录像按钮无法使用，它卡住了</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">快门/拍照/录像键失灵</span></td><td>退货</td><td>2620</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">快门按钮的弹簧在使用一次后就坏了</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">按键卡住</span></td><td>客诉</td><td>5648</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">我在2025年12月购买的相机出现了按钮卡住且无法正常工作的问题。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">按键卡住</span></td><td>退货</td><td>1769</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">按钮卡住了</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">按键卡住</span></td><td>退货</td><td>2556</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">相机盖按钮卡住，导致相机无法关闭。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">播放键失灵</span></td><td>退货</td><td>2534</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">在这种情况下，播放按钮几乎无法使用</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">方向键失灵（上/下/模式）</span></td><td>客诉</td><td>4624</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">向上的按钮坏了。</td><td class="sol">https://photos.app.goo.gl/vR5hNUR77WD4wYxGA</td></tr>
-      <tr><td><span class="tag">方向键失灵（上/下/模式）</span></td><td>客诉</td><td>5054</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">AKASO EK7000的向下按钮卡住了，我还没用过呢，它一直在防水壳里放着。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">方向键失灵（上/下/模式）</span></td><td>退货</td><td>2369</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">侧边按钮故障</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">电源键失灵</span></td><td>退货</td><td>1822</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">已安装充电电池，打开设备电源，按键无法将光标从屏幕上的英文提示处移开。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">电源键失灵</span></td><td>退货</td><td>2313</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">开关按钮无法正常工作。请问我可以更换一个吗？谢谢</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">电源键失灵</span></td><td>退货</td><td>2350</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">电源按钮总是卡住</td><td class="sol">-</td></tr></tbody></table>
+      <tr><td><span class="tag">其他按键问题</span></td><td class="src src-pit">PIT</td><td>5239</td><td>UK</td><td>05-按键</td><td>-</td><td class="desc">相机能够开机，但无法使用镜头旁的按钮切换模式或关机</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他按键问题</span></td><td class="src src-dnf">DNF</td><td>2590</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">相机按钮在防水壳内无法使用，只有在壳外时偶尔能工作</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">变焦键失灵</span></td><td class="src src-pit">PIT</td><td>4585</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">我的相机出了些问题。变焦按钮不再起作用了。 请查看附件视频，视频中拉近镜头按钮无法正常工作。它有时能随机正常工作，但大多数时候不行。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">变焦键失灵</span></td><td class="src src-pit">PIT</td><td>5500</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">嗨，我刚刚和亚马逊客服沟通过。他们说我可以联系您。很遗憾，AKASO相机的变焦按钮坏了。它现在无法使用，按不下去。由于产品还在保修期内，请问是否可以维修或更换产品？谢谢。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">快门/拍照/录像键失灵</span></td><td class="src src-pit">PIT</td><td>5926</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">我最近通过亚马逊购买了一台新的AKASO EK7000相机以及一张新的AKASO 64GB microSD卡（U3，，，HD，4K UHD，MicroSD卡）。电池已充满电，我插入了电池和SD卡。我成功格式化了SD卡。但是，当我尝试测试相机时，无法让它开始录制视频。我必须按很多次快门按钮，如果它开始录制了，我又很难让它停止录制。我通常不得不按模式按钮来关闭相机。我尝试过更换电池，重新安装SD卡并重新格式化。我还应该尝试其他方法吗，还是相机或SD卡（或两者都）有问题？ 抱歉过了这么久才回复你，“生活”总是会妨碍（就像往常一样）。按照你的建议，我重置了相机。现在它似乎工作得更好了，当我手持相机时，双击快门按钮可以稳定地开始和停止录制。当相机放在稳固的表面上时，我只需按一次快门按钮就能开始和停止录制。 我可以接受这种情况，除非你还有其他快速的方法让我尝试。 我在之前的邮件中描述的情况是在没有防水</td><td class="sol">发送新固件测试</td></tr>
+      <tr><td><span class="tag">快门/拍照/录像键失灵</span></td><td class="src src-dnf">DNF</td><td>1359</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">快门按钮大部分时间无法工作</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">快门/拍照/录像键失灵</span></td><td class="src src-dnf">DNF</td><td>1490</td><td>DE</td><td>质量-按键</td><td>退货</td><td class="desc">拍照或录像按钮无法使用，它卡住了</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">快门/拍照/录像键失灵</span></td><td class="src src-dnf">DNF</td><td>2620</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">快门按钮的弹簧在使用一次后就坏了</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">按键卡住</span></td><td class="src src-pit">PIT</td><td>5648</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">我在2025年12月购买的相机出现了按钮卡住且无法正常工作的问题。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">按键卡住</span></td><td class="src src-dnf">DNF</td><td>1769</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">按钮卡住了</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">按键卡住</span></td><td class="src src-dnf">DNF</td><td>2556</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">相机盖按钮卡住，导致相机无法关闭。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">播放键失灵</span></td><td class="src src-dnf">DNF</td><td>2534</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">在这种情况下，播放按钮几乎无法使用</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">方向键失灵（上/下/模式）</span></td><td class="src src-pit">PIT</td><td>4624</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">向上的按钮坏了。</td><td class="sol">https://photos.app.goo.gl/vR5hNUR77WD4wYxGA</td></tr>
+      <tr><td><span class="tag">方向键失灵（上/下/模式）</span></td><td class="src src-pit">PIT</td><td>5054</td><td>US</td><td>05-按键</td><td>-</td><td class="desc">AKASO EK7000的向下按钮卡住了，我还没用过呢，它一直在防水壳里放着。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">方向键失灵（上/下/模式）</span></td><td class="src src-dnf">DNF</td><td>2369</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">侧边按钮故障</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">电源键失灵</span></td><td class="src src-dnf">DNF</td><td>1822</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">已安装充电电池，打开设备电源，按键无法将光标从屏幕上的英文提示处移开。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">电源键失灵</span></td><td class="src src-dnf">DNF</td><td>2313</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">开关按钮无法正常工作。请问我可以更换一个吗？谢谢</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">电源键失灵</span></td><td class="src src-dnf">DNF</td><td>2350</td><td>US</td><td>质量-按键</td><td>退货</td><td class="desc">电源按钮总是卡住</td><td class="sol">—</td></tr></tbody></table>
       </div>
     </div>
-    <div class="panel" data-panel="SD卡">
+    <div class="panel" data-panel="SD卡" style="--acc:#4ADE80">
+      <div class="round-header">
+        <div class="rh-left">
+          <div class="rh-round">ROUND 06 · GRAND PRIX</div>
+          <div class="rh-title">SD 卡问题</div>
+        </div>
+        <div class="rh-right">
+          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
+          <div class="lap-counter">TOTAL LAPS <span>18</span></div>
+        </div>
+      </div>
+
       <div class="kpi-row">
-        <div class="kpi"><div class="label">总量</div><div class="val" style="color:#4ade80">18</div></div>
-        <div class="kpi"><div class="label">客诉端</div><div class="val">8</div></div>
-        <div class="kpi"><div class="label">退货端</div><div class="val">10</div></div>
-        <div class="kpi"><div class="label">最高频子类</div><div class="val-s">客户自备卡不兼容/无合适卡<br><span class="mini">4 条 (22%)</span></div></div>
+        <div class="kpi kpi-main">
+          <div class="label">GRID TOTAL</div>
+          <div class="val">18</div>
+          <div class="sub-label">发车总量</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🔧 IN PIT LANE</div>
+          <div class="val-pit">8</div>
+          <div class="sub-label">客诉端 · 待修复</div>
+        </div>
+        <div class="kpi">
+          <div class="label">🏳️ DNF</div>
+          <div class="val-dnf">10</div>
+          <div class="sub-label">退货端 · 已退赛</div>
+        </div>
+        <div class="kpi kpi-pole">
+          <div class="label">🏆 POLE POSITION</div>
+          <div class="val-s">客户自备卡不兼容/无合适卡</div>
+          <div class="sub-label">4 条 · 22% 占比</div>
+        </div>
       </div>
+
       <div class="two-col">
-        <div class="card"><h3>📊 子类分布（拆穿标签）</h3><div class="subrow"><div class="sublabel">客户自备卡不兼容/无合适卡</div><div class="subbar"><div class="subfill" style="width:100%;background:#f87171"></div><span class="subval">4 (22%)</span></div></div><div class="subrow"><div class="sublabel">速度慢（scheda lenta/slow card）</div><div class="subbar"><div class="subfill" style="width:75%;background:#fb923c"></div><span class="subval">3 (17%)</span></div></div><div class="subrow"><div class="sublabel">其他 SD 问题</div><div class="subbar"><div class="subfill" style="width:75%;background:#facc15"></div><span class="subval">3 (17%)</span></div></div><div class="subrow"><div class="sublabel">格式化失败</div><div class="subbar"><div class="subfill" style="width:75%;background:#4ade80"></div><span class="subval">3 (17%)</span></div></div><div class="subrow"><div class="sublabel">完全不识别</div><div class="subbar"><div class="subfill" style="width:75%;background:#60a5fa"></div><span class="subval">3 (17%)</span></div></div><div class="subrow"><div class="sublabel">相机本身问题（多张卡都不行）</div><div class="subbar"><div class="subfill" style="width:25%;background:#a78bfa"></div><span class="subval">1 (6%)</span></div></div><div class="subrow"><div class="sublabel">SD 卡发热异常</div><div class="subbar"><div class="subfill" style="width:25%;background:#f472b6"></div><span class="subval">1 (6%)</span></div></div></div>
-        <div class="card"><h3>🌍 站点分布</h3><div class="chips"><span class="chip">US <b>13</b></span><span class="chip">IT <b>3</b></span><span class="chip">UK <b>2</b></span></div>
-      <div class="sample-block"><h4>「客户自备卡不兼容/无合适卡」代表原文</h4><div class="sample"><span class="meta">客诉·5028·UK·S</span><div class="quote">我无法用相机拍照，我已经插入了存储卡，但每次尝试拍照时都会显示“NO CARD”</div></div><div class="sample"><span class="meta">退货·1727·US·-</span><div class="quote">没有合适的SD卡</div></div><div class="sample"><span class="meta">退货·2124·US·-</span><div class="quote">我没有正确的SD卡来使用这个。</div></div><div class="sample"><span class="meta">退货·2197·US·-</span><div class="quote">我没有正确的SD卡来使用这个。</div></div></div>
-      <div class="sample-block"><h4>「速度慢（scheda lenta/slow card）」代表原文</h4><div class="sample"><span class="meta">客诉·5377·US·S</span><div class="quote">我有一个新的EK7000相机，我已经尝试了好几张不同的SD卡——所有的都无法格式化。最新的是一张全新的64GB U3卡，购自亚马逊，链接是https://a.co/d/0sdFluR。我现在怀疑相机有问题，但它是一份礼物。请帮我找到能在相机上使用的存储卡，或者告诉我如何退换相机。今天收到了Akaso品牌的SD卡，它也无法格式化，也不能录制任何视频或照片。恐怕问题出在相机上。</div></div><div class="sample"><span class="meta">客诉·5391·IT·S</span><div class="quote">您好，我刚买了一台AKASO ek7000，但无法使用，因为当我尝试开始录制时，运动相机显示“SCHEDA LENTA”（慢卡）。我说明一下，这张256GB的micro SD卡是闪迪（SanDisk）Extreme Pro U3 A2级，适用于4K视频，符合你们的指示。我已经通过电脑然后在运动相机中格式化了这张卡，但问题仍然存在，还是显示“SCHEDA LENTA”。请您提供一些处理建议，因为这是新机器且在保修期内。附上SD卡的规格照片。</div></div><div class="sample"><span class="meta">客诉·5455·US·S</span><div class="quote">显示SD卡速度太慢，他已经在电脑和相机内格式化了SD卡，也尝试过使用另一张SD卡，但问题依旧。他移除了SD卡和电池，重新安装后，问题仍然存在。他使用的是闪迪Class 10存储卡。</div></div></div>
-      <div class="sample-block"><h4>「其他 SD 问题」代表原文</h4><div class="sample"><span class="meta">客诉·5491·IT·S</span><div class="quote">我需要关于这款产品的帮助，它不再读取SD卡了，所以无法再使用。这是订单号：40727466892834725。你们能给我更换机器吗？等待你们的回复。谢谢，祝您今天愉快。</div></div><div class="sample"><span class="meta">退货·1735·US·-</span><div class="quote">相机无法识别任何SD卡</div></div><div class="sample"><span class="meta">退货·2709·US·-</span><div class="quote">读卡持续失败（卡错误）</div></div></div></div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
+          <div class="subrow">
+        <div class="sublabel"><span class="podium">🏆</span>客户自备卡不兼容/无合适卡</div>
+        <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">4 <em>(22%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥈</span>速度慢（scheda lenta/slow card）</div>
+        <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium">🥉</span>其他 SD 问题</div>
+        <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P4</span>格式化失败</div>
+        <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P5</span>完全不识别</div>
+        <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P6</span>相机本身问题（多张卡都不行）</div>
+        <div class="subbar"><div class="subfill" style="width:25%"></div><span class="subval">1 <em>(6%)</em></span></div>
+      </div><div class="subrow">
+        <div class="sublabel"><span class="podium pX">P7</span>SD 卡发热异常</div>
+        <div class="subbar"><div class="subfill" style="width:25%"></div><span class="subval">1 <em>(6%)</em></span></div>
       </div>
-      <div class="card"><h3>📋 明细（18 条）</h3>
+        </div>
+        <div class="card">
+          <h3><span class="tech">▸ SECTOR 2</span>赛道分布 & TEAM RADIO</h3>
+          <div class="chips"><span class="chip">US <b>13</b></span><span class="chip">IT <b>3</b></span><span class="chip">UK <b>2</b></span></div>
+          
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P1 「客户自备卡不兼容/无合适卡」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5028·UK·S</span><div class="quote">"我无法用相机拍照，我已经插入了存储卡，但每次尝试拍照时都会显示“NO CARD”"</div></div><div class="sample"><span class="meta">退货·#1727·US·-</span><div class="quote">"没有合适的SD卡"</div></div><div class="sample"><span class="meta">退货·#2124·US·-</span><div class="quote">"我没有正确的SD卡来使用这个。"</div></div><div class="sample"><span class="meta">退货·#2197·US·-</span><div class="quote">"我没有正确的SD卡来使用这个。"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P2 「速度慢（scheda lenta/slow card）」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5377·US·S</span><div class="quote">"我有一个新的EK7000相机，我已经尝试了好几张不同的SD卡——所有的都无法格式化。最新的是一张全新的64GB U3卡，购自亚马逊，链接是https://a.co/d/0sdFluR。我现在怀疑相机有问题，但它是一份礼物。请帮我找到能在相机上使用的存储卡，或者告诉我如何退换相机。今天收到了Akaso品牌的SD卡，它也无法格式化，也不能录制任何视频或照片。恐怕问题出在相机上。"</div></div><div class="sample"><span class="meta">客诉·#5391·IT·S</span><div class="quote">"您好，我刚买了一台AKASO ek7000，但无法使用，因为当我尝试开始录制时，运动相机显示“SCHEDA LENTA”（慢卡）。我说明一下，这张256GB的micro SD卡是闪迪（SanDisk）Extreme Pro U3 A2级，适用于4K视频，符合你们的指示。我已经通过电脑然后在运动相机中格式化了这张卡，但问题仍然存在，还是显示“SCHEDA LENTA”。请您提供一些处理建议，因为这是新机器且在保修期内。附上SD卡的规格照片。"</div></div><div class="sample"><span class="meta">客诉·#5455·US·S</span><div class="quote">"显示SD卡速度太慢，他已经在电脑和相机内格式化了SD卡，也尝试过使用另一张SD卡，但问题依旧。他移除了SD卡和电池，重新安装后，问题仍然存在。他使用的是闪迪Class 10存储卡。"</div></div>
+      </div>
+      <div class="sample-block">
+        <h4><span class="tele">📻 TEAM RADIO · P3 「其他 SD 问题」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5491·IT·S</span><div class="quote">"我需要关于这款产品的帮助，它不再读取SD卡了，所以无法再使用。这是订单号：40727466892834725。你们能给我更换机器吗？等待你们的回复。谢谢，祝您今天愉快。"</div></div><div class="sample"><span class="meta">退货·#1735·US·-</span><div class="quote">"相机无法识别任何SD卡"</div></div><div class="sample"><span class="meta">退货·#2709·US·-</span><div class="quote">"读卡持续失败（卡错误）"</div></div>
+      </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="tech">▸ SECTOR 3</span>完整圈速表 · 18 LAPS</h3>
         <table><thead><tr><th>子类</th><th>来源</th><th>ID</th><th>站点</th><th>原标签</th><th>状态</th><th>描述</th><th>方案</th></tr></thead><tbody>
-      <tr><td><span class="tag">SD 卡发热异常</span></td><td>退货</td><td>2432</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">开机时过热。热量来自SD卡，并且开机时间越长情况越严重。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他 SD 问题</span></td><td>客诉</td><td>5491</td><td>IT</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">我需要关于这款产品的帮助，它不再读取SD卡了，所以无法再使用。这是订单号：40727466892834725。你们能给我更换机器吗？等待你们的回复。谢谢，祝您今天愉快。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他 SD 问题</span></td><td>退货</td><td>1735</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">相机无法识别任何SD卡</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">其他 SD 问题</span></td><td>退货</td><td>2709</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">读卡持续失败（卡错误）</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全不识别</span></td><td>退货</td><td>1200</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">我花了一个多小时试图让这东西工作，却拒绝了10张微型SD卡。把它退回去。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全不识别</span></td><td>退货</td><td>2068</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">它无法读取存储卡。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">完全不识别</span></td><td>退货</td><td>2445</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">无法读取micro SD卡。无法关闭WiFi（长按“向下”按钮3秒+不起作用）</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">客户自备卡不兼容/无合适卡</span></td><td>客诉</td><td>5028</td><td>UK</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">我无法用相机拍照，我已经插入了存储卡，但每次尝试拍照时都会显示“NO CARD”</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">客户自备卡不兼容/无合适卡</span></td><td>退货</td><td>1727</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">没有合适的SD卡</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">客户自备卡不兼容/无合适卡</span></td><td>退货</td><td>2124</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">我没有正确的SD卡来使用这个。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">客户自备卡不兼容/无合适卡</span></td><td>退货</td><td>2197</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">我没有正确的SD卡来使用这个。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">格式化失败</span></td><td>客诉</td><td>5496</td><td>IT</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">AKASO EK7000运动相机4K。首次使用时视频损坏。 尊敬的埃莉安娜： 感谢您的回复。 我确认首次操作是对SD卡进行格式化（12月20日在亚马逊订购的三星EVO 128GB），之后才进行任何相机使用。同一天，有些视频能正确录制，而其他视频在相同条件下拍摄却出现损坏或无法播放的情况。 这让我认为问题并非仅与格式化或SD卡有关，而是录制或文件保存阶段存在故障。 目前我需要修复这些视频文件，因为其中包含重要内容。我已注意不覆盖SD卡并保存了原始文件的副本。 如前所述，EaseUS Fixo软件能够进行此类修复；但由于它不是免费工具（70美元），我希望由你们直接处理此项工作。 我随时可以提供SD卡照片或其他有用信息，恳请提供具体支持以恢复/修复损坏的视频文件。 期待您的回复。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">格式化失败</span></td><td>客诉</td><td>5925</td><td>US</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">格式化SD卡后仍然显示错误，正在发送新的存储卡。</td><td class="sol">寄送新AKASO SD卡</td></tr>
-      <tr><td><span class="tag">格式化失败</span></td><td>退货</td><td>2498</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">有故障|我已经试过很多张SD卡了，没有一张能在这个相机上格式化。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">相机本身问题（多张卡都不行）</span></td><td>客诉</td><td>5587</td><td>UK</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">我现在已经买了两张存储卡，但它们在我的相机里都无法使用。你能帮我找一个合适的存储卡吗？或者我的相机是不是出了什么问题？ 我已经尝试了上述所有方法，但还是出现同样的错误。请看图片中的相机和存储卡。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td>客诉</td><td>5377</td><td>US</td><td>14-SD卡问题</td><td>已关闭</td><td class="desc">我有一个新的EK7000相机，我已经尝试了好几张不同的SD卡——所有的都无法格式化。最新的是一张全新的64GB U3卡，购自亚马逊，链接是https://a.co/d/0sdFluR。我现在怀疑相机有问题，但它是一份礼物。请帮我找到能在相机上使用的存储卡，或者告诉我如何退换相机。今天收到了Akaso品牌的SD卡，它也无法格式化，也不能录制任何视频或照片。恐怕问题出在相机上。</td><td class="sol">AKASO SD card也不行 SN:LH250922V1C4528 @廖月滢麻烦联系客人回寄到美仓 美仓确认不能读卡和格式化</td></tr>
-      <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td>客诉</td><td>5391</td><td>IT</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">您好，我刚买了一台AKASO ek7000，但无法使用，因为当我尝试开始录制时，运动相机显示“SCHEDA LENTA”（慢卡）。我说明一下，这张256GB的micro SD卡是闪迪（SanDisk）Extreme Pro U3 A2级，适用于4K视频，符合你们的指示。我已经通过电脑然后在运动相机中格式化了这张卡，但问题仍然存在，还是显示“SCHEDA LENTA”。请您提供一些处理建议，因为这是新机器且在保修期内。附上SD卡的规格照片。</td><td class="sol">-</td></tr>
-      <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td>客诉</td><td>5455</td><td>US</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">显示SD卡速度太慢，他已经在电脑和相机内格式化了SD卡，也尝试过使用另一张SD卡，但问题依旧。他移除了SD卡和电池，重新安装后，问题仍然存在。他使用的是闪迪Class 10存储卡。</td><td class="sol">@廖月滢这台也寄回美仓确认下</td></tr></tbody></table>
+      <tr><td><span class="tag">SD 卡发热异常</span></td><td class="src src-dnf">DNF</td><td>2432</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">开机时过热。热量来自SD卡，并且开机时间越长情况越严重。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他 SD 问题</span></td><td class="src src-pit">PIT</td><td>5491</td><td>IT</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">我需要关于这款产品的帮助，它不再读取SD卡了，所以无法再使用。这是订单号：40727466892834725。你们能给我更换机器吗？等待你们的回复。谢谢，祝您今天愉快。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他 SD 问题</span></td><td class="src src-dnf">DNF</td><td>1735</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">相机无法识别任何SD卡</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">其他 SD 问题</span></td><td class="src src-dnf">DNF</td><td>2709</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">读卡持续失败（卡错误）</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全不识别</span></td><td class="src src-dnf">DNF</td><td>1200</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">我花了一个多小时试图让这东西工作，却拒绝了10张微型SD卡。把它退回去。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全不识别</span></td><td class="src src-dnf">DNF</td><td>2068</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">它无法读取存储卡。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">完全不识别</span></td><td class="src src-dnf">DNF</td><td>2445</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">无法读取micro SD卡。无法关闭WiFi（长按“向下”按钮3秒+不起作用）</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">客户自备卡不兼容/无合适卡</span></td><td class="src src-pit">PIT</td><td>5028</td><td>UK</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">我无法用相机拍照，我已经插入了存储卡，但每次尝试拍照时都会显示“NO CARD”</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">客户自备卡不兼容/无合适卡</span></td><td class="src src-dnf">DNF</td><td>1727</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">没有合适的SD卡</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">客户自备卡不兼容/无合适卡</span></td><td class="src src-dnf">DNF</td><td>2124</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">我没有正确的SD卡来使用这个。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">客户自备卡不兼容/无合适卡</span></td><td class="src src-dnf">DNF</td><td>2197</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">我没有正确的SD卡来使用这个。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">格式化失败</span></td><td class="src src-pit">PIT</td><td>5496</td><td>IT</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">AKASO EK7000运动相机4K。首次使用时视频损坏。 尊敬的埃莉安娜： 感谢您的回复。 我确认首次操作是对SD卡进行格式化（12月20日在亚马逊订购的三星EVO 128GB），之后才进行任何相机使用。同一天，有些视频能正确录制，而其他视频在相同条件下拍摄却出现损坏或无法播放的情况。 这让我认为问题并非仅与格式化或SD卡有关，而是录制或文件保存阶段存在故障。 目前我需要修复这些视频文件，因为其中包含重要内容。我已注意不覆盖SD卡并保存了原始文件的副本。 如前所述，EaseUS Fixo软件能够进行此类修复；但由于它不是免费工具（70美元），我希望由你们直接处理此项工作。 我随时可以提供SD卡照片或其他有用信息，恳请提供具体支持以恢复/修复损坏的视频文件。 期待您的回复。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">格式化失败</span></td><td class="src src-pit">PIT</td><td>5925</td><td>US</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">格式化SD卡后仍然显示错误，正在发送新的存储卡。</td><td class="sol">寄送新AKASO SD卡</td></tr>
+      <tr><td><span class="tag">格式化失败</span></td><td class="src src-dnf">DNF</td><td>2498</td><td>US</td><td>质量-SD卡问题</td><td>退货</td><td class="desc">有故障|我已经试过很多张SD卡了，没有一张能在这个相机上格式化。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">相机本身问题（多张卡都不行）</span></td><td class="src src-pit">PIT</td><td>5587</td><td>UK</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">我现在已经买了两张存储卡，但它们在我的相机里都无法使用。你能帮我找一个合适的存储卡吗？或者我的相机是不是出了什么问题？ 我已经尝试了上述所有方法，但还是出现同样的错误。请看图片中的相机和存储卡。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td class="src src-pit">PIT</td><td>5377</td><td>US</td><td>14-SD卡问题</td><td>已关闭</td><td class="desc">我有一个新的EK7000相机，我已经尝试了好几张不同的SD卡——所有的都无法格式化。最新的是一张全新的64GB U3卡，购自亚马逊，链接是https://a.co/d/0sdFluR。我现在怀疑相机有问题，但它是一份礼物。请帮我找到能在相机上使用的存储卡，或者告诉我如何退换相机。今天收到了Akaso品牌的SD卡，它也无法格式化，也不能录制任何视频或照片。恐怕问题出在相机上。</td><td class="sol">AKASO SD card也不行 SN:LH250922V1C4528 @廖月滢麻烦联系客人回寄到美仓 美仓确认不能读卡和格式化</td></tr>
+      <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td class="src src-pit">PIT</td><td>5391</td><td>IT</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">您好，我刚买了一台AKASO ek7000，但无法使用，因为当我尝试开始录制时，运动相机显示“SCHEDA LENTA”（慢卡）。我说明一下，这张256GB的micro SD卡是闪迪（SanDisk）Extreme Pro U3 A2级，适用于4K视频，符合你们的指示。我已经通过电脑然后在运动相机中格式化了这张卡，但问题仍然存在，还是显示“SCHEDA LENTA”。请您提供一些处理建议，因为这是新机器且在保修期内。附上SD卡的规格照片。</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td class="src src-pit">PIT</td><td>5455</td><td>US</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">显示SD卡速度太慢，他已经在电脑和相机内格式化了SD卡，也尝试过使用另一张SD卡，但问题依旧。他移除了SD卡和电池，重新安装后，问题仍然存在。他使用的是闪迪Class 10存储卡。</td><td class="sol">@廖月滢这台也寄回美仓确认下</td></tr></tbody></table>
       </div>
     </div>
+</div>
+
+<footer>
+  <div class="newey">◢  ENGINEERING PHILOSOPHY INSPIRED BY ADRIAN NEWEY  ◣</div>
+  <div class="cad">DATA SOURCE · 飞书多维表格 EK7000-V53 终端表现跟进 &nbsp;│&nbsp; <span>●</span> LIVE TELEMETRY &nbsp;│&nbsp; AKASO · CREW CHIEF: CNest</div>
+</footer>
+
 <script>
 document.querySelectorAll('.tab').forEach(t=>{
   t.addEventListener('click',()=>{
