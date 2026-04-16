@@ -51,10 +51,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;backg
 .kpi .val{font-size:2.2rem;font-weight:900;margin-top:6px;color:var(--acc);line-height:1;font-style:italic}
 .kpi .val-pit{font-size:2.2rem;font-weight:900;margin-top:6px;color:var(--rb-gold);line-height:1;font-style:italic}
 .kpi .val-dnf{font-size:2.2rem;font-weight:900;margin-top:6px;color:var(--rb-red);line-height:1;font-style:italic}
-.kpi .val-s{font-size:1rem;font-weight:700;margin-top:6px;color:var(--rb-gold);line-height:1.3}
+.kpi .val-s{font-size:1rem;font-weight:700;margin-top:6px;color:#FF6B6B;line-height:1.3}
 .kpi .sub-label{font-size:.7rem;color:var(--muted);margin-top:6px;letter-spacing:.02em}
 .kpi.kpi-main::before{background:linear-gradient(90deg,transparent,var(--rb-red),transparent)}
-.kpi.kpi-pole{background:linear-gradient(145deg,rgba(255,201,6,.1),var(--rb-card))}
+.kpi.kpi-critical{background:linear-gradient(145deg,rgba(216,8,18,.18),var(--rb-card));border-color:rgba(216,8,18,.5)}
+.kpi.kpi-critical::before{background:linear-gradient(90deg,transparent,var(--rb-red),var(--rb-red),transparent);height:3px;animation:pulse-red 2.4s infinite}
+.kpi.kpi-critical .label{color:#FF9AA0}
+@keyframes pulse-red{50%{opacity:.4}}
 
 /* Cards */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
@@ -65,9 +68,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;backg
 
 /* Subbars */
 .subrow{margin-bottom:10px}
-.sublabel{font-size:.85rem;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:6px}
-.podium{font-size:1rem}
-.podium.pX{background:var(--rb-border);color:var(--muted);padding:0 6px;border-radius:3px;font-size:.65rem;font-weight:700;letter-spacing:.05em}
+.sublabel{font-size:.85rem;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.rm{font-family:'SF Mono',Menlo,monospace;font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.08em;white-space:nowrap;border:1px solid}
+.rm-red{background:rgba(216,8,18,.18);color:#FF8A91;border-color:rgba(216,8,18,.5)}
+.rm-yellow{background:rgba(255,201,6,.12);color:var(--rb-gold);border-color:rgba(255,201,6,.4)}
+.rm-amber{background:rgba(255,107,0,.12);color:#FFA566;border-color:rgba(255,107,0,.4)}
+.rm-gray{background:rgba(148,163,184,.1);color:var(--muted);border-color:var(--rb-border)}
 .subbar{background:rgba(10,14,39,.6);border-radius:4px;height:24px;position:relative;overflow:hidden;border:1px solid var(--rb-border)}
 .subfill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--acc),color-mix(in srgb, var(--acc) 60%, #fff));transition:width .4s;box-shadow:inset 0 -2px 6px rgba(0,0,0,.2)}
 .subval{position:absolute;right:10px;top:4px;font-size:.74rem;color:#fff;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.7);letter-spacing:.02em}
@@ -155,8 +161,8 @@ footer .cad span{color:var(--rb-red)}
 </svg>
     <div class="brand-text">
       <div class="season">2026 SEASON · AKASO RACING · ROUND 01-06</div>
-      <h1>EK7000-V53 <span class="highlight">GRAND PRIX</span> ANALYSIS</h1>
-      <div class="subtitle">客诉+退货双源合并 · 269 条数据 · 六标签拆至可落地子类 · 2026/4/16 16:20:54</div>
+      <h1>EK7000-V53 <span class="highlight">INCIDENT</span> ANALYSIS</h1>
+      <div class="subtitle">POST-RACE DEBRIEF · 客诉+退货双源合并 269 条 · 六大事故标签深度复盘 · 2026/4/16 16:27:18</div>
     </div>
     <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" class="helmet">
   <!-- 头盔主体 -->
@@ -188,61 +194,61 @@ footer .cad span{color:var(--rb-red)}
   <div class="tabs"><button class="tab active" data-tab="漏件" style="--acc:#FF6B00">
       <span class="round">ROUND 01</span>
       <span class="gpname">漏件/缺件</span>
-      <span class="cnt">25 LAPS</span>
+      <span class="cnt">25 INCIDENTS</span>
     </button><button class="tab" data-tab="开关机" style="--acc:#D80812">
       <span class="round">ROUND 02</span>
       <span class="gpname">开关机问题</span>
-      <span class="cnt">54 LAPS</span>
+      <span class="cnt">54 INCIDENTS</span>
     </button><button class="tab" data-tab="APP/WIFI" style="--acc:#4F95FF">
       <span class="round">ROUND 03</span>
       <span class="gpname">APP/WIFI 问题</span>
-      <span class="cnt">43 LAPS</span>
+      <span class="cnt">43 INCIDENTS</span>
     </button><button class="tab" data-tab="图像品质" style="--acc:#FFC906">
       <span class="round">ROUND 04</span>
       <span class="gpname">图像品质</span>
-      <span class="cnt">111 LAPS</span>
+      <span class="cnt">111 INCIDENTS</span>
     </button><button class="tab" data-tab="按键" style="--acc:#F472B6">
       <span class="round">ROUND 05</span>
       <span class="gpname">按键问题（独立）</span>
-      <span class="cnt">18 LAPS</span>
+      <span class="cnt">18 INCIDENTS</span>
     </button><button class="tab" data-tab="SD卡" style="--acc:#4ADE80">
       <span class="round">ROUND 06</span>
       <span class="gpname">SD 卡问题</span>
-      <span class="cnt">18 LAPS</span>
+      <span class="cnt">18 INCIDENTS</span>
     </button></div>
   
     <div class="panel active" data-panel="漏件" style="--acc:#FF6B00">
       <div class="round-header">
         <div class="rh-left">
-          <div class="rh-round">ROUND 01 · GRAND PRIX</div>
+          <div class="rh-round">ROUND 01 · INCIDENT REPORT</div>
           <div class="rh-title">漏件/缺件</div>
         </div>
         <div class="rh-right">
-          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
-          <div class="lap-counter">TOTAL LAPS <span>25</span></div>
+          <div class="telemetry">INCIDENT FEED · LIVE</div>
+          <div class="lap-counter">TOTAL INCIDENTS <span>25</span></div>
         </div>
       </div>
 
       <div class="kpi-row">
         <div class="kpi kpi-main">
-          <div class="label">GRID TOTAL</div>
+          <div class="label">⚑ TOTAL INCIDENTS</div>
           <div class="val">25</div>
-          <div class="sub-label">发车总量</div>
+          <div class="sub-label">事故总量</div>
         </div>
         <div class="kpi">
           <div class="label">🔧 IN PIT LANE</div>
           <div class="val-pit">25</div>
-          <div class="sub-label">客诉端 · 待修复</div>
+          <div class="sub-label">客诉端 · 仍可挽回</div>
         </div>
         <div class="kpi">
           <div class="label">🏳️ DNF</div>
           <div class="val-dnf">0</div>
           <div class="sub-label">退货端 · 已退赛</div>
         </div>
-        <div class="kpi kpi-pole">
-          <div class="label">🏆 POLE POSITION</div>
+        <div class="kpi kpi-critical">
+          <div class="label">🚩 RED FLAG · TOP THREAT</div>
           <div class="val-s">缺电池</div>
-          <div class="sub-label">13 条 · 52% 占比</div>
+          <div class="sub-label">13 条 · 52% 占比 · 优先处理</div>
         </div>
       </div>
 
@@ -250,19 +256,19 @@ footer .cad span{color:var(--rb-red)}
         <div class="card">
           <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
           <div class="subrow">
-        <div class="sublabel"><span class="podium">🏆</span>缺电池</div>
+        <div class="sublabel"><span class="rm rm-red">🚩 #1 CRITICAL</span>缺电池</div>
         <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">13 <em>(52%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥈</span>缺SD卡</div>
+        <div class="sublabel"><span class="rm rm-yellow">⚠️ #2 MAJOR</span>缺SD卡</div>
         <div class="subbar"><div class="subfill" style="width:62%"></div><span class="subval">8 <em>(32%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥉</span>缺支架/卡扣/配件</div>
+        <div class="sublabel"><span class="rm rm-amber">⚡ #3 MINOR</span>缺支架/卡扣/配件</div>
         <div class="subbar"><div class="subfill" style="width:15%"></div><span class="subval">2 <em>(8%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P4</span>缺充电器/线</div>
+        <div class="sublabel"><span class="rm rm-gray">#4</span>缺充电器/线</div>
         <div class="subbar"><div class="subfill" style="width:8%"></div><span class="subval">1 <em>(4%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P5</span>缺防水壳</div>
+        <div class="sublabel"><span class="rm rm-gray">#5</span>缺防水壳</div>
         <div class="subbar"><div class="subfill" style="width:8%"></div><span class="subval">1 <em>(4%)</em></span></div>
       </div>
         </div>
@@ -271,15 +277,15 @@ footer .cad span{color:var(--rb-red)}
           <div class="chips"><span class="chip">US <b>19</b></span><span class="chip">UK <b>2</b></span><span class="chip">IT <b>1</b></span><span class="chip">FR <b>1</b></span><span class="chip">AU <b>1</b></span><span class="chip">CA <b>1</b></span></div>
           
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P1 「缺电池」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #1 「缺电池」</span></h4>
         <div class="sample"><span class="meta">客诉·#4077·US·S</span><div class="quote">"我今天收到了从亚马逊购买的相机（EK7000），准备用于即将到来的旅行，但盒子里没有电池。我们已经把盒子里所有配件都翻找了好几遍。有充电器但没有电池，而且据我所知，相机应该配备两块电池。请尽快回复，因为我们两周后就要出行，需要用到这台相机。"</div></div><div class="sample"><span class="meta">客诉·#4115·US·S</span><div class="quote">"没有配备电池充电器。"</div></div><div class="sample"><span class="meta">客诉·#4125·US·S</span><div class="quote">"没有收到电池的充电器。"</div></div><div class="sample"><span class="meta">客诉·#5067·US·S</span><div class="quote">"我儿子给我买了一个EK7000。它似乎什么都有，就是没有电池充电器（尽管说明书上说“包装内附带”一个）。你能尽快给我寄一个吗？"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P2 「缺SD卡」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #2 「缺SD卡」</span></h4>
         <div class="sample"><span class="meta">客诉·#5586·US·S</span><div class="quote">"你在亚马逊上购买的套餐包含存储卡，但收到的商品却没有存储卡。"</div></div><div class="sample"><span class="meta">客诉·#5614·US·S</span><div class="quote">"购买信息显示会包含一张存储卡，但你没有收到。"</div></div><div class="sample"><span class="meta">客诉·#5624·US·S</span><div class="quote">"丢失64GB SD存储卡"</div></div><div class="sample"><span class="meta">客诉·#5652·US·S</span><div class="quote">"我没有收到这个包裹里的microSD卡。我已经检查了很多次，包装盒里没有microSD卡。"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P3 「缺支架/卡扣/配件」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #3 「缺支架/卡扣/配件」</span></h4>
         <div class="sample"><span class="meta">客诉·#5235·AU·S</span><div class="quote">"我们收到的包裹中缺少两个附件。扣式支架x1缺失。E型支架x1缺失。"</div></div><div class="sample"><span class="meta">客诉·#5361·CA·S</span><div class="quote">"您购买了带漂浮手柄的相机，但该配件不在包装内。"</div></div>
       </div>
         </div>
@@ -318,35 +324,35 @@ footer .cad span{color:var(--rb-red)}
     <div class="panel" data-panel="开关机" style="--acc:#D80812">
       <div class="round-header">
         <div class="rh-left">
-          <div class="rh-round">ROUND 02 · GRAND PRIX</div>
+          <div class="rh-round">ROUND 02 · INCIDENT REPORT</div>
           <div class="rh-title">开关机问题</div>
         </div>
         <div class="rh-right">
-          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
-          <div class="lap-counter">TOTAL LAPS <span>54</span></div>
+          <div class="telemetry">INCIDENT FEED · LIVE</div>
+          <div class="lap-counter">TOTAL INCIDENTS <span>54</span></div>
         </div>
       </div>
 
       <div class="kpi-row">
         <div class="kpi kpi-main">
-          <div class="label">GRID TOTAL</div>
+          <div class="label">⚑ TOTAL INCIDENTS</div>
           <div class="val">54</div>
-          <div class="sub-label">发车总量</div>
+          <div class="sub-label">事故总量</div>
         </div>
         <div class="kpi">
           <div class="label">🔧 IN PIT LANE</div>
           <div class="val-pit">10</div>
-          <div class="sub-label">客诉端 · 待修复</div>
+          <div class="sub-label">客诉端 · 仍可挽回</div>
         </div>
         <div class="kpi">
           <div class="label">🏳️ DNF</div>
           <div class="val-dnf">44</div>
           <div class="sub-label">退货端 · 已退赛</div>
         </div>
-        <div class="kpi kpi-pole">
-          <div class="label">🏆 POLE POSITION</div>
+        <div class="kpi kpi-critical">
+          <div class="label">🚩 RED FLAG · TOP THREAT</div>
           <div class="val-s">简述"不能用/有问题"</div>
-          <div class="sub-label">20 条 · 37% 占比</div>
+          <div class="sub-label">20 条 · 37% 占比 · 优先处理</div>
         </div>
       </div>
 
@@ -354,25 +360,25 @@ footer .cad span{color:var(--rb-red)}
         <div class="card">
           <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
           <div class="subrow">
-        <div class="sublabel"><span class="podium">🏆</span>简述"不能用/有问题"</div>
+        <div class="sublabel"><span class="rm rm-red">🚩 #1 CRITICAL</span>简述"不能用/有问题"</div>
         <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">20 <em>(37%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥈</span>完全无法开机</div>
+        <div class="sublabel"><span class="rm rm-yellow">⚠️ #2 MAJOR</span>完全无法开机</div>
         <div class="subbar"><div class="subfill" style="width:60%"></div><span class="subval">12 <em>(22%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥉</span>使用中/录像中自动关机</div>
+        <div class="sublabel"><span class="rm rm-amber">⚡ #3 MINOR</span>使用中/录像中自动关机</div>
         <div class="subbar"><div class="subfill" style="width:45%"></div><span class="subval">9 <em>(17%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P4</span>充电后仍不开机</div>
+        <div class="sublabel"><span class="rm rm-gray">#4</span>充电后仍不开机</div>
         <div class="subbar"><div class="subfill" style="width:25%"></div><span class="subval">5 <em>(9%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P5</span>卡在欢迎/启动界面（启动循环）</div>
+        <div class="sublabel"><span class="rm rm-gray">#5</span>卡在欢迎/启动界面（启动循环）</div>
         <div class="subbar"><div class="subfill" style="width:20%"></div><span class="subval">4 <em>(7%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P6</span>死机/冻结</div>
+        <div class="sublabel"><span class="rm rm-gray">#6</span>死机/冻结</div>
         <div class="subbar"><div class="subfill" style="width:15%"></div><span class="subval">3 <em>(6%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P7</span>进水/受潮后失效</div>
+        <div class="sublabel"><span class="rm rm-gray">#7</span>进水/受潮后失效</div>
         <div class="subbar"><div class="subfill" style="width:5%"></div><span class="subval">1 <em>(2%)</em></span></div>
       </div>
         </div>
@@ -381,15 +387,15 @@ footer .cad span{color:var(--rb-red)}
           <div class="chips"><span class="chip">US <b>49</b></span><span class="chip">FR <b>2</b></span><span class="chip">UK <b>1</b></span><span class="chip">IT <b>1</b></span><span class="chip">CA <b>1</b></span></div>
           
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P1 「简述"不能用/有问题"」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #1 「简述"不能用/有问题"」</span></h4>
         <div class="sample"><span class="meta">客诉·#5493·FR·S</span><div class="quote">"您好，相机几天前就不能用了，屏幕一片漆黑。怎么说在保修期内呢？您好，我们试过了，相机屏幕还是黑的。这是我的订单号。"</div></div><div class="sample"><span class="meta">退货·#1223·US·-</span><div class="quote">"无法使用"</div></div><div class="sample"><span class="meta">退货·#1248·US·-</span><div class="quote">"这不是我需要的。"</div></div><div class="sample"><span class="meta">退货·#1277·US·-</span><div class="quote">"无法让它工作"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P2 「完全无法开机」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #2 「完全无法开机」</span></h4>
         <div class="sample"><span class="meta">客诉·#5203·UK·S</span><div class="quote">"我买了这个东西，但它不能用，相机根本打不开，我已经试过所有方法了，请问有机会更换一个吗？"</div></div><div class="sample"><span class="meta">客诉·#5719·US·S</span><div class="quote">"按照支持说明进行了多次尝试后，相机仍然无法开机。我的相机只在干燥环境中使用，主要是清晨骑行时使用一小时左右。我已经取出了电池和SD卡，并使用5V2A的适配器给相机充电。然后长按电源键3秒尝试开机，但仍然无法启动。我该如何向你们发送视频？"</div></div><div class="sample"><span class="meta">退货·#1126·US·-</span><div class="quote">"无法打开"</div></div><div class="sample"><span class="meta">退货·#1261·US·-</span><div class="quote">"商品有缺陷，相机无法开机"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P3 「使用中/录像中自动关机」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #3 「使用中/录像中自动关机」</span></h4>
         <div class="sample"><span class="meta">客诉·#5197·US·S</span><div class="quote">"嗨！我购买了AKASO相机，昨天尝试使用时发现它无法正常工作。相机总是随机关机，有时还无法录制。我尝试过更换电池、开关相机以及重启设备。"</div></div><div class="sample"><span class="meta">客诉·#5650·US·S</span><div class="quote">"我不想留下差评，因为你们目前是100%的好评，我收到的可能只是个有故障的产品。但我带着它去度假时，它总是无法保持开机状态。我试了两块电池，都充满了电，但相机在录制过程中会突然关机。这太令人沮丧了，因为我本来很依赖它。"</div></div><div class="sample"><span class="meta">退货·#1215·US·-</span><div class="quote">"它会正常工作并且随机关机吗"</div></div><div class="sample"><span class="meta">退货·#1304·US·-</span><div class="quote">"相机随机关机"</div></div>
       </div>
         </div>
@@ -457,35 +463,35 @@ footer .cad span{color:var(--rb-red)}
     <div class="panel" data-panel="APP/WIFI" style="--acc:#4F95FF">
       <div class="round-header">
         <div class="rh-left">
-          <div class="rh-round">ROUND 03 · GRAND PRIX</div>
+          <div class="rh-round">ROUND 03 · INCIDENT REPORT</div>
           <div class="rh-title">APP/WIFI 问题</div>
         </div>
         <div class="rh-right">
-          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
-          <div class="lap-counter">TOTAL LAPS <span>43</span></div>
+          <div class="telemetry">INCIDENT FEED · LIVE</div>
+          <div class="lap-counter">TOTAL INCIDENTS <span>43</span></div>
         </div>
       </div>
 
       <div class="kpi-row">
         <div class="kpi kpi-main">
-          <div class="label">GRID TOTAL</div>
+          <div class="label">⚑ TOTAL INCIDENTS</div>
           <div class="val">43</div>
-          <div class="sub-label">发车总量</div>
+          <div class="sub-label">事故总量</div>
         </div>
         <div class="kpi">
           <div class="label">🔧 IN PIT LANE</div>
           <div class="val-pit">11</div>
-          <div class="sub-label">客诉端 · 待修复</div>
+          <div class="sub-label">客诉端 · 仍可挽回</div>
         </div>
         <div class="kpi">
           <div class="label">🏳️ DNF</div>
           <div class="val-dnf">32</div>
           <div class="sub-label">退货端 · 已退赛</div>
         </div>
-        <div class="kpi kpi-pole">
-          <div class="label">🏆 POLE POSITION</div>
+        <div class="kpi kpi-critical">
+          <div class="label">🚩 RED FLAG · TOP THREAT</div>
           <div class="val-s">WiFi 连不上</div>
-          <div class="sub-label">19 条 · 44% 占比</div>
+          <div class="sub-label">19 条 · 44% 占比 · 优先处理</div>
         </div>
       </div>
 
@@ -493,28 +499,28 @@ footer .cad span{color:var(--rb-red)}
         <div class="card">
           <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
           <div class="subrow">
-        <div class="sublabel"><span class="podium">🏆</span>WiFi 连不上</div>
+        <div class="sublabel"><span class="rm rm-red">🚩 #1 CRITICAL</span>WiFi 连不上</div>
         <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">19 <em>(44%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥈</span>系统兼容性（iOS/Android）</div>
+        <div class="sublabel"><span class="rm rm-yellow">⚠️ #2 MAJOR</span>系统兼容性（iOS/Android）</div>
         <div class="subbar"><div class="subfill" style="width:42%"></div><span class="subval">8 <em>(19%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥉</span>预览/播放加载失败</div>
+        <div class="sublabel"><span class="rm rm-amber">⚡ #3 MINOR</span>预览/播放加载失败</div>
         <div class="subbar"><div class="subfill" style="width:26%"></div><span class="subval">5 <em>(12%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P4</span>传输/同步失败</div>
+        <div class="sublabel"><span class="rm rm-gray">#4</span>传输/同步失败</div>
         <div class="subbar"><div class="subfill" style="width:21%"></div><span class="subval">4 <em>(9%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P5</span>综合/简述 APP 问题</div>
+        <div class="sublabel"><span class="rm rm-gray">#5</span>综合/简述 APP 问题</div>
         <div class="subbar"><div class="subfill" style="width:16%"></div><span class="subval">3 <em>(7%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P6</span>固件/OTA 升级失败</div>
+        <div class="sublabel"><span class="rm rm-gray">#6</span>固件/OTA 升级失败</div>
         <div class="subbar"><div class="subfill" style="width:11%"></div><span class="subval">2 <em>(5%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P7</span>WiFi/蓝牙无法开启/关闭</div>
+        <div class="sublabel"><span class="rm rm-gray">#7</span>WiFi/蓝牙无法开启/关闭</div>
         <div class="subbar"><div class="subfill" style="width:5%"></div><span class="subval">1 <em>(2%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P8</span>应用连不上相机</div>
+        <div class="sublabel"><span class="rm rm-gray">#8</span>应用连不上相机</div>
         <div class="subbar"><div class="subfill" style="width:5%"></div><span class="subval">1 <em>(2%)</em></span></div>
       </div>
         </div>
@@ -523,15 +529,15 @@ footer .cad span{color:var(--rb-red)}
           <div class="chips"><span class="chip">US <b>41</b></span><span class="chip">UK <b>1</b></span><span class="chip">CA <b>1</b></span></div>
           
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P1 「WiFi 连不上」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #1 「WiFi 连不上」</span></h4>
         <div class="sample"><span class="meta">客诉·#4556·US·S</span><div class="quote">"你好， 我刚买了新款的Akaso Ek7000，却无法连接到Akaso Go应用程序。此外，为了关闭无线网络，我不得不关掉手机，按下向下按钮无法关闭它。请帮帮我。几周后我要去旅行，急需帮助。 现在一切似乎都正常了。我把手机调成飞行模式后，它就能连接到Akaso Go了。"</div></div><div class="sample"><span class="meta">客诉·#5497·US·S</span><div class="quote">"WiFi已开启并连接到您的手机，但应用程序一直停留在显示您手机的WiFi设置界面。您关闭了移动数据，删除了应用程序，但都没有用。摄像头的WiFi在屏幕上显示，所有权限都已允许。"</div></div><div class="sample"><span class="meta">退货·#1120·US·-</span><div class="quote">"无法连接到WiFi。使用起来非常复杂！"</div></div><div class="sample"><span class="meta">退货·#1140·US·-</span><div class="quote">"我尝试在多个设备上连接摄像头的WiFi，但都连接不上。"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P2 「系统兼容性（iOS/Android）」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #2 「系统兼容性（iOS/Android）」</span></h4>
         <div class="sample"><span class="meta">客诉·#5686·CA·-</span><div class="quote">"我觉得这款相机的应用程序非常不友好。我试了好几次使用Wi-Fi和蓝牙，但都连接不上。我想把照片和视频传输到手机上，却无法通过应用程序实现。我也尝试过将相机直接连接到手机进行数据传输，但也没有成功。 相机本身以及照片和视频的质量都很棒……毫无疑问，绝对是五星好评。电池续航惊人。遥控功能绝对是个加分项，而且工作得非常完美。防抖功能无与伦比，无可挑剔。 应用程序说它适用于安卓和iPhone，但对我来说却不起作用。我觉得它很难导航和操作。目前我只能把存储卡插进笔记本电脑，下载文件，然后再传输到手机上。在我看来，这是一个非常不必要的步骤。如果您能提供任何帮助，我将"</div></div><div class="sample"><span class="meta">退货·#1209·US·-</span><div class="quote">"BAD-DEFECTIVE-无法与iPhone Max Pro X配合使用"</div></div><div class="sample"><span class="meta">退货·#1351·US·-</span><div class="quote">"太难用了，无法将视频同步到我的iPhone。"</div></div><div class="sample"><span class="meta">退货·#1542·US·-</span><div class="quote">"这款相机无法在安卓系统上使用。它似乎只与iPhone兼容，与宣传不符。"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P3 「预览/播放加载失败」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #3 「预览/播放加载失败」</span></h4>
         <div class="sample"><span class="meta">客诉·#3960·US·S</span><div class="quote">"无法在应用程序上访问我的视频。是的，我能够连接到应用程序，但无法访问我的视频或照片。它一直在加载。 我尝试重启其他设备，也重新安装了应用程序，还重置了我的相机。 我也尝试过格式化和使用其他方法。但应用程序连接后就会冻结。"</div></div><div class="sample"><span class="meta">客诉·#4012·US·S</span><div class="quote">"我昨天从Akaso的亚马逊店铺购买了Akaso EK7000相机，但根本无法将其与我的手机连接。我多次按照所有说明操作，多次将相机、手机和Wi-Fi等设备开关重启，卸载并重新安装了应用程序，甚至还换了另一部手机尝试连接，但仍然没有成功。我真的不知道还能做些什么了。它总是卡在“实时预览”加载界面。相机序列号是SN - 53 - 250604 - V1。"</div></div><div class="sample"><span class="meta">客诉·#4075·US·S</span><div class="quote">"我最近购买了这款产品，在通过“AKASO GO”应用程序进行同步时遇到了问题。当我打开应用程序添加设备时，屏幕一直显示旋转/加载界面（见附件）。我还注意到相机的 Wi-Fi 显示没有网络连接，但不确定这是否是问题所在。"</div></div><div class="sample"><span class="meta">退货·#1097·US·-</span><div class="quote">"相机无法使用。它能开机，但连接到手机应用程序时不显示实时画面。"</div></div>
       </div>
         </div>
@@ -561,7 +567,7 @@ footer .cad span{color:var(--rb-red)}
       <tr><td><span class="tag">WiFi 连不上</span></td><td class="src src-dnf">DNF</td><td>2452</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法连接到WiFi</td><td class="sol">—</td></tr>
       <tr><td><span class="tag">WiFi/蓝牙无法开启/关闭</span></td><td class="src src-pit">PIT</td><td>4104</td><td>US</td><td>13-WiFi问题</td><td>-</td><td class="desc">问题报告：相机无法激活 Wi-Fi 最新情况：你最近购买了这款相机，并尝试连接到应用程序。你按下向下按钮，但屏幕上没有任何显示。你取出相机电池后重新插入，相同的问题仍然存在。 我能够通过按下并按住向下按钮调出 Wi-Fi 连接选项，但它无法保持连接。如果我没有 Wi-Fi 接入会怎样？有蓝牙选项吗？</td><td class="sol">—</td></tr>
       <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-pit">PIT</td><td>3970</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">我如何将视频传输到手机上？ 手机显示存储空间已满，但实际并非如此。我清理了缓存，仍然无法下载一个2分钟的视频。我已经对两台设备都进行了重置。</td><td class="sol">—</td></tr>
-      <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-dnf">DNF</td><td>1101</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">��无法将它下载到我的智能手机或电脑上</td><td class="sol">—</td></tr>
+      <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-dnf">DNF</td><td>1101</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">我��法将它下载到我的智能手机或电脑上</td><td class="sol">—</td></tr>
       <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-dnf">DNF</td><td>1707</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">无法同步到设备</td><td class="sol">—</td></tr>
       <tr><td><span class="tag">传输/同步失败</span></td><td class="src src-dnf">DNF</td><td>2116</td><td>US</td><td>质量-WIFI/APP</td><td>退货</td><td class="desc">与我使用的应用程序不同步，无法使用。</td><td class="sol">—</td></tr>
       <tr><td><span class="tag">固件/OTA 升级失败</span></td><td class="src src-pit">PIT</td><td>4040</td><td>US</td><td>11-APP问题</td><td>待确认</td><td class="desc">事情是这样的，我试图将我的手机连接到相机上，这触发了一次固件更新。但更新失败了，现在相机无法开机。</td><td class="sol">LH250626V1C1232</td></tr>
@@ -588,35 +594,35 @@ footer .cad span{color:var(--rb-red)}
     <div class="panel" data-panel="图像品质" style="--acc:#FFC906">
       <div class="round-header">
         <div class="rh-left">
-          <div class="rh-round">ROUND 04 · GRAND PRIX</div>
+          <div class="rh-round">ROUND 04 · INCIDENT REPORT</div>
           <div class="rh-title">图像品质</div>
         </div>
         <div class="rh-right">
-          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
-          <div class="lap-counter">TOTAL LAPS <span>111</span></div>
+          <div class="telemetry">INCIDENT FEED · LIVE</div>
+          <div class="lap-counter">TOTAL INCIDENTS <span>111</span></div>
         </div>
       </div>
 
       <div class="kpi-row">
         <div class="kpi kpi-main">
-          <div class="label">GRID TOTAL</div>
+          <div class="label">⚑ TOTAL INCIDENTS</div>
           <div class="val">111</div>
-          <div class="sub-label">发车总量</div>
+          <div class="sub-label">事故总量</div>
         </div>
         <div class="kpi">
           <div class="label">🔧 IN PIT LANE</div>
           <div class="val-pit">3</div>
-          <div class="sub-label">客诉端 · 待修复</div>
+          <div class="sub-label">客诉端 · 仍可挽回</div>
         </div>
         <div class="kpi">
           <div class="label">🏳️ DNF</div>
           <div class="val-dnf">108</div>
           <div class="sub-label">退货端 · 已退赛</div>
         </div>
-        <div class="kpi kpi-pole">
-          <div class="label">🏆 POLE POSITION</div>
+        <div class="kpi kpi-critical">
+          <div class="label">🚩 RED FLAG · TOP THREAT</div>
           <div class="val-s">画质差（笼统）</div>
-          <div class="sub-label">44 条 · 40% 占比</div>
+          <div class="sub-label">44 条 · 40% 占比 · 优先处理</div>
         </div>
       </div>
 
@@ -624,31 +630,31 @@ footer .cad span{color:var(--rb-red)}
         <div class="card">
           <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
           <div class="subrow">
-        <div class="sublabel"><span class="podium">🏆</span>画质差（笼统）</div>
+        <div class="sublabel"><span class="rm rm-red">🚩 #1 CRITICAL</span>画质差（笼统）</div>
         <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">44 <em>(40%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥈</span>防抖差/抖动</div>
+        <div class="sublabel"><span class="rm rm-yellow">⚠️ #2 MAJOR</span>防抖差/抖动</div>
         <div class="subbar"><div class="subfill" style="width:45%"></div><span class="subval">20 <em>(18%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥉</span>4K/分辨率不符</div>
+        <div class="sublabel"><span class="rm rm-amber">⚡ #3 MINOR</span>4K/分辨率不符</div>
         <div class="subbar"><div class="subfill" style="width:39%"></div><span class="subval">17 <em>(15%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P4</span>其他/预期不符</div>
+        <div class="sublabel"><span class="rm rm-gray">#4</span>其他/预期不符</div>
         <div class="subbar"><div class="subfill" style="width:32%"></div><span class="subval">14 <em>(13%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P5</span>夜拍/低光差</div>
+        <div class="sublabel"><span class="rm rm-gray">#5</span>夜拍/低光差</div>
         <div class="subbar"><div class="subfill" style="width:14%"></div><span class="subval">6 <em>(5%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P6</span>音频质量差</div>
+        <div class="sublabel"><span class="rm rm-gray">#6</span>音频质量差</div>
         <div class="subbar"><div class="subfill" style="width:9%"></div><span class="subval">4 <em>(4%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P7</span>水下/防水壳画质差</div>
+        <div class="sublabel"><span class="rm rm-gray">#7</span>水下/防水壳画质差</div>
         <div class="subbar"><div class="subfill" style="width:7%"></div><span class="subval">3 <em>(3%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P8</span>颜色/颗粒感/噪点</div>
+        <div class="sublabel"><span class="rm rm-gray">#8</span>颜色/颗粒感/噪点</div>
         <div class="subbar"><div class="subfill" style="width:5%"></div><span class="subval">2 <em>(2%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P9</span>对焦/变焦问题</div>
+        <div class="sublabel"><span class="rm rm-gray">#9</span>对焦/变焦问题</div>
         <div class="subbar"><div class="subfill" style="width:2%"></div><span class="subval">1 <em>(1%)</em></span></div>
       </div>
         </div>
@@ -657,15 +663,15 @@ footer .cad span{color:var(--rb-red)}
           <div class="chips"><span class="chip">US <b>102</b></span><span class="chip">CA <b>3</b></span><span class="chip">DE <b>2</b></span><span class="chip">EU <b>1</b></span><span class="chip">AE <b>1</b></span><span class="chip">AU <b>1</b></span><span class="chip">JP <b>1</b></span></div>
           
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P1 「画质差（笼统）」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #1 「画质差（笼统）」</span></h4>
         <div class="sample"><span class="meta">退货·#1100·US·-</span><div class="quote">"图像质量太差"</div></div><div class="sample"><span class="meta">退货·#1119·US·-</span><div class="quote">"清澈海水中的照片质量很差"</div></div><div class="sample"><span class="meta">退货·#1144·US·-</span><div class="quote">"视频质量很差。"</div></div><div class="sample"><span class="meta">退货·#1157·US·-</span><div class="quote">"视频质量差"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P2 「防抖差/抖动」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #2 「防抖差/抖动」</span></h4>
         <div class="sample"><span class="meta">退货·#1124·US·-</span><div class="quote">"我打开并拍摄了一段短视频，但这段视频不合格。我原以为它会有防抖功能，结果视频非常抖。"</div></div><div class="sample"><span class="meta">退货·#1130·EU·-</span><div class="quote">"我把它用在自行车上，图像防抖效果非常差，声音也很糟糕，录出来的视频完全是晃动的，这不是我想要的。"</div></div><div class="sample"><span class="meta">退货·#1210·US·-</span><div class="quote">"我打开并测试了相机，它没有达到预期。录制时进行缩放操作，回放时视频会卡顿。图像清晰度没有达到我的需求。防抖效果勉强还行。"</div></div><div class="sample"><span class="meta">退货·#1399·US·-</span><div class="quote">"录制开始前一切似乎都正常且稳定，但结果却不稳定且缓慢。"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P3 「4K/分辨率不符」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #3 「4K/分辨率不符」</span></h4>
         <div class="sample"><span class="meta">客诉·#5032·CA·-</span><div class="quote">"我试着贪便宜买了一个这种廉价运动相机。天哪，我已经后悔了。 优点：配件还不错。如果单独买的话，这些配件加起来也要不少钱。相机看起来足够坚固，所有的带子质量都还可以，魔术贴看起来也能经受一些折腾。价格显然很诱人。 缺点：这个价格对不起它的质量，我知道“一分钱一分货”，但我真没想到会这么差。刚开始用的几次和设置过程还算简单。我不知道是不是我的这台有问题，它变得非常非常烫，而且当时并没有放在防水壳里。我感觉最终它会因为太热而停止运行。防抖功能根本不存在，虽然你可以用软件后期添加，但作为一款运动相机，为什么不内置这个功能呢，这完全说不通。因为没有内置防抖，你最终"</div></div><div class="sample"><span class="meta">客诉·#5836·US·-</span><div class="quote">"我有两台GoPro相机（一台是10年前的Hero Session和一台2年前的Hero 12 Black），想在我的视频录制设备包里再添几台相机。这些相机的评价加上价格让我心动了。我买了两台，它们的表现完全一样，所以不是我收到了有问题的产品。我不知道这些评论说的到底是什么产品，但肯定不是我收到的这个。没错，这些相机确实能录像。文件大小和图像尺寸显示是4K，但画质简直糟透了。我最早的那台GoPro（Digital Hero3）虽然分辨率低得多，但画质都比这些好。这些相机拍出来的画面模糊不清，而且一点也不流畅。视频的帧率感觉比宣传的低很多。不管描述怎么说，这"</div></div><div class="sample"><span class="meta">退货·#1174·US·-</span><div class="quote">"相机质量与描述不符。它不是4K的。"</div></div><div class="sample"><span class="meta">退货·#1218·US·-</span><div class="quote">"4k但画质差"</div></div>
       </div>
         </div>
@@ -790,35 +796,35 @@ footer .cad span{color:var(--rb-red)}
     <div class="panel" data-panel="按键" style="--acc:#F472B6">
       <div class="round-header">
         <div class="rh-left">
-          <div class="rh-round">ROUND 05 · GRAND PRIX</div>
+          <div class="rh-round">ROUND 05 · INCIDENT REPORT</div>
           <div class="rh-title">按键问题（独立）</div>
         </div>
         <div class="rh-right">
-          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
-          <div class="lap-counter">TOTAL LAPS <span>18</span></div>
+          <div class="telemetry">INCIDENT FEED · LIVE</div>
+          <div class="lap-counter">TOTAL INCIDENTS <span>18</span></div>
         </div>
       </div>
 
       <div class="kpi-row">
         <div class="kpi kpi-main">
-          <div class="label">GRID TOTAL</div>
+          <div class="label">⚑ TOTAL INCIDENTS</div>
           <div class="val">18</div>
-          <div class="sub-label">发车总量</div>
+          <div class="sub-label">事故总量</div>
         </div>
         <div class="kpi">
           <div class="label">🔧 IN PIT LANE</div>
           <div class="val-pit">7</div>
-          <div class="sub-label">客诉端 · 待修复</div>
+          <div class="sub-label">客诉端 · 仍可挽回</div>
         </div>
         <div class="kpi">
           <div class="label">🏳️ DNF</div>
           <div class="val-dnf">11</div>
           <div class="sub-label">退货端 · 已退赛</div>
         </div>
-        <div class="kpi kpi-pole">
-          <div class="label">🏆 POLE POSITION</div>
+        <div class="kpi kpi-critical">
+          <div class="label">🚩 RED FLAG · TOP THREAT</div>
           <div class="val-s">快门/拍照/录像键失灵</div>
-          <div class="sub-label">4 条 · 22% 占比</div>
+          <div class="sub-label">4 条 · 22% 占比 · 优先处理</div>
         </div>
       </div>
 
@@ -826,25 +832,25 @@ footer .cad span{color:var(--rb-red)}
         <div class="card">
           <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
           <div class="subrow">
-        <div class="sublabel"><span class="podium">🏆</span>快门/拍照/录像键失灵</div>
+        <div class="sublabel"><span class="rm rm-red">🚩 #1 CRITICAL</span>快门/拍照/录像键失灵</div>
         <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">4 <em>(22%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥈</span>方向键失灵（上/下/模式）</div>
+        <div class="sublabel"><span class="rm rm-yellow">⚠️ #2 MAJOR</span>方向键失灵（上/下/模式）</div>
         <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥉</span>按键卡住</div>
+        <div class="sublabel"><span class="rm rm-amber">⚡ #3 MINOR</span>按键卡住</div>
         <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P4</span>电源键失灵</div>
+        <div class="sublabel"><span class="rm rm-gray">#4</span>电源键失灵</div>
         <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P5</span>变焦键失灵</div>
+        <div class="sublabel"><span class="rm rm-gray">#5</span>变焦键失灵</div>
         <div class="subbar"><div class="subfill" style="width:50%"></div><span class="subval">2 <em>(11%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P6</span>其他按键问题</div>
+        <div class="sublabel"><span class="rm rm-gray">#6</span>其他按键问题</div>
         <div class="subbar"><div class="subfill" style="width:50%"></div><span class="subval">2 <em>(11%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P7</span>播放键失灵</div>
+        <div class="sublabel"><span class="rm rm-gray">#7</span>播放键失灵</div>
         <div class="subbar"><div class="subfill" style="width:25%"></div><span class="subval">1 <em>(6%)</em></span></div>
       </div>
         </div>
@@ -853,15 +859,15 @@ footer .cad span{color:var(--rb-red)}
           <div class="chips"><span class="chip">US <b>16</b></span><span class="chip">UK <b>1</b></span><span class="chip">DE <b>1</b></span></div>
           
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P1 「快门/拍照/录像键失灵」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #1 「快门/拍照/录像键失灵」</span></h4>
         <div class="sample"><span class="meta">客诉·#5926·US·-</span><div class="quote">"我最近通过亚马逊购买了一台新的AKASO EK7000相机以及一张新的AKASO 64GB microSD卡（U3，，，HD，4K UHD，MicroSD卡）。电池已充满电，我插入了电池和SD卡。我成功格式化了SD卡。但是，当我尝试测试相机时，无法让它开始录制视频。我必须按很多次快门按钮，如果它开始录制了，我又很难让它停止录制。我通常不得不按模式按钮来关闭相机。我尝试过更换电池，重新安装SD卡并重新格式化。我还应该尝试其他方法吗，还是相机或SD卡（或两者都）有问题？ 抱歉过了这么久才回复你，“生活”总是会妨碍（就像往常一样）。按照你的建议，我重置了相机。"</div></div><div class="sample"><span class="meta">退货·#1359·US·-</span><div class="quote">"快门按钮大部分时间无法工作"</div></div><div class="sample"><span class="meta">退货·#1490·DE·-</span><div class="quote">"拍照或录像按钮无法使用，它卡住了"</div></div><div class="sample"><span class="meta">退货·#2620·US·-</span><div class="quote">"快门按钮的弹簧在使用一次后就坏了"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P2 「方向键失灵（上/下/模式）」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #2 「方向键失灵（上/下/模式）」</span></h4>
         <div class="sample"><span class="meta">客诉·#4624·US·-</span><div class="quote">"向上的按钮坏了。"</div></div><div class="sample"><span class="meta">客诉·#5054·US·-</span><div class="quote">"AKASO EK7000的向下按钮卡住了，我还没用过呢，它一直在防水壳里放着。"</div></div><div class="sample"><span class="meta">退货·#2369·US·-</span><div class="quote">"侧边按钮故障"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P3 「按键卡住」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #3 「按键卡住」</span></h4>
         <div class="sample"><span class="meta">客诉·#5648·US·-</span><div class="quote">"我在2025年12月购买的相机出现了按钮卡住且无法正常工作的问题。"</div></div><div class="sample"><span class="meta">退货·#1769·US·-</span><div class="quote">"按钮卡住了"</div></div><div class="sample"><span class="meta">退货·#2556·US·-</span><div class="quote">"相机盖按钮卡住，导致相机无法关闭。"</div></div>
       </div>
         </div>
@@ -893,35 +899,35 @@ footer .cad span{color:var(--rb-red)}
     <div class="panel" data-panel="SD卡" style="--acc:#4ADE80">
       <div class="round-header">
         <div class="rh-left">
-          <div class="rh-round">ROUND 06 · GRAND PRIX</div>
+          <div class="rh-round">ROUND 06 · INCIDENT REPORT</div>
           <div class="rh-title">SD 卡问题</div>
         </div>
         <div class="rh-right">
-          <div class="telemetry">SECTOR ANALYSIS · LIVE</div>
-          <div class="lap-counter">TOTAL LAPS <span>18</span></div>
+          <div class="telemetry">INCIDENT FEED · LIVE</div>
+          <div class="lap-counter">TOTAL INCIDENTS <span>18</span></div>
         </div>
       </div>
 
       <div class="kpi-row">
         <div class="kpi kpi-main">
-          <div class="label">GRID TOTAL</div>
+          <div class="label">⚑ TOTAL INCIDENTS</div>
           <div class="val">18</div>
-          <div class="sub-label">发车总量</div>
+          <div class="sub-label">事故总量</div>
         </div>
         <div class="kpi">
           <div class="label">🔧 IN PIT LANE</div>
           <div class="val-pit">8</div>
-          <div class="sub-label">客诉端 · 待修复</div>
+          <div class="sub-label">客诉端 · 仍可挽回</div>
         </div>
         <div class="kpi">
           <div class="label">🏳️ DNF</div>
           <div class="val-dnf">10</div>
           <div class="sub-label">退货端 · 已退赛</div>
         </div>
-        <div class="kpi kpi-pole">
-          <div class="label">🏆 POLE POSITION</div>
+        <div class="kpi kpi-critical">
+          <div class="label">🚩 RED FLAG · TOP THREAT</div>
           <div class="val-s">客户自备卡不兼容/无合适卡</div>
-          <div class="sub-label">4 条 · 22% 占比</div>
+          <div class="sub-label">4 条 · 22% 占比 · 优先处理</div>
         </div>
       </div>
 
@@ -929,25 +935,25 @@ footer .cad span{color:var(--rb-red)}
         <div class="card">
           <h3><span class="tech">▸ SECTOR 1</span>子类分布 · 拆穿标签</h3>
           <div class="subrow">
-        <div class="sublabel"><span class="podium">🏆</span>客户自备卡不兼容/无合适卡</div>
+        <div class="sublabel"><span class="rm rm-red">🚩 #1 CRITICAL</span>客户自备卡不兼容/无合适卡</div>
         <div class="subbar"><div class="subfill" style="width:100%"></div><span class="subval">4 <em>(22%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥈</span>速度慢（scheda lenta/slow card）</div>
+        <div class="sublabel"><span class="rm rm-yellow">⚠️ #2 MAJOR</span>速度慢（scheda lenta/slow card）</div>
         <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium">🥉</span>其他 SD 问题</div>
+        <div class="sublabel"><span class="rm rm-amber">⚡ #3 MINOR</span>其他 SD 问题</div>
         <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P4</span>格式化失败</div>
+        <div class="sublabel"><span class="rm rm-gray">#4</span>格式化失败</div>
         <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P5</span>完全不识别</div>
+        <div class="sublabel"><span class="rm rm-gray">#5</span>完全不识别</div>
         <div class="subbar"><div class="subfill" style="width:75%"></div><span class="subval">3 <em>(17%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P6</span>相机本身问题（多张卡都不行）</div>
+        <div class="sublabel"><span class="rm rm-gray">#6</span>相机本身问题（多张卡都不行）</div>
         <div class="subbar"><div class="subfill" style="width:25%"></div><span class="subval">1 <em>(6%)</em></span></div>
       </div><div class="subrow">
-        <div class="sublabel"><span class="podium pX">P7</span>SD 卡发热异常</div>
+        <div class="sublabel"><span class="rm rm-gray">#7</span>SD 卡发热异常</div>
         <div class="subbar"><div class="subfill" style="width:25%"></div><span class="subval">1 <em>(6%)</em></span></div>
       </div>
         </div>
@@ -956,15 +962,15 @@ footer .cad span{color:var(--rb-red)}
           <div class="chips"><span class="chip">US <b>13</b></span><span class="chip">IT <b>3</b></span><span class="chip">UK <b>2</b></span></div>
           
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P1 「客户自备卡不兼容/无合适卡」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #1 「客户自备卡不兼容/无合适卡」</span></h4>
         <div class="sample"><span class="meta">客诉·#5028·UK·S</span><div class="quote">"我无法用相机拍照，我已经插入了存储卡，但每次尝试拍照时都会显示“NO CARD”"</div></div><div class="sample"><span class="meta">退货·#1727·US·-</span><div class="quote">"没有合适的SD卡"</div></div><div class="sample"><span class="meta">退货·#2124·US·-</span><div class="quote">"我没有正确的SD卡来使用这个。"</div></div><div class="sample"><span class="meta">退货·#2197·US·-</span><div class="quote">"我没有正确的SD卡来使用这个。"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P2 「速度慢（scheda lenta/slow card）」</span></h4>
-        <div class="sample"><span class="meta">客诉·#5377·US·S</span><div class="quote">"我有一个新的EK7000相机，我已经尝试了好几张不同的SD卡——所有的都无法格式化。最新的是一张全新的64GB U3卡，购自亚马逊，链接是https://a.co/d/0sdFluR。我现在怀疑相机有问题，但它是一份礼物。请帮我找到能在相机上使用的存储卡，或者告诉我如何退换相机。今天收到了Akaso品牌的SD卡，它也无法格式化，也不能录制任何视频或照片。恐怕问题出在相机上。"</div></div><div class="sample"><span class="meta">客诉·#5391·IT·S</span><div class="quote">"您好，我刚买了一台AKASO ek7000，但无法使用，因为当我尝试开始录制时，运动相机显示“SCHEDA LENTA”（慢卡）。我说明一下，这张256GB的micro SD卡是闪迪（SanDisk）Extreme Pro U3 A2级，适用于4K视频，符合你们的指示。我已经通过电脑然后在运动相机中格式化了这张卡，但问题仍然存在，还是显示“SCHEDA LENTA”。请您提供一些处理建议，因为这是新机器且在保修期内。附上SD卡的规格照片。"</div></div><div class="sample"><span class="meta">客诉·#5455·US·S</span><div class="quote">"显示SD卡速度太慢，他已经在电脑和相机内格式化了SD卡，也尝试过使用另一张SD卡，但问题依旧。他移除了SD卡和电池，重新安装后，问题仍然存在。他使用的是闪迪Class 10存储卡。"</div></div>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #2 「速度慢（scheda lenta/slow card）」</span></h4>
+        <div class="sample"><span class="meta">客诉·#5377·US·S</span><div class="quote">"我有一个新的EK7000相机，我已经尝试了好几张不同的SD卡——所有的都无法格式化。最新的是一张全新的64GB U3卡，购自亚马逊，链接是https://a.co/d/0sdFluR。我现在怀疑相机有问题，但它是一份礼物。请帮我找到能在相机上使用的存储卡，或者告诉我如何退换相机。今天收到了Akaso品牌的SD卡，它也无法格式化，也不能录制任何视频或照片。恐怕问题出在相机上。"</div></div><div class="sample"><span class="meta">客诉·#5391·IT·S</span><div class="quote">"您好，我刚买了一台AKASO ek7000，但无法使用，因为当我尝试开始录制时，运动相机显示“SCHEDA LENTA”（慢卡）。我说明一下，这张256GB的micro SD卡是闪迪（SanDisk）Extreme Pro U3 A2级，适用于4K视频，符合你们的指示。我已经通过电脑然后在运动相机中格式化了这张卡，但问题仍然存在，还是显示“SCHEDA LENTA”。请您提供一些处理建议，因为这是新机器且在保修期内。附上SD卡的规格照片。"</div></div><div class="sample"><span class="meta">客诉·#5455·US·S</span><div class="quote">"显示SD卡速度太慢，他已经在电脑和相机内格式��了SD卡，也尝试过使用另一张SD卡，但问题依旧。他移除了SD卡和电池，重新安装后，问题仍然存在。他使用的是闪迪Class 10存储卡。"</div></div>
       </div>
       <div class="sample-block">
-        <h4><span class="tele">📻 TEAM RADIO · P3 「其他 SD 问题」</span></h4>
+        <h4><span class="tele">📻 TEAM RADIO · CASE #3 「其他 SD 问题」</span></h4>
         <div class="sample"><span class="meta">客诉·#5491·IT·S</span><div class="quote">"我需要关于这款产品的帮助，它不再读取SD卡了，所以无法再使用。这是订单号：40727466892834725。你们能给我更换机器吗？等待你们的回复。谢谢，祝您今天愉快。"</div></div><div class="sample"><span class="meta">退货·#1735·US·-</span><div class="quote">"相机无法识别任何SD卡"</div></div><div class="sample"><span class="meta">退货·#2709·US·-</span><div class="quote">"读卡持续失败（卡错误）"</div></div>
       </div>
         </div>
@@ -990,14 +996,14 @@ footer .cad span{color:var(--rb-red)}
       <tr><td><span class="tag">相机本身问题（多张卡都不行）</span></td><td class="src src-pit">PIT</td><td>5587</td><td>UK</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">我现在已经买了两张存储卡，但它们在我的相机里都无法使用。你能帮我找一个合适的存储卡吗？或者我的相机是不是出了什么问题？ 我已经尝试了上述所有方法，但还是出现同样的错误。请看图片中的相机和存储卡。</td><td class="sol">—</td></tr>
       <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td class="src src-pit">PIT</td><td>5377</td><td>US</td><td>14-SD卡问题</td><td>已关闭</td><td class="desc">我有一个新的EK7000相机，我已经尝试了好几张不同的SD卡——所有的都无法格式化。最新的是一张全新的64GB U3卡，购自亚马逊，链接是https://a.co/d/0sdFluR。我现在怀疑相机有问题，但它是一份礼物。请帮我找到能在相机上使用的存储卡，或者告诉我如何退换相机。今天收到了Akaso品牌的SD卡，它也无法格式化，也不能录制任何视频或照片。恐怕问题出在相机上。</td><td class="sol">AKASO SD card也不行 SN:LH250922V1C4528 @廖月滢麻烦联系客人回寄到美仓 美仓确认不能读卡和格式化</td></tr>
       <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td class="src src-pit">PIT</td><td>5391</td><td>IT</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">您好，我刚买了一台AKASO ek7000，但无法使用，因为当我尝试开始录制时，运动相机显示“SCHEDA LENTA”（慢卡）。我说明一下，这张256GB的micro SD卡是闪迪（SanDisk）Extreme Pro U3 A2级，适用于4K视频，符合你们的指示。我已经通过电脑然后在运动相机中格式化了这张卡，但问题仍然存在，还是显示“SCHEDA LENTA”。请您提供一些处理建议，因为这是新机器且在保修期内。附上SD卡的规格照片。</td><td class="sol">—</td></tr>
-      <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td class="src src-pit">PIT</td><td>5455</td><td>US</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">显示SD卡速度太慢，他已经在电脑和相机内格式化了SD卡，也尝试过使用另一张SD卡，但问题依旧。他移除了SD卡和电池，重新安装后，问题仍然存在。他使用的是闪迪Class 10存储卡。</td><td class="sol">@廖月滢这台也寄回美仓确认下</td></tr></tbody></table>
+      <tr><td><span class="tag">速度慢（scheda lenta/slow card）</span></td><td class="src src-pit">PIT</td><td>5455</td><td>US</td><td>14-SD卡问题</td><td>待确认</td><td class="desc">显示SD卡速度太慢，他已经在电脑和相机内格式��了SD卡，也尝试过使用另一张SD卡，但问题依旧。他移除了SD卡和电池，重新安装后，问题仍然存在。他使用的是闪迪Class 10存储卡。</td><td class="sol">@廖月滢这台也寄回美仓确认下</td></tr></tbody></table>
       </div>
     </div>
 </div>
 
 <footer>
   <div class="newey">◢  ENGINEERING PHILOSOPHY INSPIRED BY ADRIAN NEWEY  ◣</div>
-  <div class="cad">DATA SOURCE · 飞书多维表格 EK7000-V53 终端表现跟进 &nbsp;│&nbsp; <span>●</span> LIVE TELEMETRY &nbsp;│&nbsp; AKASO · CREW CHIEF: CNest</div>
+  <div class="cad">DATA SOURCE · 飞书多维表格 EK7000-V53 终端表现跟进 &nbsp;│&nbsp; <span>●</span> LIVE TELEMETRY &nbsp;│&nbsp; AKASO · RACE ENGINEER: CNest</div>
 </footer>
 
 <script>
